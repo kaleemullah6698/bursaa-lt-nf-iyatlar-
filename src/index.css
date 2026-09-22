@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #080A0D;
+    --bg2: #101318;
+    --card: #14181E;
+    --gold: #C8A646;
+    --champ: #E2C76A;
+    --text: #F4F1E8;
+    --muted: #A5A8AE;
+    --border: rgba(244, 241, 232, 0.08);
+    --border-gold: rgba(200, 166, 70, 0.22);
+    --green: #3FA97A;
+    --red: #C9605F;
+    --radius: 14px;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .serif {
+    font-family: 'Fraunces', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+.font-serif {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.num, .tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Custom fine scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080A0D;
+}
+::-webkit-scrollbar-thumb {
+  background: #1C222B;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A646;
+}
+
+/* Flash animation for live price updates */
+@keyframes flashUpdate {
+  0% {
+    border-color: rgba(226, 199, 106, 0.7);
+    box-shadow: 0 0 0 1px rgba(226, 199, 106, 0.3), 0 0 24px rgba(200, 166, 70, 0.16);
+  }
+  100% {
+    border-color: var(--border);
+    box-shadow: none;
+  }
+}
+
+.flash-active {
+  animation: flashUpdate 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.95); }
+}
+
+.pulse-indicator {
+  animation: pulseGlow 2.4s infinite;
+}
+
+/* Financial terminal dashed grid */
+.terminal-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(244, 241, 232, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 241, 232, 0.03) 1px, transparent 1px);
+}

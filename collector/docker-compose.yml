@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database Service
+  postgres:
+    image: postgres:16-alpine
+    container_name: bursa_gold_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: bursa_gold_db
+      POSTGRES_USER: bursa_user
+      POSTGRES_PASSWORD: secure_gold_password_change_me
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/db/schema.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bursa_user -d bursa_gold_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. Automated Collector & Internal API Service
+  collector:
+    build:
+      context: ..
+      dockerfile: collector/Dockerfile
+    container_name: bursa_gold_collector
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      COLLECTOR_PORT: 4000
+      COLLECTOR_INTERVAL_SECONDS: 300 # 5 minutes
+      DATABASE_URL: postgresql://bursa_user:secure_gold_password_change_me@postgres:5432/bursa_gold_db
+      PRIMARY_SOURCE_URL: https://static.altinkaynak.com/public/Gold
+    ports:
+      - "4000:4000"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:4000/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  postgres_data:
+    driver: local

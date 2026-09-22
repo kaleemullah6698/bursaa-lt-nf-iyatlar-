@@ -1,0 +1,6 @@
+{
+  "name": "Bursa Altın Fiyatları - Canlı & Güncel Piyasa Verileri",
+  "description": "Bursa Kapalı Çarşı ve kuyumcular canlı altın fiyatları. Gram altın, çeyrek altın, yarım, tam, cumhuriyet ve 22 ayar bilezik anlık alış satış fiyatları, hesaplama ve piyasa rehberi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
