@@ -4,6 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     
+    <!-- Critical Performance: Inline CSS for Instant Paint (FCP / LCP / Zero FOUC) -->
+    <style>
+      html, body {
+        background-color: #080A0D;
+        color: #F4F1E8;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      #root {
+        min-height: 100vh;
+      }
+    </style>
+
+    <!-- DNS Prefetch & Preconnect for High-Speed Asset Delivery -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Non-render-blocking High Performance Google Fonts (display=swap) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      />
+    </noscript>
+
     <!-- Primary SEO Meta Tags -->
     <title>Bursa Altın Fiyatları Canlı | Kapalı Çarşı Anlık Alış Satış Kurları 2026</title>
     <meta name="description" content="Bursa altın fiyatları canlı ve anlık: Kapalı Çarşı, serbest piyasa ve kuyumcuların güncel 24 ayar gram, çeyrek, 22 ayar bilezik, cumhuriyet ve ata altın alış-satış fiyatları." />
@@ -39,10 +80,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Bursa Altın" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-
     <!-- AEO & Schema.org JSON-LD Structured Data: LocalBusiness, FinancialService, WebSite, FAQPage & Breadcrumb -->
     <script type="application/ld+json">
     {
@@ -70,7 +107,7 @@
           "paymentAccepted": "Cash, Credit Card, Bank Wire",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Kapalı Çarşı, Bedesten ve Sarraflar Çarşısı",
+            "streetAddress": "Nalbantoğlu Mah. Tarihi Kapalı Çarşı Kuyumcular Caddesi No:16",
             "addressLocality": "Osmangazi",
             "addressRegion": "Bursa",
             "postalCode": "16010",
@@ -90,59 +127,9 @@
             },
             {
               "@type": "OpeningHoursSpecification",
-              "dayOfWeek": "Saturday",
+              "dayOfWeek": ["Saturday"],
               "opens": "09:00",
-              "closes": "15:30"
-            }
-          ],
-          "areaServed": {
-            "@type": "AdministrativeArea",
-            "name": "Bursa"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://www.bursaaltinfiyatlari.com/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Bursa'da gram altın bugün ne kadar?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Bursa Kapalı Çarşı serbest piyasasında 24 ayar saf gram altın satış fiyatı canlı olarak yaklaşık 6.841,06 TL, alış fiyatı ise 6.840,24 TL seviyesindedir. Fiyatlar küresel ons altın ve Dolar/TL kuruna bağlı olarak saniyelik güncellenmektedir."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Bursa Kapalı Çarşı kuyumcuları saat kaçta açılıyor ve kapanıyor?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Bursa Tarihi Kapalı Çarşı ve Bedesten kuyumcuları hafta içi her gün sabah 09:00'da açılmakta ve akşam 18:30'da kapanmaktadır. Cumartesi günleri 09:00 - 15:30 arası yarım gün hizmet verilmekte olup pazar günleri nöbetçi sarraflar hariç kapalıdır."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Bursa Kapalı Çarşı altın fiyatı ile banka altın fiyatı neden farklı?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Bankalar sanal altın alım-satımında ortalama %3.5 - %4.5 arası geniş makas aralığı (komisyon) uygular. Bursa Kapalı Çarşı fiziki serbest piyasasında ise rekabet ve toptan rafineri transferi nedeniyle makas aralığı binde bire kadar düşmekte ve yatırımcı için çok daha avantajlı olmaktadır."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Bursa'da 22 ayar bilezik alırken nelere dikkat edilmeli?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yatırım amaçlı bilezik alırken işçilik maliyeti en düşük olan düz Ajda veya klasik burma bilezikler tercih edilmelidir. Bu modeller bozdurulurken gram altın değerine en yakın fiyattan nakde çevrilir."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Diyanet altın zekat nisap miktarı nedir ve nasıl hesaplanır?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Diyanet İşleri Başkanlığı'nın belirlediği altın zekat nisap sınırı 80.18 gramdır. 1 yıl boyunca 80.18 gram ve üzeri altına sahip olan kimselerin toplam altın değerinin %2.5'ini (1/40) zekat olarak vermesi farzdır."
-              }
+              "closes": "15:00"
             }
           ]
         },
@@ -160,13 +147,43 @@
               "@type": "ListItem",
               "position": 2,
               "name": "Bursa Altın Fiyatları",
-              "item": "https://www.bursaaltinfiyatlari.com/#fiyatlar"
+              "item": "https://www.bursaaltinfiyatlari.com/"
             },
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "Kapalı Çarşı Canlı Kurlar",
-              "item": "https://www.bursaaltinfiyatlari.com/#tablo"
+              "name": "Gram Altın",
+              "item": "https://www.bursaaltinfiyatlari.com/gram-altin"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.bursaaltinfiyatlari.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Bursa Kapalı Çarşı altın fiyatları neden bankalardan farklıdır?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bursa Kapalı Çarşı'da fiziki altın elden teslim alınır ve serbest piyasa arz-talep dengesine göre belirlenir. Bankalar ise kaydi altın işleminde %3 ila %5 arasında geniş alım-satım makası ve komisyon uygular. Bu nedenle Kapalı Çarşı'da altın alıp satmak yatırımcı için çok daha avantajlıdır."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Bursa'da gram altın bugün ne kadar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bursa Kapalı Çarşı ve kuyumcularda 24 ayar has gram altın alış ve satış fiyatları piyasa seans saatlerinde anlık olarak güncellenmektedir. Tablomuzdan güncel canlı kurları ve değişim oranlarını izleyebilirsiniz."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Bursa Kapalı Çarşı kuyumcuları saat kaçta açılıyor ve kapanıyor?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bursa Kapalı Çarşı ve Bedesten kuyumcuları hafta içi (Pazartesi-Cuma) 09:00 - 18:30 saatleri arasında, Cumartesi günleri ise 09:00 - 15:00 saatleri arasında hizmet vermektedir. Pazar günleri nöbetçi sarraflar dışında resmi seans kapalıdır."
+              }
             }
           ]
         }
@@ -174,7 +191,7 @@
     }
     </script>
   </head>
-  <body class="bg-[#080A0D] text-[#F4F1E8] font-sans antialiased overflow-x-hidden">
+  <body class="bg-[#080A0D] text-[#F4F1E8]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

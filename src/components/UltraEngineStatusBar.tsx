@@ -1,19 +1,19 @@
 import React from 'react';
 import { useGold } from '../context/GoldContext';
-import { Zap, Activity, Cpu, Gauge, Search, Sparkles } from 'lucide-react';
+import { Zap, Activity, Cpu, Gauge, Search } from 'lucide-react';
 
-export const UltraEngineStatusBar: React.FC = () => {
+export const UltraEngineStatusBar: React.FC = React.memo(() => {
   const { telemetry, isTurbo, toggleTurbo, setCommandPaletteOpen } = useGold();
 
   return (
-    <div className="bg-[#0C0F14] border-b border-[rgba(244,241,232,0.06)] py-1.5 px-4 text-[11px] font-mono select-none overflow-x-auto scrollbar-none">
-      <div className="max-w-[1240px] mx-auto flex items-center justify-between gap-4">
+    <div className="bg-[#0C0F14] border-b border-[rgba(244,241,232,0.06)] h-[34px] min-h-[34px] flex items-center px-4 text-[11px] font-mono select-none overflow-x-auto scrollbar-none">
+      <div className="max-w-[1240px] w-full mx-auto flex items-center justify-between gap-4">
         {/* Left Telemetry Cluster */}
         <div className="flex items-center gap-4 text-[#A5A8AE] whitespace-nowrap">
           {/* Turbo Toggle */}
           <button
             onClick={toggleTurbo}
-            className={`px-2.5 py-0.5 rounded-md flex items-center gap-1.5 transition-all font-bold ${
+            className={`px-2 py-0.5 rounded-md flex items-center gap-1.5 transition-all font-bold ${
               isTurbo
                 ? 'bg-amber-500/20 text-[#E2C76A] border border-amber-500/40 shadow-[0_0_10px_rgba(234,179,8,0.2)]'
                 : 'bg-[#14181E] text-[#A5A8AE] hover:text-white border border-[rgba(244,241,232,0.08)]'
@@ -48,7 +48,7 @@ export const UltraEngineStatusBar: React.FC = () => {
         <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={() => setCommandPaletteOpen(true)}
-            className="flex items-center gap-2 px-2.5 py-1 bg-[#14181E] hover:bg-[#1E2530] text-[#A5A8AE] hover:text-[#E2C76A] rounded-lg border border-[rgba(244,241,232,0.08)] transition-colors"
+            className="flex items-center gap-2 px-2.5 py-0.5 bg-[#14181E] hover:bg-[#1E2530] text-[#A5A8AE] hover:text-[#E2C76A] rounded-lg border border-[rgba(244,241,232,0.08)] transition-colors"
           >
             <Search className="w-3 h-3 text-[#C8A646]" />
             <span className="hidden sm:inline font-sans text-xs">Hızlı Arama</span>
@@ -60,4 +60,6 @@ export const UltraEngineStatusBar: React.FC = () => {
       </div>
     </div>
   );
-};
+});
+
+UltraEngineStatusBar.displayName = 'UltraEngineStatusBar';

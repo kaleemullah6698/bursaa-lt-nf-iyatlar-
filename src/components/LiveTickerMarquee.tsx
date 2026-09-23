@@ -2,8 +2,8 @@ import React from 'react';
 import { useGold } from '../context/GoldContext';
 import { ArrowUpRight, ArrowDownRight, Radio } from 'lucide-react';
 
-export const LiveTickerMarquee: React.FC = () => {
-  const { items, liveStreamActive, marketStatus } = useGold();
+export const LiveTickerMarquee: React.FC = React.memo(() => {
+  const { items, marketStatus } = useGold();
 
   const formatPrice = (p: number, curr?: string) => {
     if (curr === 'USD') return `$${p.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
@@ -12,8 +12,8 @@ export const LiveTickerMarquee: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#0A0D12] border-b border-[rgba(244,241,232,0.06)] text-xs overflow-hidden py-1.5 px-4 select-none relative z-30">
-      <div className="flex items-center justify-between gap-4 max-w-[1400px] mx-auto">
+    <div className="bg-[#0A0D12] border-b border-[rgba(244,241,232,0.06)] text-xs overflow-hidden h-[36px] min-h-[36px] flex items-center px-4 select-none relative z-30">
+      <div className="flex items-center justify-between gap-4 max-w-[1400px] w-full mx-auto">
         {/* Market Status Pill */}
         <div className="flex items-center gap-2 shrink-0 border-r border-[rgba(244,241,232,0.08)] pr-4">
           <span className="relative flex h-2 w-2">
@@ -53,4 +53,6 @@ export const LiveTickerMarquee: React.FC = () => {
       </div>
     </div>
   );
-};
+});
+
+LiveTickerMarquee.displayName = 'LiveTickerMarquee';

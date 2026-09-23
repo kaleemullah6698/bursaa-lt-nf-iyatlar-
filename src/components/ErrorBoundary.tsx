@@ -44,8 +44,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <button
                 onClick={() => {
                   this.setState({ hasError: false, error: null });
-                  window.location.hash = '';
-                  window.location.reload();
+                  window.location.href = '/';
                 }}
                 className="flex-1 px-4 py-2.5 bg-[#C8A646] hover:bg-[#E2C76A] text-[#080A0D] font-bold text-xs rounded-xl transition-colors flex items-center justify-center gap-2"
               >
@@ -56,7 +55,8 @@ export class ErrorBoundary extends Component<Props, State> {
               <button
                 onClick={() => {
                   this.setState({ hasError: false, error: null });
-                  window.location.hash = '';
+                  window.history.pushState({}, '', '/');
+                  window.dispatchEvent(new PopStateEvent('popstate'));
                 }}
                 className="flex-1 px-4 py-2.5 bg-[#14181E] hover:bg-[#1E2530] text-[#A5A8AE] hover:text-white border border-[rgba(244,241,232,0.1)] text-xs rounded-xl transition-colors flex items-center justify-center gap-2"
               >

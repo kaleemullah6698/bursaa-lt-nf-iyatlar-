@@ -16,6 +16,15 @@
     --radius: 14px;
   }
 
+  /* Core Web Vitals: Prevent layout shifting and ensure instant first paint */
+  html {
+    background-color: #080A0D;
+    color: #F4F1E8;
+    scroll-behavior: smooth;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--bg);
@@ -23,6 +32,8 @@
     overflow-x: hidden;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
   }
 
   h1, h2, h3, .serif {
@@ -42,6 +53,13 @@
 .num, .tabular-nums {
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum" 1;
+}
+
+/* Core Web Vitals Performance Optimization: content-visibility */
+/* Allows off-screen sections to skip rendering work during initial page load */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 650px;
 }
 
 /* Custom fine scrollbar */
@@ -73,7 +91,8 @@
 }
 
 .flash-active {
-  animation: flashUpdate 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: flashUpdate 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: border-color, box-shadow;
 }
 
 @keyframes pulseGlow {

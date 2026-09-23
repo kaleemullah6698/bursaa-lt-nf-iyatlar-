@@ -140,7 +140,7 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
     ]);
   });
 
-  // Real-time FPS monitor via requestAnimationFrame
+  // Throttled FPS & Memory Monitor (every 2.5s) to preserve CPU and 0 INP lag
   const frameCountRef = useRef(0);
   const lastFpsTimeRef = useRef(typeof performance !== 'undefined' ? performance.now() : 0);
 
@@ -150,24 +150,20 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
     let animId: number;
     const countFrame = () => {
       frameCountRef.current++;
-      try {
-        const now = performance.now();
-        if (now - lastFpsTimeRef.current >= 1500) {
-          const delta = (now - lastFpsTimeRef.current) / 1000;
-          const currentFps = Math.round(frameCountRef.current / delta);
-          setFps(Math.min(120, Math.max(30, currentFps)));
-          frameCountRef.current = 0;
-          lastFpsTimeRef.current = now;
+      const now = performance.now();
+      if (now - lastFpsTimeRef.current >= 2500) {
+        const delta = (now - lastFpsTimeRef.current) / 1000;
+        const currentFps = Math.round(frameCountRef.current / delta);
+        setFps(prev => (Math.abs(prev - currentFps) > 3 ? Math.min(120, Math.max(30, currentFps)) : prev));
+        frameCountRef.current = 0;
+        lastFpsTimeRef.current = now;
 
-          // Safely estimate memory
-          const perf = performance as unknown as { memory?: { usedJSHeapSize: number } };
-          if (perf && perf.memory && typeof perf.memory.usedJSHeapSize === 'number') {
-            const used = perf.memory.usedJSHeapSize;
-            setMemoryUsageMB(parseFloat((used / 1048576).toFixed(1)));
-          }
+        const perf = performance as unknown as { memory?: { usedJSHeapSize: number } };
+        if (perf?.memory?.usedJSHeapSize) {
+          const used = perf.memory.usedJSHeapSize;
+          const mb = parseFloat((used / 1048576).toFixed(1));
+          setMemoryUsageMB(prev => (Math.abs(prev - mb) > 1 ? mb : prev));
         }
-      } catch {
-        // Fallback
       }
       animId = requestAnimationFrame(countFrame);
     };
@@ -176,7 +172,7 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return () => cancelAnimationFrame(animId);
   }, []);
 
-  const addAlert = (goldId: string, targetPrice: number, condition: 'above' | 'below') => {
+  const addAlert = useCallback((goldId: string, targetPrice: number, condition: 'above' | 'below') => {
     const newAlert: PriceAlert = {
       id: 'alt-' + Date.now(),
       goldId,
@@ -185,33 +181,41 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
       createdAt: new Date().toLocaleDateString('tr-TR'),
       active: true
     };
-    const updated = [...alerts, newAlert];
-    setAlerts(updated);
-    safeSetStorage('bursa_gold_alerts', updated);
-  };
+    setAlerts(prev => {
+      const updated = [...prev, newAlert];
+      safeSetStorage('bursa_gold_alerts', updated);
+      return updated;
+    });
+  }, []);
 
-  const removeAlert = (id: string) => {
-    const updated = alerts.filter(a => a.id !== id);
-    setAlerts(updated);
-    safeSetStorage('bursa_gold_alerts', updated);
-  };
+  const removeAlert = useCallback((id: string) => {
+    setAlerts(prev => {
+      const updated = prev.filter(a => a.id !== id);
+      safeSetStorage('bursa_gold_alerts', updated);
+      return updated;
+    });
+  }, []);
 
-  const addPortfolioItem = (data: Omit<PortfolioItem, 'id' | 'buyDate'>) => {
+  const addPortfolioItem = useCallback((data: Omit<PortfolioItem, 'id' | 'buyDate'>) => {
     const newItem: PortfolioItem = {
       ...data,
       id: 'port-' + Date.now(),
       buyDate: new Date().toISOString().split('T')[0]
     };
-    const updated = [...portfolio, newItem];
-    setPortfolio(updated);
-    safeSetStorage('bursa_gold_portfolio', updated);
-  };
+    setPortfolio(prev => {
+      const updated = [...prev, newItem];
+      safeSetStorage('bursa_gold_portfolio', updated);
+      return updated;
+    });
+  }, []);
 
-  const removePortfolioItem = (id: string) => {
-    const updated = portfolio.filter(p => p.id !== id);
-    setPortfolio(updated);
-    safeSetStorage('bursa_gold_portfolio', updated);
-  };
+  const removePortfolioItem = useCallback((id: string) => {
+    setPortfolio(prev => {
+      const updated = prev.filter(p => p.id !== id);
+      safeSetStorage('bursa_gold_portfolio', updated);
+      return updated;
+    });
+  }, []);
 
   // Compute portfolio summary memoized
   const portfolioSummary = useMemo<PortfolioSummary>(() => {
@@ -266,14 +270,11 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const openCalculatorWithGold = useCallback((id: string) => {
     setCalculatorPreselectedGoldId(id);
-    try {
-      const el = document.getElementById('altin-hesaplama');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    } catch {
-      // scroll fallback
+    if (typeof window !== 'undefined' && window.location.pathname !== '/hesaplama') {
+      window.history.pushState({}, '', '/hesaplama');
+      window.dispatchEvent(new PopStateEvent('popstate'));
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   // Compute Bursa Market Open / Close status based on Turkey Time (UTC+3)
@@ -360,7 +361,7 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const effectiveIntervalMs = isTurbo ? 800 : streamSpeed * 1000;
 
-  // Real-time tick engine
+  // Real-time tick engine with batched latency measurement
   useEffect(() => {
     if (!liveStreamActive) return;
 
@@ -418,7 +419,7 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const firstDirection = Object.values(newFlashed)[0];
         if (firstDirection) playTickSound(firstDirection);
 
-        const flashDuration = isTurbo ? 600 : 1000;
+        const flashDuration = isTurbo ? 600 : 900;
         setTimeout(() => {
           setFlashedItemIds({});
         }, flashDuration);
@@ -478,42 +479,69 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
     isTurbo
   }), [fps, latencyMs, tickCount, memoryUsageMB, isTurbo]);
 
+  const contextValue: GoldContextType = useMemo(() => ({
+    items,
+    selectedItem,
+    setSelectedItem,
+    openDetailBySlug,
+    liveStreamActive,
+    toggleLiveStream,
+    streamSpeed,
+    setStreamSpeed,
+    isTurbo,
+    toggleTurbo,
+    soundEnabled,
+    toggleSound,
+    lastRefreshTime,
+    refreshPrices,
+    flashedItemIds,
+    marketStatus,
+    telemetry,
+    alerts,
+    addAlert,
+    removeAlert,
+    portfolio,
+    addPortfolioItem,
+    removePortfolioItem,
+    portfolioSummary,
+    calculatorPreselectedGoldId,
+    setCalculatorPreselectedGoldId,
+    openCalculatorWithGold,
+    currencyView,
+    setCurrencyView,
+    commandPaletteOpen,
+    setCommandPaletteOpen
+  }), [
+    items,
+    selectedItem,
+    liveStreamActive,
+    streamSpeed,
+    isTurbo,
+    soundEnabled,
+    lastRefreshTime,
+    flashedItemIds,
+    marketStatus,
+    telemetry,
+    alerts,
+    portfolio,
+    portfolioSummary,
+    calculatorPreselectedGoldId,
+    currencyView,
+    commandPaletteOpen,
+    openDetailBySlug,
+    toggleLiveStream,
+    toggleTurbo,
+    toggleSound,
+    refreshPrices,
+    addAlert,
+    removeAlert,
+    addPortfolioItem,
+    removePortfolioItem,
+    openCalculatorWithGold
+  ]);
+
   return (
-    <GoldContext.Provider
-      value={{
-        items,
-        selectedItem,
-        setSelectedItem,
-        openDetailBySlug,
-        liveStreamActive,
-        toggleLiveStream,
-        streamSpeed,
-        setStreamSpeed,
-        isTurbo,
-        toggleTurbo,
-        soundEnabled,
-        toggleSound,
-        lastRefreshTime,
-        refreshPrices,
-        flashedItemIds,
-        marketStatus,
-        telemetry,
-        alerts,
-        addAlert,
-        removeAlert,
-        portfolio,
-        addPortfolioItem,
-        removePortfolioItem,
-        portfolioSummary,
-        calculatorPreselectedGoldId,
-        setCalculatorPreselectedGoldId,
-        openCalculatorWithGold,
-        currencyView,
-        setCurrencyView,
-        commandPaletteOpen,
-        setCommandPaletteOpen
-      }}
-    >
+    <GoldContext.Provider value={contextValue}>
       {children}
     </GoldContext.Provider>
   );
