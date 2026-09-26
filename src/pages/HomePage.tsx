@@ -1,10 +1,15 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
+import { CityHubsNavigator } from '../components/CityHubsNavigator';
+import { AeoDirectAnswers } from '../components/AeoDirectAnswers';
 import { ProFreeMarketTable } from '../components/ProFreeMarketTable';
 import { PriceCardsGrid } from '../components/PriceCardsGrid';
 import { BankSpreadComparison } from '../components/BankSpreadComparison';
-import { AeoDirectAnswers } from '../components/AeoDirectAnswers';
+import { CityHubsDetailSection } from '../components/CityHubsDetailSection';
+import { CityEditorialSection } from '../components/CityEditorialSection';
+import { CityFaqSection } from '../components/CityFaqSection';
 import { Link } from '../components/Link';
+import { useGold } from '../context/GoldContext';
 import { 
   BarChart2, 
   Coins, 
@@ -22,38 +27,52 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenAlertModal }) => {
+  const { activeCity } = useGold();
+
   return (
     <div className="space-y-0">
-      {/* 1. Flagship Editorial Hero & Bullion Showcase */}
+      {/* 1. Flagship Institutional Hero & Interactive Trend Terminal */}
       <Hero onOpenAlertModal={onOpenAlertModal} />
 
-      {/* 2. Direct Answers Snippets for AI Overviews & Local Search */}
+      {/* 2. Turkey Physical Markets City Hub Strip (Google SEO Hub Architecture) */}
+      <CityHubsNavigator />
+
+      {/* 3. Direct Answers Snippets for AI Overviews & Local Search */}
       <AeoDirectAnswers />
 
-      {/* 3. Bursa Free Market Gold Prices Table (Exact 21 Instruments) */}
+      {/* 4. City Free Market Gold Prices Table (Exact 21 Instruments) */}
       <ProFreeMarketTable />
 
-      {/* 4. 4 Flagship Price Cards Grid (Gram, Çeyrek, Yarım, Tam) */}
+      {/* 5. 4 Flagship Price Cards Grid (Gram, Çeyrek, Yarım, Tam) */}
       <PriceCardsGrid />
 
-      {/* 5. Bank Spread Arbitrage & Savings Matrix */}
+      {/* 6. Bank Spread Arbitrage & Savings Matrix */}
       <div className="cv-auto">
         <BankSpreadComparison />
       </div>
 
-      {/* 6. Dedicated Portals Hub: Clean semantic Link cards to all standalone pages */}
-      <section className="py-12 bg-[#0A0D12] border-t border-b border-[rgba(244,241,232,0.06)]">
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
+      {/* 7. City-Specific District Hubs & Regional Sarrafiye Breakdown */}
+      <CityHubsDetailSection />
+
+      {/* 8. City-Specific Editorial History, Culture & Market Dynamics */}
+      <CityEditorialSection />
+
+      {/* 9. City-Specific SSS / Frequently Asked Questions */}
+      <CityFaqSection />
+
+      {/* 10. Dedicated Portals Hub: Clean semantic Link cards to all standalone modules */}
+      <section className="py-12 bg-[#0A0D12] border-t border-[rgba(244,241,232,0.06)]">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[#C8A646] uppercase tracking-wider mb-2">
               <Zap className="w-3.5 h-3.5" />
-              <span>Bursa Altın Platformu Modülleri</span>
+              <span>{activeCity.name} & Ulusal Finans Modülleri</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#F4F1E8]">
               Özel Finans & Araştırma İstasyonları
             </h2>
             <p className="text-sm text-[#A5A8AE] mt-2">
-              Bursa Kapalı Çarşı altın ekosistemini derinlemesine inceleyin. Her sayfamız bağımsız analitik araçlarla donatılmıştır.
+              {activeCity.name} serbest piyasasını derinlemesine inceleyin. Her sayfamız bağımsız analitik araçlarla donatılmıştır.
             </p>
           </div>
 
@@ -146,7 +165,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAlertModal }) => {
               </div>
             </Link>
 
-            {/* Portal 5: Bursa'da Altın */}
+            {/* Portal 5: Şehirde Altın */}
             <Link 
               to="/bursada-altin"
               className="group p-5 bg-[#101318] hover:bg-[#14181E] border border-[rgba(244,241,232,0.08)] hover:border-[#C8A646]/50 rounded-2xl transition-all flex flex-col justify-between"
@@ -156,10 +175,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAlertModal }) => {
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#E2C76A] transition-colors mb-2">
-                  Bursa'da Altın & Kapalı Çarşı
+                  {activeCity.name}'da Altın & {activeCity.marketName}
                 </h3>
                 <p className="text-xs text-[#A5A8AE] leading-relaxed">
-                  700 yıllık Tarihi Bedesten kültürü, fiziki altın teslimatı ve banka makas farklarının detaylı analizi.
+                  {activeCity.marketName} kültürü, fiziki teslimatlı işlemler ve banka makas farklarının karşılaştırmalı analizi.
                 </p>
               </div>
               <div className="mt-5 pt-3 border-t border-[rgba(244,241,232,0.06)] flex items-center justify-between text-xs text-[#E2C76A] font-semibold">
@@ -178,10 +197,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAlertModal }) => {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <h3 className="text-lg font-serif font-bold text-white group-hover:text-[#E2C76A] transition-colors mb-2">
-                  Bursa Kuyumcular Rehberi
+                  {activeCity.name} Kuyumcular Rehberi
                 </h3>
                 <p className="text-xs text-[#A5A8AE] leading-relaxed">
-                  Osmangazi Kapalı Çarşı, Nilüfer FSM, Özlüce, Yıldırım ve İnegöl sarrafları, çalışma saatleri ve harita konumları.
+                  {activeCity.districts.slice(0, 3).join(', ')} sarrafları, çalışma saatleri ve ulaşım rotaları.
                 </p>
               </div>
               <div className="mt-5 pt-3 border-t border-[rgba(244,241,232,0.06)] flex items-center justify-between text-xs text-[#E2C76A] font-semibold">

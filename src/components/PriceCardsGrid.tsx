@@ -4,7 +4,7 @@ import { ArrowUp, ArrowDown, Activity, Sparkles, ChevronRight } from 'lucide-rea
 import { GoldPriceItem } from '../types/gold';
 
 export const PriceCardsGrid: React.FC = () => {
-  const { items, setSelectedItem, flashedItemIds, openCalculatorWithGold } = useGold();
+  const { items, setSelectedItem, flashedItemIds, openCalculatorWithGold, activeCity } = useGold();
 
   // Top 4 flagship instruments matching the user's HTML specification
   const primaryKeys = ['gram-altin', 'ceyrek-altin', 'yarim-altin', 'tam-altin'];
@@ -70,7 +70,7 @@ export const PriceCardsGrid: React.FC = () => {
             Anlık Veriler
           </span>
           <h2 id="dashTitle" className="text-2xl sm:text-3xl font-serif text-[#F4F1E8] font-semibold tracking-tight">
-            Güncel Bursa Altın Fiyatları
+            Güncel {activeCity.name} Altın Fiyatları
           </h2>
           <p className="text-sm sm:text-base text-[#A5A8AE] mt-2 max-w-2xl">
             Alış ve satış fiyatları. Gram altın küresel spot piyasadan canlı alınır; diğer ürünler saf altın karşılığı üzerinden hesaplanır.

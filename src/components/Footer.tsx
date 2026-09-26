@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { ArrowUp, Bookmark, Check, ShieldCheck, MapPin, Clock, Phone, Building2, ExternalLink } from 'lucide-react';
 import { Link } from './Link';
+import { useGold } from '../context/GoldContext';
+import { CITIES } from '../data/cities';
 
 export const Footer: React.FC = () => {
   const [bookmarked, setBookmarked] = useState(false);
+  const { activeCity } = useGold();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -13,6 +16,8 @@ export const Footer: React.FC = () => {
     setBookmarked(true);
     setTimeout(() => setBookmarked(false), 3000);
   };
+
+  const currentYear = new Date().getFullYear(); // 2026
 
   return (
     <footer className="bg-[#050709] border-t border-[rgba(244,241,232,0.08)] pt-16 pb-16 text-[#A5A8AE]">
@@ -27,13 +32,13 @@ export const Footer: React.FC = () => {
             <div className="lg:col-span-8">
               <div className="flex items-center gap-2 text-xs font-mono text-[#E2C76A] uppercase tracking-wider mb-2.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Bursa Serbest Piyasa OTC Terminali</span>
+                <span>{activeCity.name} Serbest Piyasa OTC Terminali</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-[#F4F1E8] font-bold tracking-tight mb-3 text-balance">
-                Bursa Kapalı Çarşı Canlı Kurları Parmaklarınızın Ucunda
+                {activeCity.name} {activeCity.marketName} Canlı Kurları Parmaklarınızın Ucunda
               </h2>
               <p className="text-sm sm:text-base text-[#A5A8AE] leading-relaxed max-w-2xl font-normal">
-                Bursa Tarihi Kapalı Çarşı sarrafları ve serbest piyasa altın kurlarını anlık takip edin. Banka makaslarından kurtulup Kapalı Çarşı avantajıyla fiziki altın portföyünüzü yönetin.
+                {activeCity.name} serbest piyasasında işlem gören 24 ayar has külçe, çeyrek ve 22 ayar bilezik kotasyonlarını anlık takip edin. Banka makaslarından bağımsız, fiziki teslimatlı şeffaf serbest piyasa kurları.
               </p>
             </div>
 
@@ -47,7 +52,7 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={handleBookmark}
-                className="px-5 py-3.5 bg-[#0C0F14] border border-[rgba(244,241,232,0.12)] text-[#F4F1E8] font-semibold text-sm rounded-xl hover:border-[#C8A646]/50 hover:text-[#E2C76A] transition-all flex items-center justify-center gap-2 active:scale-[0.98]"
+                className="px-5 py-3.5 bg-[#0C0F14] border border-[rgba(244,241,232,0.12)] text-[#F4F1E8] font-semibold text-sm rounded-xl hover:border-[#C8A646]/50 hover:text-[#E2C76A] transition-all flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer"
               >
                 {bookmarked ? (
                   <>
@@ -65,49 +70,44 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Hyper-Local Bursa Districts Quick Selector Bar */}
+        {/* Multi-City Network Clean SEO Links */}
         <div className="mb-14 pb-10 border-b border-[rgba(244,241,232,0.06)]">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
             <div>
               <span className="text-xs font-mono uppercase tracking-wider text-[#E2C76A] font-semibold flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#C8A646]" />
-                Bursa İlçe & Çarşı Merkezleri
+                <Building2 className="w-3.5 h-3.5 text-[#C8A646]" />
+                Türkiye Fiziki Altın Borsaları & Şehir Sayfaları
               </span>
               <p className="text-xs text-zinc-400 mt-0.5">
-                Bursa genelindeki fiziki kuyumcu, sarraf ve serbest piyasa işlem noktaları
+                Google indeksine açık, her ile özel bağımsız canlı serbest piyasa sayfaları
               </p>
             </div>
-            <Link
-              to="/kuyumcular"
-              className="text-xs text-[#C8A646] hover:text-[#E2C76A] font-semibold flex items-center gap-1 transition-colors self-start sm:self-auto"
-            >
-              <span>Tüm 16+ Bursa Kuyumcularını Listele</span>
-              <span>→</span>
-            </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2.5">
-            {[
-              { name: 'Kapalı Çarşı', district: 'Osmangazi (Merkez)', tag: 'Toptan & Sarraf' },
-              { name: 'Cevahir Bedesteni', district: 'Osmangazi', tag: 'Ata & Külçe' },
-              { name: 'Nalbantoğlu / Heykel', district: 'Osmangazi', tag: 'Perakende & Set' },
-              { name: 'FSM Bulvarı', district: 'Nilüfer', tag: 'Mücevher & Tasarım' },
-              { name: 'Özlüce & Balat', district: 'Nilüfer', tag: 'Modern Kuyumcu' },
-              { name: 'İnegöl Çarşısı', district: 'İnegöl', tag: 'Sarraflar Çarşısı' }
-            ].map((hub, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {CITIES.map(city => (
               <Link
-                key={idx}
-                to="/kuyumcular"
-                className="p-3 rounded-xl bg-[#090C10] border border-[rgba(244,241,232,0.05)] hover:border-[#C8A646]/30 hover:bg-[#0E1218] transition-all group text-left block"
+                key={city.id}
+                to={`/${city.slug}`}
+                className={`p-3.5 rounded-xl border transition-all block ${
+                  city.id === activeCity.id
+                    ? 'bg-[#C8A646]/10 border-[#C8A646]/50 text-white'
+                    : 'bg-[#090C10] border-[rgba(244,241,232,0.05)] hover:border-[#C8A646]/30 text-zinc-300'
+                }`}
               >
-                <div className="text-xs font-bold text-white group-hover:text-[#E2C76A] transition-colors truncate">
-                  {hub.name}
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-serif font-bold text-white">
+                    {city.name} Altın Fiyatları
+                  </span>
+                  <span className="text-[10px] font-mono text-[#E2C76A]">
+                    /{city.slug}
+                  </span>
                 </div>
-                <div className="text-[10px] text-zinc-500 truncate mt-0.5">
-                  {hub.district}
+                <div className="text-[11px] text-zinc-400 mt-1 truncate">
+                  {city.marketName}
                 </div>
-                <div className="text-[9px] font-mono text-[#C8A646]/80 mt-1 uppercase tracking-tight">
-                  {hub.tag}
+                <div className="text-[10px] font-mono text-zinc-500 mt-1">
+                  {city.activeJewelersCount}+ Sarraf · 24s: {city.tradingVolume24h}
                 </div>
               </Link>
             ))}
@@ -117,42 +117,38 @@ export const Footer: React.FC = () => {
         {/* 4-Column Deep Topical Authority Site Directory */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-14">
           
-          {/* Col 1: Brand & Institutional Bursa Credibility (4 cols) */}
+          {/* Col 1: Brand & Institutional City Credibility (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <Link to="/" className="flex items-center gap-3 group w-fit">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#222834] via-[#141820] to-[#0A0D12] border border-[#C8A646]/40 p-0.5 flex items-center justify-center font-mono">
-                <span className="text-[11px] font-black text-[#E2C76A]">BKÇ</span>
+                <span className="text-[11px] font-black text-[#E2C76A]">{activeCity.shortCode}</span>
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-lg font-bold text-[#F4F1E8] group-hover:text-white transition-colors">
-                  Bursa Altın Fiyatları
+                  {activeCity.name} Altın Fiyatları
                 </span>
                 <span className="text-[11px] text-zinc-400">
-                  Tarihi Kapalı Çarşı & Serbest Piyasa
+                  {activeCity.marketName}
                 </span>
               </div>
             </Link>
 
             <p className="text-xs leading-relaxed text-[#A5A8AE] pr-4">
-              Bursa Tarihi Kapalı Çarşı, Bedesten sarrafları ve serbest piyasa kuyumcularının saniyelik fiziki altın alış-satış kotasyonlarını sunan bağımsız finansal bilgi terminali.
+              {activeCity.description}
             </p>
 
             {/* Operating Hours Card */}
             <div className="p-3.5 bg-[#090C10] border border-[rgba(244,241,232,0.06)] rounded-xl text-xs space-y-1.5 font-mono">
               <div className="flex items-center gap-1.5 text-zinc-300 font-semibold">
                 <Clock className="w-3.5 h-3.5 text-[#C8A646]" />
-                <span>Bursa Sarraflar Seans Saatleri:</span>
+                <span>{activeCity.name} Sarraflar Seans Saatleri:</span>
               </div>
               <div className="text-[11px] text-zinc-400 flex justify-between">
-                <span>Hafta İçi (Pzt-Cum):</span>
-                <strong className="text-zinc-200">09:00 - 18:30</strong>
-              </div>
-              <div className="text-[11px] text-zinc-400 flex justify-between">
-                <span>Cumartesi:</span>
-                <strong className="text-zinc-200">09:00 - 15:00</strong>
+                <span>Çalışma Düzeni:</span>
+                <strong className="text-zinc-200">{activeCity.workingHours}</strong>
               </div>
               <div className="text-[11px] text-zinc-500 flex justify-between">
-                <span>Pazar:</span>
+                <span>Pazar Günü:</span>
                 <span className="text-amber-400/90 font-sans">Nöbetçi Kuyumcular Açık</span>
               </div>
             </div>
@@ -177,7 +173,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/altin-turleri" className="hover:text-[#E2C76A] transition-colors block">
-                  22 Ayar Bursa Burması Fiyatı & Ayarı
+                  {activeCity.localHighlight}
                 </Link>
               </li>
               <li>
@@ -207,7 +203,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/hesaplama" className="hover:text-[#E2C76A] transition-colors block">
-                  Bursa Düğün & Nişan Takı Sepeti Bütçesi
+                  Düğün & Nişan Takı Sepeti Bütçesi
                 </Link>
               </li>
               <li>
@@ -227,7 +223,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/kuyumcular" className="hover:text-[#E2C76A] transition-colors block">
-                  Kapalı Çarşı Otopark & Metro Ulaşım
+                  {activeCity.name} Kuyumcular & Ulaşım
                 </Link>
               </li>
               <li>
@@ -247,7 +243,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/bursada-altin" className="hover:text-[#E2C76A] transition-colors block">
-                  Tarihi Kapalı Çarşı Kültürü
+                  {activeCity.name} Çarşı Kültürü
                 </Link>
               </li>
               <li>
@@ -261,7 +257,7 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li className="text-zinc-500 pt-1">
-                Referans: BKO & BIST KMTP
+                Referans: {activeCity.chamberName}
               </li>
               <li className="text-zinc-500">
                 Gecikme: ~0.4ms Engine
@@ -276,14 +272,14 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-2 text-zinc-400">
             <ShieldCheck className="w-4 h-4 text-[#C8A646] shrink-0" />
             <span>
-              © {new Date().getFullYear()} Bursa Altın Fiyatları. Tüm hakları saklıdır. Veriler bilgilendirme amaçlı olup yatırım tavsiyesi niteliği taşımaz.
+              © {currentYear} Altın Fiyatları Canlı Finans Platformu. Tüm hakları saklıdır. Veriler bilgilendirme amaçlı olup yatırım tavsiyesi niteliği taşımaz.
             </span>
           </div>
 
           <button
             type="button"
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors py-1 px-3 rounded-lg hover:bg-[#14181E] border border-transparent hover:border-zinc-700/50 text-xs font-mono"
+            className="flex items-center gap-1.5 text-zinc-400 hover:text-white transition-colors py-1 px-3 rounded-lg hover:bg-[#14181E] border border-transparent hover:border-zinc-700/50 text-xs font-mono cursor-pointer"
             aria-label="Sayfa Başına Dön"
           >
             <span>Başa Dön</span>

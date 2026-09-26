@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { GoldPriceItem, PriceAlert, PortfolioItem, PortfolioSummary } from '../types/gold';
 import { INITIAL_GOLD_DATA } from '../data/goldData';
+import { CityId, CityConfig } from '../types/city';
+import { CITIES, DEFAULT_CITY } from '../data/cities';
 
 interface MarketStatusInfo {
   isOpen: boolean;
@@ -49,6 +51,9 @@ interface GoldContextType {
   setCurrencyView: (c: 'TRY' | 'USD' | 'EUR') => void;
   commandPaletteOpen: boolean;
   setCommandPaletteOpen: (open: boolean) => void;
+  activeCity: CityConfig;
+  setActiveCityId: (cityId: CityId) => void;
+  cities: CityConfig[];
 }
 
 const GoldContext = createContext<GoldContextType | undefined>(undefined);
@@ -106,6 +111,20 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [calculatorPreselectedGoldId, setCalculatorPreselectedGoldId] = useState<string | null>(null);
   const [currencyView, setCurrencyView] = useState<'TRY' | 'USD' | 'EUR'>('TRY');
   const [commandPaletteOpen, setCommandPaletteOpen] = useState<boolean>(false);
+
+  // Active Physical OTC Trading Hub (Scalable across Turkey: Bursa, Ankara, Istanbul, Izmir)
+  const [activeCityId, setActiveCityIdState] = useState<CityId>(() => {
+    return safeGetStorage<CityId>('selected_city_id', 'bursa');
+  });
+
+  const activeCity = useMemo(() => {
+    return CITIES.find(c => c.id === activeCityId) || DEFAULT_CITY;
+  }, [activeCityId]);
+
+  const setActiveCityId = useCallback((cityId: CityId) => {
+    setActiveCityIdState(cityId);
+    safeSetStorage('selected_city_id', cityId);
+  }, []);
 
   // High performance telemetry
   const [fps, setFps] = useState<number>(60);
@@ -510,7 +529,10 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
     currencyView,
     setCurrencyView,
     commandPaletteOpen,
-    setCommandPaletteOpen
+    setCommandPaletteOpen,
+    activeCity,
+    setActiveCityId,
+    cities: CITIES
   }), [
     items,
     selectedItem,
@@ -528,6 +550,8 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
     calculatorPreselectedGoldId,
     currencyView,
     commandPaletteOpen,
+    activeCity,
+    setActiveCityId,
     openDetailBySlug,
     toggleLiveStream,
     toggleTurbo,

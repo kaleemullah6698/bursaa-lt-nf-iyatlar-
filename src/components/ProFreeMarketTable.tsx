@@ -258,7 +258,8 @@ export const ProFreeMarketTable: React.FC = () => {
     soundEnabled,
     toggleSound,
     isTurbo,
-    toggleTurbo
+    toggleTurbo,
+    activeCity
   } = useGold();
 
   const [lang, setLang] = useState<'TR' | 'EN'>('TR');
@@ -363,7 +364,7 @@ export const ProFreeMarketTable: React.FC = () => {
           <div>
             <div className="flex items-center gap-3">
               <h2 className="text-2xl sm:text-3xl font-bold font-sans text-white tracking-tight">
-                {lang === 'TR' ? 'Bursa Serbest Piyasa Altın Fiyatları' : 'Bursa Free Market Gold Prices'}
+                {lang === 'TR' ? `${activeCity.name} Serbest Piyasa Altın Fiyatları` : `${activeCity.name} Free Market Gold Prices`}
               </h2>
               <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#C8A646]/20 text-[#E2C76A] font-semibold border border-[#C8A646]/30 font-mono">
                 {sortedItems.length} Enstrüman

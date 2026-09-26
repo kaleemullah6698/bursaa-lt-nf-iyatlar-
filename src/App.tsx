@@ -8,7 +8,6 @@ import { GoldProvider, useGold } from './context/GoldContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Header } from './components/Header';
 import { LiveTickerMarquee } from './components/LiveTickerMarquee';
-import { UltraEngineStatusBar } from './components/UltraEngineStatusBar';
 import { Breadcrumbs } from './components/Breadcrumbs';
 import { Footer } from './components/Footer';
 import { MobileBottomNav } from './components/MobileBottomNav';
@@ -18,9 +17,10 @@ import {
   ROUTE_META_DESCRIPTIONS, 
   getRouteFromPath, 
   sanitizeHashToPath, 
-  navigate,
   PAGE_PATHS 
 } from './utils/router';
+import { updateDocumentSeo } from './utils/seo';
+import { CITY_BY_ID } from './data/cities';
 
 // Code-Split Standalone Premium Pages for Instant Initial Load & 0ms Route Switching
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
@@ -46,23 +46,37 @@ const CommandPalette = lazy(() =>
 const MainContent: React.FC = () => {
   const [activePage, setActivePage] = useState<PageRoute>('fiyatlar');
   const [alertModalOpen, setAlertModalOpen] = useState(false);
-  const { items, selectedItem, setSelectedItem } = useGold();
+  const { items, selectedItem, setSelectedItem, activeCity, setActiveCityId } = useGold();
 
   const itemsRef = useRef(items);
   useEffect(() => {
     itemsRef.current = items;
   }, [items]);
 
-  // Synchronize HTML5 Path-based Routing without hash
+  const activeCityRef = useRef(activeCity);
+  useEffect(() => {
+    activeCityRef.current = activeCity;
+  }, [activeCity]);
+
+  // Synchronize HTML5 Path-based Routing without hash & Dynamic City SEO
   useEffect(() => {
     // 1. Immediately upgrade any lingering hash (e.g. /#/altin-turleri) to clean path (/altin-turleri)
     sanitizeHashToPath();
 
     const handleLocationChange = () => {
       const pathname = window.location.pathname;
-      const { page, slug } = getRouteFromPath(pathname);
+      const { page, cityId, slug, isCityHub } = getRouteFromPath(pathname);
       
       setActivePage(page);
+
+      let effectiveCity = activeCityRef.current;
+      if (cityId) {
+        setActiveCityId(cityId);
+        const matched = CITY_BY_ID[cityId];
+        if (matched) {
+          effectiveCity = matched;
+        }
+      }
 
       if (slug) {
         const found = itemsRef.current.find(i => i.slug === slug || i.id === slug);
@@ -71,20 +85,44 @@ const MainContent: React.FC = () => {
         }
       }
 
-      // Update document title and meta description
-      const title = ROUTE_TITLES[page] || ROUTE_TITLES['fiyatlar'];
-      document.title = title;
-
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', ROUTE_META_DESCRIPTIONS[page] || ROUTE_META_DESCRIPTIONS['fiyatlar']);
+      // 2. Comprehensive Google SEO & Social Meta Synchronization
+      if (page === 'fiyatlar') {
+        const canonicalPath = isCityHub ? '/' : `/${effectiveCity.slug}`;
+        updateDocumentSeo({
+          title: effectiveCity.seoTitle,
+          description: effectiveCity.seoDescription,
+          keywords: effectiveCity.seoKeywords,
+          canonicalPath,
+          city: effectiveCity
+        });
+      } else {
+        updateDocumentSeo({
+          title: ROUTE_TITLES[page] || ROUTE_TITLES['fiyatlar'],
+          description: ROUTE_META_DESCRIPTIONS[page] || ROUTE_META_DESCRIPTIONS['fiyatlar'],
+          canonicalPath: PAGE_PATHS[page] || pathname,
+          city: effectiveCity
+        });
       }
     };
 
     handleLocationChange();
     window.addEventListener('popstate', handleLocationChange);
     return () => window.removeEventListener('popstate', handleLocationChange);
-  }, [setSelectedItem]);
+  }, [setSelectedItem, setActiveCityId]);
+
+  // Re-run SEO update when activeCity changes within context
+  useEffect(() => {
+    if (activePage === 'fiyatlar') {
+      const isHub = window.location.pathname === '/';
+      updateDocumentSeo({
+        title: activeCity.seoTitle,
+        description: activeCity.seoDescription,
+        keywords: activeCity.seoKeywords,
+        canonicalPath: isHub ? '/' : `/${activeCity.slug}`,
+        city: activeCity
+      });
+    }
+  }, [activeCity, activePage]);
 
   // Keyboard shortcut ESC to close modals
   useEffect(() => {
@@ -109,17 +147,16 @@ const MainContent: React.FC = () => {
       {/* 2. Real-Time Ticker Ribbon with Fixed Height (Zero CLS) */}
       <LiveTickerMarquee />
 
-      {/* 3. Ultra Engine Telemetry Bar (Zero CLS) */}
-      <UltraEngineStatusBar />
+      {/* 3. Page Breadcrumbs Navigation for Subpages (Clean & Uncluttered) */}
+      {(activePage !== 'fiyatlar' || selectedItem) && (
+        <Breadcrumbs 
+          activePage={activePage}
+          currentItem={selectedItem} 
+          onReset={() => setSelectedItem(null)} 
+        />
+      )}
 
-      {/* 4. Page Breadcrumbs Navigation with Clean Semantic Links */}
-      <Breadcrumbs 
-        activePage={activePage}
-        currentItem={selectedItem} 
-        onReset={() => setSelectedItem(null)} 
-      />
-
-      {/* 5. Main Independent Page Routing Container */}
+      {/* 4. Main Independent Page Routing Container */}
       <main className="flex-1">
         <Suspense 
           fallback={
@@ -167,16 +204,16 @@ const MainContent: React.FC = () => {
         </Suspense>
       </main>
 
-      {/* 6. Footer with Clean Semantic Paths */}
+      {/* 5. Footer with Clean Semantic Paths */}
       <Footer />
 
-      {/* 7. Mobile Bottom App Bar with Tab Switching */}
+      {/* 6. Mobile Bottom App Bar with Tab Switching */}
       <MobileBottomNav 
         activePage={activePage}
         onOpenAlertModal={() => setAlertModalOpen(true)} 
       />
 
-      {/* 8. Code-Split Lazy Modals */}
+      {/* 7. Code-Split Lazy Modals */}
       <Suspense fallback={null}>
         {selectedItem && <GoldDetailModal />}
         {alertModalOpen && (

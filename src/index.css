@@ -111,3 +111,42 @@
     linear-gradient(to right, rgba(244, 241, 232, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(244, 241, 232, 0.03) 1px, transparent 1px);
 }
+
+/* Continuous smooth financial ticker marquee */
+@keyframes ticker-ltr {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes ticker-rtl {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker-ltr {
+  display: flex;
+  width: max-content;
+  animation: ticker-ltr 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker-rtl {
+  display: flex;
+  width: max-content;
+  animation: ticker-rtl 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker-ltr:hover,
+.animate-ticker-rtl:hover {
+  animation-play-state: paused;
+}
+
