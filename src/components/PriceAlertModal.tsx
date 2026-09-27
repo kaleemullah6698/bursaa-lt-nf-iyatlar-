@@ -148,7 +148,7 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
           </h4>
 
           {alerts.length === 0 ? (
-            <p className="text-xs text-[#666C77] italic py-2">
+            <p className="text-xs text-[#A5A8AE] italic py-2">
               Henüz tanımlanmış bir fiyat alarmı bulunmuyor.
             </p>
           ) : (

@@ -143,7 +143,7 @@ export const BursadaAltinPage: React.FC = () => {
             <div className="relative pl-9">
               <span className="absolute left-2 top-1 w-3.5 h-3.5 rounded-full bg-[#C8A646] ring-4 ring-[#080A0D]" />
               <div className="text-xs font-mono text-[#E2C76A] font-bold">1326 - 1339: İlk Darphane ve Emir Han</div>
-              <h4 className="text-sm font-bold text-white mt-0.5">Bursa Hisar İçi İlk Osmanlı Sikkesi</h4>
+              <h3 className="text-sm font-bold text-white mt-0.5">Bursa Hisar İçi İlk Osmanlı Sikkesi</h3>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
                 Orhan Gazi döneminde Bursa'nın fethinin ardından Hisar bölgesinde ilk Osmanlı darphanesi kuruldu. Emir Han (Bey Hanı) inşa edilerek sarrafların ve kervan tüccarlarının altın takası tek bir merkezde toplandı.
               </p>
@@ -152,7 +152,7 @@ export const BursadaAltinPage: React.FC = () => {
             <div className="relative pl-9">
               <span className="absolute left-2 top-1 w-3.5 h-3.5 rounded-full bg-[#C8A646] ring-4 ring-[#080A0D]" />
               <div className="text-xs font-mono text-[#E2C76A] font-bold">1453: Cevahir Bedesteni'nin İnşası</div>
-              <h4 className="text-sm font-bold text-white mt-0.5">Yangına ve Yağmaya Karşı Çelik Kasalar</h4>
+              <h3 className="text-sm font-bold text-white mt-0.5">Yangına ve Yağmaya Karşı Çelik Kasalar</h3>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
                 Fatih Sultan Mehmet döneminde kurulan Cevahir Bedesteni, 14 kubbeli kalın taş duvarları ve demir kepenkli mahzenleriyle Bursa sarraflarının kıymetli madenlerini ve yabancı tüccarların rehinlerini muhafaza ettiği güvenli liman oldu.
               </p>
@@ -161,7 +161,7 @@ export const BursadaAltinPage: React.FC = () => {
             <div className="relative pl-9">
               <span className="absolute left-2 top-1 w-3.5 h-3.5 rounded-full bg-[#C8A646] ring-4 ring-[#080A0D]" />
               <div className="text-xs font-mono text-[#E2C76A] font-bold">1958: Büyük Bursa Kapalı Çarşı Yangını & Yeniden Doğuş</div>
-              <h4 className="text-sm font-bold text-white mt-0.5">Modern Sarraflar Çarşısı'nın Temelleri</h4>
+              <h3 className="text-sm font-bold text-white mt-0.5">Modern Sarraflar Çarşısı'nın Temelleri</h3>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
                 Büyük yangında ahşap çarşılar kül olmasına rağmen, Bedesten'in taş mahzenlerindeki altınlar zarar görmedi. 1960'larda yeniden modern mimariyle inşa edilen Sarraflar Caddesi, bugünkü 140'tan fazla sarraf dükkanına kavuştu.
               </p>
@@ -170,7 +170,7 @@ export const BursadaAltinPage: React.FC = () => {
             <div className="relative pl-9">
               <span className="absolute left-2 top-1 w-3.5 h-3.5 rounded-full bg-emerald-500 ring-4 ring-[#080A0D]" />
               <div className="text-xs font-mono text-emerald-400 font-bold">2026: Dijital & Fiziki Entegrasyon</div>
-              <h4 className="text-sm font-bold text-white mt-0.5">Bursa Altın Fiyatları Terminali</h4>
+              <h3 className="text-sm font-bold text-white mt-0.5">Bursa Altın Fiyatları Terminali</h3>
               <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
                 Bugün Bursa Kapalı Çarşı, saniyelik Borsa İstanbul ve küresel spot ons paritesiyle entegre olarak Güney Marmara'nın en likit altın takas merkezi konumundadır.
               </p>
@@ -198,7 +198,7 @@ export const BursadaAltinPage: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-[#C8A646] text-[#080A0D] font-bold text-sm flex items-center justify-center">
                 1
               </div>
-              <h4 className="text-sm font-bold text-white">"Toptan / Sarraf Kuru" İsteyin</h4>
+              <h3 className="text-sm font-bold text-white">"Toptan / Sarraf Kuru" İsteyin</h3>
               <p className="text-xs text-zinc-400 leading-relaxed">
                 Dükkana girdiğinizde vitrin perakende fiyatı yerine "Toplu külçe / sarraf alım kotasyonunuz nedir?" diye sorun. 20 gram ve üzeri alımlarda sarraflar ekran toptan fiyatını uygular.
               </p>
@@ -208,7 +208,7 @@ export const BursadaAltinPage: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-[#C8A646] text-[#080A0D] font-bold text-sm flex items-center justify-center">
                 2
               </div>
-              <h4 className="text-sm font-bold text-white">Nakit vs Havale Limitini Kontrol Edin</h4>
+              <h3 className="text-sm font-bold text-white">Nakit vs Havale Limitini Kontrol Edin</h3>
               <p className="text-xs text-zinc-400 leading-relaxed">
                 Yüksek montanlı altın alımlarında kuyumcunun kurumsal banka IBAN'ına EFT/Havale yapabilirsiniz. Açıklamaya işlem dekont detayını ve alınan altının adet/gramajını eksiksiz yazdırın.
               </p>
@@ -218,7 +218,7 @@ export const BursadaAltinPage: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-[#C8A646] text-[#080A0D] font-bold text-sm flex items-center justify-center">
                 3
               </div>
-              <h4 className="text-sm font-bold text-white">Külçenin Blister Paketini İnceleyin</h4>
+              <h3 className="text-sm font-bold text-white">Külçenin Blister Paketini İnceleyin</h3>
               <p className="text-xs text-zinc-400 leading-relaxed">
                 Has gram altın alırken IAR (İstanbul Altın Rafinerisi) veya Nadir Gold sertifikalı mühürlü blister ambalajında olmasına, hologramına ve seri numarasına mutlaka dikkat edin.
               </p>

@@ -1,0 +1,25 @@
+# Bursa Altın Fiyatları (Bursa Gold Prices)
+> Canlı Bursa Kapalı Çarşı serbest piyasa altın fiyatları, sarraf alış-satış kurları, grafik terminali ve finansal hesaplama platformu.
+
+Bursa Altın Fiyatları, Bursa Tarihi Kapalı Çarşı, Bedesten ve Osmangazi sarraflar masası fiziki serbest piyasa altın verilerini gecikmesiz sunan bağımsız finans platformudur. 24 ayar has gram altın, çeyrek altın, 22 ayar Bursa burması bilezik, Cumhuriyet altını ve döviz/ons pariteleri anlık izlenebilir.
+
+## Şehir Serbest Piyasa Hubları
+- [Bursa Altın Fiyatları](https://bursaaltinfiyatlari.com/): Bursa Tarihi Kapalı Çarşı, Osmangazi ve Nilüfer sarraf kotasyonları.
+- [Ankara Altın Fiyatları](https://bursaaltinfiyatlari.com/ankara-altin-fiyatlari): Ankara Ulus Anafartalar ve Kızılay sarraflar çarşısı kurları.
+- [İstanbul Altın Fiyatları](https://bursaaltinfiyatlari.com/istanbul-altin-fiyatlari): İstanbul Kapalıçarşı Çuhacı Han ve Vezirhan fiziki piyasa kotasyonları.
+- [İzmir Altın Fiyatları](https://bursaaltinfiyatlari.com/izmir-altin-fiyatlari): İzmir Tarihi Kemeraltı Çarşısı altın ve sarrafiye fiyatları.
+
+## Finansal Araçlar & Modüller
+- [Canlı Fiyat Tablosu](https://bursaaltinfiyatlari.com/#tablo): 21 serbest piyasa enstrümanı için anlık alış, satış, makas ve fark oranları.
+- [Teknik Mum Grafik Terminali](https://bursaaltinfiyatlari.com/grafik): TradingView hassasiyetinde mum grafikler, teknik indikatörler (SMA, EMA, RSI) ve derinlik analizi.
+- [Altın Hesaplama & Zekat](https://bursaaltinfiyatlari.com/hesaplama): Canlı serbest piyasa kurlarıyla gram-TL çevirici, 80.18 gram nisap sınırına göre altın zekatı ve düğün takı bütçesi planlayıcısı.
+- [Altın Türleri Ansiklopedisi](https://bursaaltinfiyatlari.com/altin-turleri): 24 ayar has gramdan Cumhuriyet, Reşat ve 22 ayar bileziğe miligram saflık ve Darphane basım standartları.
+- [Portföy Yönetim İstasyonu](https://bursaaltinfiyatlari.com/portfoy): Kişisel fiziki altın varlıkları, alış maliyeti ve anlık net kâr/zarar takibi.
+- [Kuyumcular & Ulaşım Rehberi](https://bursaaltinfiyatlari.com/kuyumcular): Osmangazi, Nilüfer, Yıldırım ve İnegöl yetkili sarrafları, çalışma saatleri ve nöbetçi kuyumcu sistemi.
+- [Bursa'da Altın Kültürü](https://bursaaltinfiyatlari.com/bursada-altin): Tarihi Kapalı Çarşı kültürü, fiziki teslimatlı işlemler ve banka makas arbitrajı.
+- [Sıkça Sorulan Sorular (SSS)](https://bursaaltinfiyatlari.com/sss): Eski-yeni tarih farkı, işçilik kesintileri ve sahte altın ayırt etme rehberi.
+
+## Veri Formatı & İletişim
+- Para Birimi: TRY (Türk Lirası), USD, EUR
+- Seans Saatleri: Hafta içi 09:00 - 18:30, Cumartesi 09:00 - 15:30 (TSİ, UTC+3)
+- Resmi Referans: Bursa Kuyumcular Odası (BKO) & Borsa İstanbul (BİST)

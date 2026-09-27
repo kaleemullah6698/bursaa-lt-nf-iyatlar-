@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Bursa Altın Fiyatları API & Data Services",
+  "description": "Bursa Kapalı Çarşı ve Türkiye serbest piyasaları canlı altın, döviz ve sarrafiye kotasyonları platformu.",
+  "version": "1.0.0",
+  "homepage": "https://www.bursaaltinfiyatlari.com/",
+  "publisher": {
+    "name": "Bursa Altın Fiyatları Finans Platformu",
+    "url": "https://www.bursaaltinfiyatlari.com/"
+  },
+  "capabilities": [
+    "realtime_gold_prices",
+    "currency_rates",
+    "gold_conversion",
+    "zakat_calculation",
+    "wedding_budgeting",
+    "jeweler_directory",
+    "multi_city_bullion_hubs"
+  ],
+  "supported_cities": [
+    {
+      "id": "bursa",
+      "name": "Bursa",
+      "url": "https://www.bursaaltinfiyatlari.com/",
+      "market": "Tarihi Kapalı Çarşı & Bedesten"
+    },
+    {
+      "id": "ankara",
+      "name": "Ankara",
+      "url": "https://www.bursaaltinfiyatlari.com/ankara-altin-fiyatlari",
+      "market": "Ulus Anafartalar & Çarşı Sarrafları"
+    },
+    {
+      "id": "istanbul",
+      "name": "İstanbul",
+      "url": "https://www.bursaaltinfiyatlari.com/istanbul-altin-fiyatlari",
+      "market": "Kapalıçarşı Çuhacı Han & Vezirhan"
+    },
+    {
+      "id": "izmir",
+      "name": "İzmir",
+      "url": "https://www.bursaaltinfiyatlari.com/izmir-altin-fiyatlari",
+      "market": "Tarihi Kemeraltı Sarraflar Çarşısı"
+    }
+  ],
+  "tools": [
+    {
+      "name": "get_live_gold_prices",
+      "description": "24 ayar gram, çeyrek, cumhuriyet ve 22 ayar bilezik için canlı alış ve satış fiyatlarını getirir.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "enum": ["bursa", "ankara", "istanbul", "izmir"],
+            "default": "bursa",
+            "description": "Hedef borsa şehri"
+          }
+        }
+      }
+    },
+    {
+      "name": "calculate_gold_value",
+      "description": "Belirli miktar ve ayardaki altının anlık serbest piyasa alış veya satış tutarını hesaplar.",
+      "parameters": {
+        "type": "object",
+        "required": ["gold_id", "amount", "direction"],
+        "properties": {
+          "gold_id": {
+            "type": "string",
+            "description": "Altın enstrüman kimliği (ör: gram-altin, ceyrek-altin)"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Miktar (gram veya adet)"
+          },
+          "direction": {
+            "type": "string",
+            "enum": ["buy", "sell"],
+            "description": "Kuyumcu alışı veya kuyumcu satışı"
+          }
+        }
+      }
+    },
+    {
+      "name": "calculate_zakat",
+      "description": "Diyanet 80.18 gram nisap sınırına göre altın zekatını hesaplar.",
+      "parameters": {
+        "type": "object",
+        "required": ["gold_grams"],
+        "properties": {
+          "gold_grams": {
+            "type": "number",
+            "description": "Sahip olunan toplam altın gram miktarı"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -39,7 +39,7 @@ export const BursaJewelersGuide: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 text-xs text-[#9FA3AA] mb-2">
               <span className="text-[#C9A227] font-semibold uppercase tracking-wider text-[11px]">Bursa Yerel Rehberi</span>
-              <span aria-hidden="true" className="text-[#666C77]">·</span>
+              <span aria-hidden="true" className="text-[#A5A8AE]">·</span>
               <span>Kuyumcular Çarşısı & Sarraflar</span>
             </div>
             <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-[#F5F1E8]">
@@ -52,7 +52,7 @@ export const BursaJewelersGuide: React.FC = () => {
 
           {/* District filter */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-xs text-[#666C77] mr-1">Bölge:</span>
+            <span className="text-xs text-[#A5A8AE] mr-1">Bölge:</span>
             {districts.map(d => (
               <button
                 key={d}
@@ -113,7 +113,7 @@ export const BursaJewelersGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-[#666C77]">
+              <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-between text-xs text-[#A5A8AE]">
                 <span className="font-medium text-[#F5F1E8]">{hub.storeCount}</span>
                 {hub.phone && (
                   <a 

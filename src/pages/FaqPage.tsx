@@ -200,7 +200,11 @@ export const FaqPage: React.FC = () => {
         </div>
 
         {/* Interactive FAQ Accordion List */}
-        <div className="space-y-3.5 mb-14" itemScope itemType="https://schema.org/FAQPage">
+        <section aria-labelledby="faq-list-heading" className="mb-14">
+          <h2 id="faq-list-heading" className="text-xl sm:text-2xl font-serif font-bold text-white mb-6">
+            Bursa ve Kapalı Çarşı Sıkça Sorulan Sorular
+          </h2>
+          <div className="space-y-3.5" itemScope itemType="https://schema.org/FAQPage">
           {filteredFaqs.map(item => {
             const isOpen = openItems[item.id];
             return (
@@ -254,7 +258,8 @@ export const FaqPage: React.FC = () => {
               </div>
             );
           })}
-        </div>
+          </div>
+        </section>
 
         {/* Engine Data Methodology */}
         <div className="mb-14">
@@ -264,9 +269,9 @@ export const FaqPage: React.FC = () => {
         {/* Cross-Link Hub */}
         <div className="p-6 bg-gradient-to-r from-[#12161E] via-[#161B24] to-[#12161E] border border-[rgba(200,166,70,0.22)] rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h4 className="text-base font-serif font-bold text-white mb-1">
+            <h3 className="text-base font-serif font-bold text-white mb-1">
               Başka Bir Konuda Bilgiye mi İhtiyacınız Var?
-            </h4>
+            </h3>
             <p className="text-xs text-[#A5A8AE]">
               Bursa Kuyumcular Odası resmi rehberine veya anlık altın hesaplama araçlarımıza göz atabilirsiniz.
             </p>

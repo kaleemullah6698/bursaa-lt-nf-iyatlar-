@@ -243,9 +243,9 @@ export const JewelersPage: React.FC = () => {
                 <span className="text-xs font-mono uppercase tracking-wider text-[#C8A646] font-semibold">
                   Resmi Seans Düzeni
                 </span>
-                <h3 className="text-lg sm:text-xl font-serif font-bold text-white mb-1">
+                <h2 className="text-lg sm:text-xl font-serif font-bold text-white mb-1">
                   Bursa Sarraflar ve Kuyumcular Çalışma Saatleri
-                </h3>
+                </h2>
                 <p className="text-xs text-[#A5A8AE] max-w-2xl leading-relaxed">
                   Bursa Kapalı Çarşı ve Bedesten sarrafları BKO ortak kararıyla belirlenen saatlerde açıktır. Pazar günleri ise nöbetçi sarraflar ve AVM şubeleri hizmet verir.
                 </p>
@@ -328,9 +328,9 @@ export const JewelersPage: React.FC = () => {
                     <span className="text-[10px] font-mono text-[#E2C76A] uppercase tracking-wider block">
                       {item.districtName}
                     </span>
-                    <h4 className="text-base font-serif font-bold text-white group-hover:text-[#E2C76A] transition-colors mt-0.5">
+                    <h3 className="text-base font-serif font-bold text-white group-hover:text-[#E2C76A] transition-colors mt-0.5">
                       {item.name}
-                    </h4>
+                    </h3>
                   </div>
                   {item.isVerified && (
                     <span className="p-1 rounded-md bg-[#C8A646]/15 text-[#E2C76A] border border-[#C8A646]/30" title="BKO Doğrulanmış Kayıt">
@@ -488,7 +488,7 @@ export const JewelersPage: React.FC = () => {
                 1
               </span>
               <div>
-                <h4 className="text-sm font-bold text-white mb-1">İşçilik Payını (Fire) Mutlaka Önceden Sorun</h4>
+                <h3 className="text-sm font-bold text-white mb-1">İşçilik Payını (Fire) Mutlaka Önceden Sorun</h3>
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   Yatırımlık bilezik alırken "İşçiliksiz Ajda" veya "Bursa Burması" tercih edin. Satıcıya "Bunu yarın geri getirirsem gram başı kaç TL kesinti yaparsınız?" diye sormak esnafın en şeffaf fiyatı vermesini sağlar.
                 </p>
@@ -500,7 +500,7 @@ export const JewelersPage: React.FC = () => {
                 2
               </span>
               <div>
-                <h4 className="text-sm font-bold text-white mb-1">T.C. Darphane Mührünü ve 916 Damgasını İnceleyin</h4>
+                <h3 className="text-sm font-bold text-white mb-1">T.C. Darphane Mührünü ve 916 Damgasını İnceleyin</h3>
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   Çeyrek, yarım ve ata altınlarda kabartma kenar çizgilerini ve Atatürk portresinin detay keskinliğini kontrol edin. 22 ayar bileziklerin iç kısmında "916" patent damgası aranmalıdır.
                 </p>
@@ -512,7 +512,7 @@ export const JewelersPage: React.FC = () => {
                 3
               </span>
               <div>
-                <h4 className="text-sm font-bold text-white mb-1">Hassas Terazi Ekranını Kendi Gözünüzle Görün</h4>
+                <h3 className="text-sm font-bold text-white mb-1">Hassas Terazi Ekranını Kendi Gözünüzle Görün</h3>
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   Çarşıdaki kuyumcuların terazileri Sanayi ve Teknoloji Bakanlığı tarafından mühürlüdür. Bir çeyrek altın 1.754 gram, Cumhuriyet altını ise 7.216 gramdır. Tartım sırasında virgülden sonraki iki haneyi mutlaka teyit edin.
                 </p>
@@ -524,7 +524,7 @@ export const JewelersPage: React.FC = () => {
                 4
               </span>
               <div>
-                <h4 className="text-sm font-bold text-white mb-1">Havale Yaparken Açıklamaya "Altın Alım Bedeli" Yazın</h4>
+                <h3 className="text-sm font-bold text-white mb-1">Havale Yaparken Açıklamaya "Altın Alım Bedeli" Yazın</h3>
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   Banka üzerinden EFT/Havale ile ödeme yaparken dekont açıklamasına kesinlikle "Kuyumcu altın alım bedeli" ve aldığınız altının gramajını not düşün. Faturanızı veya sarraf alım fişinizi teslim almayı unutmayın.
                 </p>

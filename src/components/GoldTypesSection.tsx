@@ -96,19 +96,12 @@ export const GoldTypesSection: React.FC = () => {
             const sellPrice = item ? item.sellingPrice : 0;
 
             return (
-              <div
+              <button
                 key={type.slug}
-                role="button"
-                tabIndex={0}
+                type="button"
                 aria-label={`${type.name} güncel satış fiyatı ${formatTL(sellPrice)}. Detayları görüntülemek için tıklayın.`}
                 onClick={() => setSelectedItem(item)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setSelectedItem(item);
-                  }
-                }}
-                className="bg-[#14181E] border border-[rgba(244,241,232,0.08)] rounded-2xl p-5 hover:border-[#C8A646]/40 transition-all cursor-pointer group flex flex-col justify-between hover:-translate-y-0.5 shadow-md focus:outline-none focus:ring-1 focus:ring-[#C8A646]"
+                className="w-full text-left bg-[#14181E] border border-[rgba(244,241,232,0.08)] rounded-2xl p-5 hover:border-[#C8A646]/40 transition-all cursor-pointer group flex flex-col justify-between hover:-translate-y-0.5 shadow-md focus:outline-none focus:ring-1 focus:ring-[#C8A646]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
@@ -133,7 +126,7 @@ export const GoldTypesSection: React.FC = () => {
                     {formatTL(sellPrice)}
                   </div>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>

@@ -316,12 +316,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
               {/* Active Asset Header & Real-Time Change Pill */}
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div>
-                  <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider block">
+                  <span className="text-[11px] font-mono text-zinc-300 uppercase tracking-wider block">
                     {activeAsset.category === 'bilezik' ? '22 Ayar İşçiliksiz Takı' : 'Fiziki Çarşı Altını'}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-white mt-0.5">
+                  <h2 className="text-xl sm:text-2xl font-serif font-bold text-white mt-0.5">
                     {activeAsset.name}
-                  </h3>
+                  </h2>
                 </div>
 
                 <div className={`px-2.5 py-1 rounded-lg border font-mono text-xs font-bold flex items-center gap-1 shrink-0 ${
@@ -344,26 +344,26 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
               }`}>
                 {/* Buying (Alış) */}
                 <div>
-                  <div className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider mb-1 font-medium">
+                  <div className="text-[11px] font-mono text-zinc-300 uppercase tracking-wider mb-1 font-medium">
                     Sarrafa Satış (Alış)
                   </div>
                   <div className="text-2xl sm:text-[26px] font-bold font-mono text-white tabular-nums tracking-tight">
                     {formatTL(activeAsset.buyingPrice)}
                   </div>
-                  <div className="text-[10px] text-zinc-500 mt-1">
+                  <div className="text-[11px] text-zinc-400 mt-1">
                     Bozdururken elinize geçen
                   </div>
                 </div>
 
                 {/* Selling (Satış) */}
                 <div className="text-right">
-                  <div className="text-[11px] font-mono text-[#C8A646] uppercase tracking-wider mb-1 font-semibold">
+                  <div className="text-[11px] font-mono text-[#E2C76A] uppercase tracking-wider mb-1 font-semibold">
                     Sarraftan Alış (Satış)
                   </div>
                   <div className="text-2xl sm:text-[26px] font-bold font-mono text-[#E2C76A] tabular-nums tracking-tight">
                     {formatTL(activeAsset.sellingPrice)}
                   </div>
-                  <div className="text-[10px] text-zinc-500 mt-1">
+                  <div className="text-[11px] text-zinc-400 mt-1">
                     Satın alırken ödenen
                   </div>
                 </div>

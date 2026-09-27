@@ -103,7 +103,7 @@ export const GoldDetailModal: React.FC = () => {
               <div className="font-mono text-2xl font-bold text-[#F5F1E8] tabular-nums mt-1">
                 {selectedItem.id === 'ons-altin' ? formatUSD(selectedItem.buyingPrice) : formatTL(selectedItem.buyingPrice)}
               </div>
-              <span className="text-[11px] text-[#666C77] mt-1 block">
+              <span className="text-[11px] text-[#A5A8AE] mt-1 block">
                 Bursa Kapalı Çarşı serbest piyasa
               </span>
             </div>
@@ -115,7 +115,7 @@ export const GoldDetailModal: React.FC = () => {
               <div className="font-mono text-2xl font-bold text-[#E3C766] tabular-nums mt-1">
                 {selectedItem.id === 'ons-altin' ? formatUSD(selectedItem.sellingPrice) : formatTL(selectedItem.sellingPrice)}
               </div>
-              <span className="text-[11px] text-[#666C77] mt-1 block">
+              <span className="text-[11px] text-[#A5A8AE] mt-1 block">
                 Bozdurma öncesi güncel satış kotasyonu
               </span>
             </div>
@@ -133,7 +133,7 @@ export const GoldDetailModal: React.FC = () => {
               <div className="font-mono text-xl font-bold text-[#F5F1E8] tabular-nums mt-1">
                 {isPositive ? '+' : ''}{selectedItem.id === 'ons-altin' ? `$${selectedItem.changeAmount.toFixed(2)}` : formatTL(selectedItem.changeAmount)}
               </div>
-              <span className="text-[11px] text-[#666C77] mt-1 block">
+              <span className="text-[11px] text-[#A5A8AE] mt-1 block">
                 Makas: <strong className="text-[#9FA3AA] font-mono">{selectedItem.id === 'ons-altin' ? `$${spread.toFixed(2)}` : formatTL(spread)}</strong>
               </span>
             </div>
@@ -146,7 +146,7 @@ export const GoldDetailModal: React.FC = () => {
                 <TrendingUp className="w-4 h-4 text-[#C9A227]" />
                 <span className="font-semibold text-[#F5F1E8]">Son 7 Günlük Fiyat Eğilimi (Bursa Kapalı Çarşı)</span>
               </div>
-              <div className="text-[#666C77] font-mono">
+              <div className="text-[#A5A8AE] font-mono">
                 En Düşük: {selectedItem.id === 'ons-altin' ? `$${minPrice}` : formatTL(minPrice)} · En Yüksek: {selectedItem.id === 'ons-altin' ? `$${maxPrice}` : formatTL(maxPrice)}
               </div>
             </div>
@@ -175,21 +175,21 @@ export const GoldDetailModal: React.FC = () => {
               
               <div className="space-y-2 text-xs divide-y divide-white/5">
                 <div className="flex justify-between py-1.5">
-                  <span className="text-[#666C77]">Altın Ayarı:</span>
+                  <span className="text-[#A5A8AE]">Altın Ayarı:</span>
                   <span className="text-[#F5F1E8] font-medium">{selectedItem.karat > 0 ? `${selectedItem.karat} Ayar (${selectedItem.purity * 1000} Milyem)` : 'Standart'}</span>
                 </div>
                 <div className="flex justify-between py-1.5">
-                  <span className="text-[#666C77]">Brüt Ağırlık:</span>
+                  <span className="text-[#A5A8AE]">Brüt Ağırlık:</span>
                   <span className="text-[#F5F1E8] font-medium">{selectedItem.weightGram > 0 ? `${formatNumber(selectedItem.weightGram, 3)} Gram` : 'Referans'}</span>
                 </div>
                 <div className="flex justify-between py-1.5">
-                  <span className="text-[#666C77]">Saf Has Altın Karşılığı:</span>
+                  <span className="text-[#A5A8AE]">Saf Has Altın Karşılığı:</span>
                   <span className="text-[#E3C766] font-mono font-medium">
                     {selectedItem.weightGram > 0 ? `${formatNumber(selectedItem.weightGram * selectedItem.purity, 3)} Gram` : 'Hesaplanamaz'}
                   </span>
                 </div>
                 <div className="flex justify-between py-1.5">
-                  <span className="text-[#666C77]">Bursa Likidite Durumu:</span>
+                  <span className="text-[#A5A8AE]">Bursa Likidite Durumu:</span>
                   <span className="text-emerald-400 font-medium">Çok Yüksek (Anında Nakde Çevrilir)</span>
                 </div>
               </div>
@@ -246,7 +246,7 @@ export const GoldDetailModal: React.FC = () => {
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 bg-[#090B0E] border-t border-white/8 flex items-center justify-between text-xs text-[#666C77]">
+        <div className="p-4 bg-[#090B0E] border-t border-white/8 flex items-center justify-between text-xs text-[#A5A8AE]">
           <span>Veriler gösterge niteliğindedir. Yatırım tavsiyesi değildir.</span>
           <button
             onClick={() => setSelectedItem(null)}

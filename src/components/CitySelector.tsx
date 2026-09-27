@@ -87,7 +87,6 @@ export const CitySelector: React.FC<CitySelectorProps> = ({ variant = 'header', 
         onClick={() => setIsOpen(!isOpen)}
         type="button"
         aria-expanded={isOpen}
-        aria-haspopup="listbox"
         aria-label={`Aktif Borsa: ${activeCity.name}. Şehir ve borsa seçicisini aç`}
         className="group flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#101318] hover:bg-[#161B22] border border-[rgba(244,241,232,0.1)] hover:border-[#C8A646]/50 text-left transition-all shadow-sm focus:outline-none focus:ring-1 focus:ring-[#C8A646] cursor-pointer"
         title="Şehir ve Borsa Değiştir"
@@ -115,8 +114,8 @@ export const CitySelector: React.FC<CitySelectorProps> = ({ variant = 'header', 
 
       {/* City Switcher Popover Drawer */}
       {isOpen && (
-        <div
-          role="listbox"
+        <nav
+          aria-label="Şehir ve Fiziki Borsa Seçimi"
           className="absolute left-0 top-full mt-2 w-80 sm:w-96 rounded-2xl bg-[#0C0F14]/98 backdrop-blur-2xl border border-[rgba(244,241,232,0.12)] p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.85)] z-50 animate-in fade-in slide-in-from-top-2 duration-150"
         >
           {/* Header */}
@@ -139,8 +138,7 @@ export const CitySelector: React.FC<CitySelectorProps> = ({ variant = 'header', 
                   key={city.id}
                   href={`/${city.slug}`}
                   onClick={(e) => handleSelect(city, e)}
-                  role="option"
-                  aria-selected={isSelected}
+                  aria-label={`${city.name} Altın Fiyatları ve Serbest Piyasa Sayfası`}
                   className={`w-full p-2.5 rounded-xl text-left transition-all flex items-center justify-between group cursor-pointer ${
                     isSelected
                       ? 'bg-gradient-to-r from-[#C8A646]/20 to-[#C8A646]/5 border border-[#C8A646]/60 shadow-[0_0_16px_rgba(200,166,70,0.15)]'
@@ -199,11 +197,11 @@ export const CitySelector: React.FC<CitySelectorProps> = ({ variant = 'header', 
           </div>
 
           {/* Footer Note */}
-          <div className="mt-2 pt-2 border-t border-white/5 px-2 text-[10px] text-zinc-500 font-mono flex items-center justify-between">
+          <div className="mt-2 pt-2 border-t border-white/5 px-2 text-[10px] text-zinc-400 font-mono flex items-center justify-between">
             <span>Google SEO Uyumlu Bağımsız Şehir Sayfaları</span>
-            <span className="text-zinc-400">0ms Geçiş</span>
+            <span className="text-zinc-300">0ms Geçiş</span>
           </div>
-        </div>
+        </nav>
       )}
     </div>
   );

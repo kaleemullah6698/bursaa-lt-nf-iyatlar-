@@ -85,19 +85,12 @@ export const PriceCardsGrid: React.FC = () => {
             const spreadTL = item.sellingPrice - item.buyingPrice;
 
             return (
-              <article
+              <button
                 key={item.id}
-                role="button"
-                tabIndex={0}
-                aria-label={`${item.name} güncel satış fiyatı ${formatTL(item.sellingPrice)}. Detayları görüntülemek için tıklayın.`}
+                type="button"
+                aria-label={`${item.name} güncel satış fiyatı ${formatTL(item.sellingPrice)}. Detayları ve teknik grafiği açmak için tıklayın.`}
                 onClick={() => setSelectedItem(item)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setSelectedItem(item);
-                  }
-                }}
-                className={`bg-gradient-to-b from-[#14181E] to-[#101318] border rounded-2xl p-5 relative transition-all duration-200 cursor-pointer group hover:-translate-y-1 hover:border-[#C8A646]/50 shadow-lg flex flex-col justify-between focus:outline-none focus:ring-2 focus:ring-[#C8A646] ${
+                className={`w-full text-left bg-gradient-to-b from-[#14181E] to-[#101318] border rounded-2xl p-5 relative transition-all duration-200 cursor-pointer group hover:-translate-y-1 hover:border-[#C8A646]/50 shadow-lg flex flex-col justify-between focus:outline-none focus:ring-2 focus:ring-[#C8A646] ${
                   isFlashed
                     ? 'border-[#E2C76A] shadow-[0_0_20px_rgba(200,166,70,0.25)] ring-1 ring-[#E2C76A]'
                     : 'border-[rgba(244,241,232,0.08)]'
@@ -106,7 +99,7 @@ export const PriceCardsGrid: React.FC = () => {
                 <div>
                   {/* Top Label */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs uppercase tracking-wider text-[#A5A8AE] font-medium flex items-center gap-1.5">
+                    <span className="text-xs uppercase tracking-wider text-zinc-300 font-medium flex items-center gap-1.5">
                       {item.shortName || item.name}
                       {item.id === 'gram-altin' && (
                         <span className="text-[10px] normal-case tracking-normal text-[#C8A646] bg-[#C8A646]/10 px-1.5 py-0.5 rounded">
@@ -114,12 +107,12 @@ export const PriceCardsGrid: React.FC = () => {
                         </span>
                       )}
                     </span>
-                    <ChevronRight className="w-4 h-4 text-[#A5A8AE] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                    <ChevronRight className="w-4 h-4 text-zinc-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" aria-hidden="true" />
                   </div>
 
                   {/* Sell Price (Big num) */}
                   <div className="mb-4">
-                    <span className="text-[11px] uppercase tracking-wider text-[#A5A8AE] block mb-0.5 font-medium">
+                    <span className="text-[11px] uppercase tracking-wider text-zinc-400 block mb-0.5 font-medium">
                       Satış
                     </span>
                     <div className="text-2xl sm:text-3xl font-bold font-mono text-[#E2C76A] tracking-tight">
@@ -133,9 +126,9 @@ export const PriceCardsGrid: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="space-y-2 border-t border-[rgba(244,241,232,0.08)] pt-3">
+                <div className="space-y-2 border-t border-[rgba(244,241,232,0.08)] pt-3 w-full">
                   {/* Buy Price Row */}
-                  <div className="flex items-center justify-between text-xs sm:text-sm text-[#A5A8AE]">
+                  <div className="flex items-center justify-between text-xs sm:text-sm text-zinc-300">
                     <span>Alış</span>
                     <span className="text-[#F4F1E8] font-mono font-semibold">
                       {formatTL(item.buyingPrice)}
@@ -144,7 +137,7 @@ export const PriceCardsGrid: React.FC = () => {
 
                   {/* 24h Change Row */}
                   <div className="flex items-center justify-between text-xs sm:text-sm">
-                    <span className="text-[#A5A8AE]">Değişim (24s)</span>
+                    <span className="text-zinc-300">Değişim (24s)</span>
                     <span
                       className={`inline-flex items-center gap-1 font-mono font-semibold px-2 py-0.5 rounded-full text-xs ${
                         isUp
@@ -152,18 +145,18 @@ export const PriceCardsGrid: React.FC = () => {
                           : 'text-[#C9605F] bg-[#C9605F]/10'
                       }`}
                     >
-                      {isUp ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />}
+                      {isUp ? <ArrowUp className="w-3 h-3" aria-hidden="true" /> : <ArrowDown className="w-3 h-3" aria-hidden="true" />}
                       %{formatPct(item.changeRate)}
                     </span>
                   </div>
 
                   {/* Makas / Spread quick indicator */}
-                  <div className="flex items-center justify-between text-[11px] text-[#A5A8AE] pt-1">
+                  <div className="flex items-center justify-between text-[11px] text-zinc-400 pt-1">
                     <span>Makas (Fark):</span>
-                    <span className="font-mono text-[#F4F1E8]/70">₺{spreadTL.toFixed(2)}</span>
+                    <span className="font-mono text-zinc-200">₺{spreadTL.toFixed(2)}</span>
                   </div>
                 </div>
-              </article>
+              </button>
             );
           })}
         </div>

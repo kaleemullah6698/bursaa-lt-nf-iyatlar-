@@ -37,7 +37,7 @@ export const BursaMarketAnalysis: React.FC = () => {
         <div className="mb-14">
           <div className="flex items-center gap-2 text-xs text-[#9FA3AA] mb-2">
             <span className="text-[#C9A227] font-semibold uppercase tracking-wider text-[11px]">Günlük Piyasa Değerlendirmesi</span>
-            <span aria-hidden="true" className="text-[#666C77]">·</span>
+            <span aria-hidden="true" className="text-[#A5A8AE]">·</span>
             <span>Bursa Kapalı Çarşı Dinamikleri</span>
           </div>
           
@@ -65,7 +65,7 @@ export const BursaMarketAnalysis: React.FC = () => {
                 <p className="font-mono text-xs text-[#E3C766]">
                   Gram Altın (TL) = (Ons Fiyatı / 31.1034768) × Dolar/TL Kuru × Saflık Oranı (0.995)
                 </p>
-                <p className="text-[11px] text-[#666C77] mt-1">
+                <p className="text-[11px] text-[#A5A8AE] mt-1">
                   Bu teorik has altın tutarının üzerine Bursa Kapalı Çarşı fiziki külçe nakliye, sigorta ve rafineri döküm masrafı eklenmektedir.
                 </p>
               </div>
@@ -81,7 +81,7 @@ export const BursaMarketAnalysis: React.FC = () => {
                 <span className="text-[11px] uppercase tracking-wider text-[#C9A227] font-semibold block">
                   Bursa Piyasa Özeti
                 </span>
-                <span className="text-xs text-[#666C77]">
+                <span className="text-xs text-[#A5A8AE]">
                   {marketStatus.statusText} · {marketStatus.turkeyTimeStr}
                 </span>
               </div>
@@ -109,7 +109,7 @@ export const BursaMarketAnalysis: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-2 text-[11px] text-[#666C77] leading-relaxed">
+              <div className="pt-2 text-[11px] text-[#A5A8AE] leading-relaxed">
                 * Kapalı Çarşı tabelaları gün içinde küresel dalgalanmalara bağlı olarak anlık revize edilir.
               </div>
             </div>
@@ -227,7 +227,7 @@ export const BursaMarketAnalysis: React.FC = () => {
                     <Scale className="w-4 h-4 text-[#C9A227]" />
                     <span>Banka Altın Hesapları Özellikleri</span>
                   </div>
-                  <ul className="space-y-2 text-[#666C77]">
+                  <ul className="space-y-2 text-[#A5A8AE]">
                     <li>• Mobil bankacılıkla 7/24 alım imkanı bulunur ancak mesai dışı makas 100-150 TL'ye çıkabilir.</li>
                     <li>• Kaybolma veya çalınma riski yoktur; ancak fiziki çekimde bankalar ek teslim komisyonu uygular.</li>
                     <li>• Kambiyo Muamele Vergisi (BSMV) alım anında tahakkuk eder.</li>
@@ -246,9 +246,9 @@ export const BursaMarketAnalysis: React.FC = () => {
                     <span className="w-5 h-5 rounded-full bg-[#C9A227]/20 text-[#C9A227] text-xs font-bold flex items-center justify-center font-mono">
                       {idx + 1}
                     </span>
-                    <h5 className="font-semibold text-xs text-[#F5F1E8]">
+                    <h4 className="font-semibold text-xs text-[#F5F1E8]">
                       {rule.title}
-                    </h5>
+                    </h4>
                   </div>
                   <p className="text-[11px] text-[#9FA3AA] leading-relaxed">
                     {rule.description}
