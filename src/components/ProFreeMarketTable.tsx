@@ -208,31 +208,27 @@ const ProTableRow = memo<ProTableRowProps>(({ item, flashState, onSelect, onCalc
 
       {/* Mini Sparkline Chart */}
       <td className="py-3 px-5 text-center">
-        <div className="flex items-center justify-center">
-          {renderTableSparkline(item.sparkline, isUp)}
-        </div>
+        {renderTableSparkline(item.sparkline, isUp)}
       </td>
 
-      {/* Action buttons */}
-      <td className="py-3 px-4 text-center" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-center gap-1">
-          <button
-            onClick={() => onCalculate(item.id)}
-            className="p-1.5 rounded-lg bg-[#14181E] text-[#A5A8AE] hover:text-[#E2C76A] hover:bg-[#1E2530] transition-colors"
-            title="Hesapla"
-            aria-label={`${item.name} için altın hesaplayıcıyı aç`}
-          >
-            <Calculator className="w-3.5 h-3.5" aria-hidden="true" />
-          </button>
-          <button
-            onClick={() => onSelect(item)}
-            className="p-1.5 rounded-lg bg-[#14181E] text-[#A5A8AE] hover:text-[#C8A646] hover:bg-[#1E2530] transition-colors"
-            title="Terminalde İncele"
-            aria-label={`${item.name} detaylarını ve grafiğini aç`}
-          >
-            <BarChart2 className="w-3.5 h-3.5" aria-hidden="true" />
-          </button>
-        </div>
+      {/* Action buttons - flattened to eliminate extra wrapper levels */}
+      <td className="py-3 px-4 text-center whitespace-nowrap" onClick={(e) => e.stopPropagation()}>
+        <button
+          onClick={() => onCalculate(item.id)}
+          className="inline-flex items-center justify-center p-1.5 rounded-lg bg-[#14181E] text-[#A5A8AE] hover:text-[#E2C76A] hover:bg-[#1E2530] transition-colors mr-1 cursor-pointer"
+          title="Hesapla"
+          aria-label={`${item.name} için altın hesaplayıcıyı aç`}
+        >
+          <Calculator className="w-3.5 h-3.5" aria-hidden="true" />
+        </button>
+        <button
+          onClick={() => onSelect(item)}
+          className="inline-flex items-center justify-center p-1.5 rounded-lg bg-[#14181E] text-[#A5A8AE] hover:text-[#C8A646] hover:bg-[#1E2530] transition-colors cursor-pointer"
+          title="Terminalde İncele"
+          aria-label={`${item.name} detaylarını ve grafiğini aç`}
+        >
+          <BarChart2 className="w-3.5 h-3.5" aria-hidden="true" />
+        </button>
       </td>
     </tr>
   );

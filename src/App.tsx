@@ -21,9 +21,9 @@ import {
 } from './utils/router';
 import { updateDocumentSeo } from './utils/seo';
 import { CITY_BY_ID } from './data/cities';
+import { HomePage } from './pages/HomePage';
 
-// Code-Split Standalone Premium Pages for Instant Initial Load & 0ms Route Switching
-const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));
+// Code-Split Standalone Secondary Pages for Instant Initial Load & 0ms Route Switching
 const ChartTerminalPage = lazy(() => import('./pages/ChartTerminalPage').then(m => ({ default: m.ChartTerminalPage })));
 const GoldTypesPage = lazy(() => import('./pages/GoldTypesPage').then(m => ({ default: m.GoldTypesPage })));
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage').then(m => ({ default: m.PortfolioPage })));

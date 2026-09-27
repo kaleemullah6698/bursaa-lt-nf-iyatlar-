@@ -44,7 +44,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAlertModal }) => {
       <ProFreeMarketTable />
 
       {/* 5. 4 Flagship Price Cards Grid (Gram, Çeyrek, Yarım, Tam) */}
-      <PriceCardsGrid />
+      <div className="cv-auto">
+        <PriceCardsGrid />
+      </div>
 
       {/* 6. Bank Spread Arbitrage & Savings Matrix */}
       <div className="cv-auto">
@@ -52,16 +54,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAlertModal }) => {
       </div>
 
       {/* 7. City-Specific District Hubs & Regional Sarrafiye Breakdown */}
-      <CityHubsDetailSection />
+      <div className="cv-auto">
+        <CityHubsDetailSection />
+      </div>
 
       {/* 8. City-Specific Editorial History, Culture & Market Dynamics */}
-      <CityEditorialSection />
+      <div className="cv-auto">
+        <CityEditorialSection />
+      </div>
 
       {/* 9. City-Specific SSS / Frequently Asked Questions */}
-      <CityFaqSection />
+      <div className="cv-auto">
+        <CityFaqSection />
+      </div>
 
       {/* 10. Dedicated Portals Hub: Clean semantic Link cards to all standalone modules */}
-      <section className="py-12 bg-[#0A0D12] border-t border-[rgba(244,241,232,0.06)]">
+      <section className="py-12 bg-[#0A0D12] border-t border-[rgba(244,241,232,0.06)] cv-auto">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <div className="inline-flex items-center gap-1.5 text-xs font-mono text-[#C8A646] uppercase tracking-wider mb-2">

@@ -4,8 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     
-    <!-- Critical Performance: Inline CSS for Instant Paint (FCP / LCP / Zero FOUC) -->
+    <!-- Preload Critical Above-The-Fold Font (Zero Network Hop / Self-Hosted) -->
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Critical Performance: Inline CSS for Instant Paint (FCP / LCP / Zero FOUC / Metric Overrides) -->
     <style>
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/inter-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        size-adjust: 100%;
+        ascent-override: 90%;
+        descent-override: 22%;
+        line-gap-override: 0%;
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        size-adjust: 100%;
+        ascent-override: 90%;
+        descent-override: 22%;
+        line-gap-override: 0%;
+      }
+      @font-face {
+        font-family: 'Fraunces';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/fraunces-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Fraunces';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/fraunces-latin-ext.woff2') format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'JetBrains Mono';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url('/fonts/jetbrains-mono-latin-ext.woff2') format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+
       html, body {
         background-color: #080A0D;
         color: #F4F1E8;
@@ -19,32 +79,21 @@
       #root {
         min-height: 100vh;
       }
+      .font-serif {
+        font-family: 'Fraunces', Georgia, serif;
+      }
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .tabular-nums, .num, .live-price {
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum" 1;
+      }
+      .cv-auto, .below-fold {
+        content-visibility: auto;
+        contain-intrinsic-size: 0 500px;
+      }
     </style>
-
-    <!-- DNS Prefetch & Preconnect for High-Speed Asset Delivery -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Google Fonts with Non-Blocking Asynchronous Load (Zero FCP/LCP Latency) -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      />
-    </noscript>
 
     <!-- Primary SEO Meta Tags -->
     <title>Bursa Altın Fiyatları Canlı | Kapalı Çarşı Anlık Alış Satış Kurları 2026</title>
@@ -193,7 +242,59 @@
     </script>
   </head>
   <body class="bg-[#080A0D] text-[#F4F1E8]">
-    <div id="root"></div>
+    <div id="root">
+      <div id="top" class="min-h-screen bg-[#080A0D] text-[#F4F1E8] flex flex-col antialiased">
+        <header class="sticky top-0 z-50 bg-[#080A0D]/95 border-b border-[rgba(244,241,232,0.07)]">
+          <div class="max-w-[1280px] mx-auto px-4 sm:px-6 h-[64px] sm:h-[68px] flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#141820] border border-[#C8A646]/35 flex items-center justify-center font-mono font-bold text-[#E2C76A] text-xs">
+                16
+              </div>
+              <div class="flex flex-col">
+                <span class="font-serif text-base sm:text-lg font-bold text-[#F4F1E8]">Bursa Altın <span class="text-[10px] font-mono px-1 py-0.2 rounded bg-[#C8A646]/15 text-[#E2C76A] border border-[#C8A646]/30">Canlı</span></span>
+                <span class="text-[11px] text-[#A5A8AE]">Tarihi Kapalı Çarşı</span>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="bg-[#090C10] border-b border-[rgba(244,241,232,0.06)] text-xs h-[34px] min-h-[34px] flex items-center px-4">
+          <div class="max-w-[1280px] w-full mx-auto flex items-center gap-2 text-xs font-mono text-zinc-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>BURSA KAPALI ÇARŞI · CANLI SARRAF KOTASYONU</span>
+          </div>
+        </div>
+        <main class="flex-1">
+          <section class="relative pt-8 pb-12 overflow-hidden border-b border-[rgba(244,241,232,0.06)] bg-[#080A0D]">
+            <div class="max-w-[1280px] mx-auto px-4 sm:px-6">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                <div class="lg:col-span-7 flex flex-col justify-center">
+                  <div class="flex items-center gap-2 text-xs font-mono text-zinc-400 mb-4">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span class="text-[#E2C76A] font-semibold uppercase">Bursa Tarihi Kapalı Çarşı</span>
+                    <span class="text-zinc-400">·</span>
+                    <span class="text-zinc-300">Canlı Sarraf Kotasyonu</span>
+                  </div>
+                  <h1 class="text-4xl sm:text-5xl lg:text-[56px] font-serif font-bold text-[#F4F1E8] tracking-tight leading-[1.08] mb-5">
+                    Bursa <span class="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#F6E6B4] via-[#E2C76A] to-[#C8A646]">Altın</span> Fiyatları
+                  </h1>
+                  <p class="text-base sm:text-lg text-[#A5A8AE] max-w-xl leading-relaxed mb-7 font-normal">
+                    Bursa Tarihi Kapalı Çarşı ve Osmangazi sarraflar masası fiziki serbest piyasa anlık altın alış satış kurları, canlı grafikler ve kuyumcu rehberi.
+                  </p>
+                </div>
+                <div class="lg:col-span-5 min-h-[475px]">
+                  <div class="relative bg-[#0D1017]/95 border border-[rgba(200,166,70,0.22)] rounded-2xl p-5 sm:p-6 min-h-[475px]">
+                    <div class="h-6 w-32 bg-zinc-800/50 rounded mb-4 animate-pulse"></div>
+                    <div class="h-10 w-48 bg-zinc-800/40 rounded mb-4 animate-pulse"></div>
+                    <div class="h-20 bg-zinc-900/60 rounded-xl mb-4 animate-pulse"></div>
+                    <div class="h-24 bg-zinc-900/40 rounded-xl animate-pulse"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
