@@ -52,7 +52,7 @@ export const ChartTerminalPage: React.FC = () => {
           <div className="flex items-center gap-2 text-xs font-mono text-[#E2C76A] uppercase tracking-wider mb-2">
             <BarChart2 className="w-4 h-4 text-[#C8A646]" />
             <span>Bursa Kapalı Çarşı Finansal Terminal</span>
-            <span className="text-zinc-600">·</span>
+            <span className="text-zinc-400">·</span>
             <span className="text-emerald-400">Canlı Tick & Derinlik Akışı</span>
           </div>
 
@@ -94,14 +94,14 @@ export const ChartTerminalPage: React.FC = () => {
             {/* Quick Market Overview Badge */}
             <div className="p-3.5 bg-[#0E1117] border border-[rgba(244,241,232,0.08)] rounded-xl flex items-center gap-4 text-xs font-mono shrink-0 shadow-sm">
               <div>
-                <div className="text-[10px] text-zinc-500 uppercase">Seans Durumu</div>
+                <div className="text-[10px] text-zinc-400 uppercase">Seans Durumu</div>
                 <div className="font-bold text-white flex items-center gap-1.5 mt-0.5">
                   <span className={`w-2 h-2 rounded-full ${marketStatus.isOpen ? 'bg-emerald-400' : 'bg-amber-400'} animate-pulse`} />
                   <span>{marketStatus.statusText}</span>
                 </div>
               </div>
               <div className="border-l border-[rgba(244,241,232,0.08)] pl-4">
-                <div className="text-[10px] text-zinc-500 uppercase">Veri Akışı</div>
+                <div className="text-[10px] text-zinc-400 uppercase">Veri Akışı</div>
                 <div className="font-bold text-emerald-400 mt-0.5">0.4ms Borsa İstanbul</div>
               </div>
             </div>
@@ -184,9 +184,9 @@ export const ChartTerminalPage: React.FC = () => {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <Activity className="w-4 h-4 text-[#C8A646]" />
-                <h3 className="text-base font-serif font-bold text-white">
+                <h2 className="text-base font-serif font-bold text-white">
                   Gram Altın Günlük Teknik Pivot ve Destek/Direnç Seviyeleri
-                </h3>
+                </h2>
               </div>
               <span className="text-[10px] font-mono text-[#E2C76A] bg-[#C8A646]/10 px-2 py-0.5 rounded border border-[#C8A646]/20">
                 Klasik Pivot Modeli
@@ -226,9 +226,9 @@ export const ChartTerminalPage: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <FileSpreadsheet className="w-4 h-4 text-[#C8A646]" />
-                <h3 className="text-base font-serif font-bold text-white">
+                <h2 className="text-base font-serif font-bold text-white">
                   Gram Altın Fiyatı Nasıl Hesaplanır?
-                </h3>
+                </h2>
               </div>
               <p className="text-xs text-zinc-400 mb-4 leading-relaxed">
                 Bursa Kapalı Çarşı serbest piyasa gram altın fiyatı, küresel spot ons altın ile serbest piyasa dolar kurunun çarpımının 1 troy ons ağırlığına (31.1035 gram) bölünmesiyle elde edilir.
@@ -253,7 +253,7 @@ export const ChartTerminalPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-zinc-800 text-[11px] text-zinc-500">
+            <div className="mt-4 pt-3 border-t border-zinc-800 text-[11px] text-zinc-400">
               *Kapalı Çarşı fiziki teslimat primi genellikle teorik fiyata +%0.2 ila +%0.5 ekler.
             </div>
           </div>

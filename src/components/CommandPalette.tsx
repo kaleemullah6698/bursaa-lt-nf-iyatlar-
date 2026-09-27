@@ -145,7 +145,7 @@ export const CommandPalette: React.FC = () => {
                       {isUp ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
                       {item.changeRate > 0 ? '+' : ''}{item.changeRate.toFixed(2)}%
                     </span>
-                    <ArrowRight className="w-3.5 h-3.5 text-zinc-500" />
+                    <ArrowRight className="w-3.5 h-3.5 text-zinc-400" />
                   </div>
                 </div>
               );

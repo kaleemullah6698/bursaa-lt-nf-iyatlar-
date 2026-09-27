@@ -20,7 +20,7 @@ export const CityHubsNavigator: React.FC = () => {
             <span className="text-[#F4F1E8] font-bold uppercase tracking-wider">
               Türkiye Serbest Piyasa Şehir Hubları
             </span>
-            <span className="text-zinc-600 hidden sm:inline">|</span>
+            <span className="text-zinc-400 hidden sm:inline">|</span>
             <span className="text-zinc-400 hidden sm:inline">Her şehir için bağımsız canlı kotasyon</span>
           </div>
 
@@ -68,7 +68,7 @@ export const CityHubsNavigator: React.FC = () => {
                         <span>Açık</span>
                       </span>
                     ) : (
-                      <ArrowRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#E2C76A] group-hover:translate-x-0.5 transition-all" />
+                      <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-[#E2C76A] group-hover:translate-x-0.5 transition-all" />
                     )}
                   </div>
 
@@ -79,13 +79,13 @@ export const CityHubsNavigator: React.FC = () => {
 
                 <div className="pt-2 border-t border-[rgba(244,241,232,0.06)] flex items-end justify-between">
                   <div>
-                    <div className="text-[9px] font-mono text-zinc-500 uppercase">Gram Satış</div>
+                    <div className="text-[9px] font-mono text-zinc-400 uppercase">Gram Satış</div>
                     <div className="text-xs sm:text-sm font-mono font-bold text-white group-hover:text-[#E2C76A] transition-colors">
                       {formatTL(cityPrice)}
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-[9px] font-mono text-zinc-500 uppercase">24s Hacim</div>
+                    <div className="text-[9px] font-mono text-zinc-400 uppercase">24s Hacim</div>
                     <div className="text-[11px] font-mono text-zinc-400">
                       {city.tradingVolume24h}
                     </div>

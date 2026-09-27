@@ -255,7 +255,7 @@ export const CalculatorPage: React.FC = () => {
                         }`}
                       >
                         <div className="text-xs font-bold">{k.label}</div>
-                        <div className="text-[10px] text-zinc-500 truncate mt-0.5">{k.desc}</div>
+                        <div className="text-[10px] text-zinc-400 truncate mt-0.5">{k.desc}</div>
                       </button>
                     ))}
                   </div>
@@ -380,7 +380,7 @@ export const CalculatorPage: React.FC = () => {
                     <div className="text-xl font-bold text-emerald-400 mt-1">
                       {formatTL(arbitrageResult.charsiTotal)}
                     </div>
-                    <div className="text-[10px] text-zinc-500 mt-0.5">₺{arbitrageResult.charsiBuyPrice.toFixed(0)} / gr</div>
+                    <div className="text-[10px] text-zinc-400 mt-0.5">₺{arbitrageResult.charsiBuyPrice.toFixed(0)} / gr</div>
                   </div>
 
                   <div className="p-3 bg-[#12161E] rounded-xl border border-zinc-800">
@@ -388,7 +388,7 @@ export const CalculatorPage: React.FC = () => {
                     <div className="text-xl font-bold text-zinc-300 mt-1">
                       {formatTL(arbitrageResult.bankTotal)}
                     </div>
-                    <div className="text-[10px] text-zinc-500 mt-0.5">₺{arbitrageResult.estimatedBankBuyPrice.toFixed(0)} / gr</div>
+                    <div className="text-[10px] text-zinc-400 mt-0.5">₺{arbitrageResult.estimatedBankBuyPrice.toFixed(0)} / gr</div>
                   </div>
                 </div>
 
@@ -438,9 +438,9 @@ export const CalculatorPage: React.FC = () => {
         {/* Cross-Link Hub */}
         <div className="p-6 bg-gradient-to-r from-[#12161E] via-[#161B24] to-[#12161E] border border-[rgba(200,166,70,0.22)] rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="text-base font-serif font-bold text-white mb-1">
+            <h2 className="text-base font-serif font-bold text-white mb-1">
               Hesapladığınız Varlıkları Portföyünüze Eklemek İster Misiniz?
-            </h3>
+            </h2>
             <p className="text-xs text-[#A5A8AE]">
               Altın varlıklarınızı kaydederek anlık kâr/zararınızı ve toplam birikim değerinizi banka gizliliğinde takip edin.
             </p>

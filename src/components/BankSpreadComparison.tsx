@@ -146,7 +146,7 @@ export const BankSpreadComparison: React.FC = () => {
                         En Dar Makas
                       </span>
                     ) : (
-                      <span className="text-xs text-zinc-500 font-mono">Geniş Banka Marjı</span>
+                      <span className="text-xs text-zinc-400 font-mono">Geniş Banka Marjı</span>
                     )}
                   </td>
                 </tr>

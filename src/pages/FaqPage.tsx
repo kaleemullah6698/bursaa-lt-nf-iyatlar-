@@ -269,9 +269,9 @@ export const FaqPage: React.FC = () => {
         {/* Cross-Link Hub */}
         <div className="p-6 bg-gradient-to-r from-[#12161E] via-[#161B24] to-[#12161E] border border-[rgba(200,166,70,0.22)] rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="text-base font-serif font-bold text-white mb-1">
+            <h2 className="text-base font-serif font-bold text-white mb-1">
               Başka Bir Konuda Bilgiye mi İhtiyacınız Var?
-            </h3>
+            </h2>
             <p className="text-xs text-[#A5A8AE]">
               Bursa Kuyumcular Odası resmi rehberine veya anlık altın hesaplama araçlarımıza göz atabilirsiniz.
             </p>

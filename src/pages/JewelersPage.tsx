@@ -254,19 +254,19 @@ export const JewelersPage: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs shrink-0">
               <div className="p-3 bg-[#07090C] rounded-xl border border-[rgba(244,241,232,0.06)]">
-                <div className="text-[10px] text-zinc-500 uppercase">Hafta İçi (Pzt-Cum)</div>
+                <div className="text-[10px] text-zinc-400 uppercase">Hafta İçi (Pzt-Cum)</div>
                 <div className="text-sm font-bold text-emerald-400 mt-0.5">09:00 - 18:30</div>
                 <div className="text-[10px] text-zinc-400 mt-0.5">Kapalı Çarşı Tam Seans</div>
               </div>
 
               <div className="p-3 bg-[#07090C] rounded-xl border border-[rgba(244,241,232,0.06)]">
-                <div className="text-[10px] text-zinc-500 uppercase">Cumartesi Günü</div>
+                <div className="text-[10px] text-zinc-400 uppercase">Cumartesi Günü</div>
                 <div className="text-sm font-bold text-amber-400 mt-0.5">09:00 - 15:30</div>
                 <div className="text-[10px] text-zinc-400 mt-0.5">Yarım Seans (Sarraflar)</div>
               </div>
 
               <div className="p-3 bg-[#07090C] rounded-xl border border-[rgba(244,241,232,0.06)]">
-                <div className="text-[10px] text-zinc-500 uppercase">Pazar Günü</div>
+                <div className="text-[10px] text-zinc-400 uppercase">Pazar Günü</div>
                 <div className="text-sm font-bold text-zinc-200 mt-0.5">Nöbetçi Kuyumcular</div>
                 <div className="text-[10px] text-emerald-400 mt-0.5">10:00 - 18:00 (Rotasyonlu)</div>
               </div>
@@ -342,11 +342,11 @@ export const JewelersPage: React.FC = () => {
                 {/* Address & Hours */}
                 <div className="space-y-2 text-xs text-zinc-400 mb-4 pb-4 border-b border-[rgba(244,241,232,0.06)]">
                   <div className="flex items-start gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-zinc-500 shrink-0 mt-0.5" />
+                    <MapPin className="w-3.5 h-3.5 text-zinc-400 shrink-0 mt-0.5" />
                     <span>{item.address}</span>
                   </div>
                   <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-300">
-                    <Clock className="w-3.5 h-3.5 text-zinc-500 shrink-0" />
+                    <Clock className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
                     <span>{item.hours}</span>
                   </div>
                   <div className="flex items-center gap-2 font-mono text-[11px] text-emerald-400">
@@ -357,7 +357,7 @@ export const JewelersPage: React.FC = () => {
 
                 {/* Specialties Tags */}
                 <div className="mb-3">
-                  <div className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider mb-1.5">
+                  <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider mb-1.5">
                     Uzmanlık Alanları:
                   </div>
                   <div className="flex flex-wrap gap-1.5">

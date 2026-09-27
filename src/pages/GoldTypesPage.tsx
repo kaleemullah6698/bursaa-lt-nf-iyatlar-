@@ -84,19 +84,19 @@ export const GoldTypesPage: React.FC = () => {
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
                 <div className="p-3 bg-[#07090C] rounded-xl border border-zinc-800">
-                  <div className="text-[10px] text-zinc-500 uppercase">Standart Ağırlık</div>
+                  <div className="text-[10px] text-zinc-400 uppercase">Standart Ağırlık</div>
                   <div className="text-white font-bold mt-0.5">15g - 40g Arası</div>
                 </div>
                 <div className="p-3 bg-[#07090C] rounded-xl border border-zinc-800">
-                  <div className="text-[10px] text-zinc-500 uppercase">Milyem Saflığı</div>
+                  <div className="text-[10px] text-zinc-400 uppercase">Milyem Saflığı</div>
                   <div className="text-amber-400 font-bold mt-0.5">916 Milyem (22A)</div>
                 </div>
                 <div className="p-3 bg-[#07090C] rounded-xl border border-zinc-800">
-                  <div className="text-[10px] text-zinc-500 uppercase">Bozdurma Kaybı</div>
+                  <div className="text-[10px] text-zinc-400 uppercase">Bozdurma Kaybı</div>
                   <div className="text-emerald-400 font-bold mt-0.5">%1.2 (Çok Düşük)</div>
                 </div>
                 <div className="p-3 bg-[#07090C] rounded-xl border border-zinc-800">
-                  <div className="text-[10px] text-zinc-500 uppercase">Likidite Hızı</div>
+                  <div className="text-[10px] text-zinc-400 uppercase">Likidite Hızı</div>
                   <div className="text-sky-400 font-bold mt-0.5">Anında Nakit</div>
                 </div>
               </div>

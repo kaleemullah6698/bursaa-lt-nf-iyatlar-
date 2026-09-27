@@ -81,7 +81,7 @@ export const CityHubsDetailSection: React.FC = () => {
           </div>
 
           <div className="text-zinc-400 shrink-0">
-            <span className="text-zinc-500">Seans Saatleri: </span>
+            <span className="text-zinc-400">Seans Saatleri: </span>
             <strong className="text-emerald-400">{activeCity.workingHours}</strong>
           </div>
         </div>

@@ -69,7 +69,11 @@ export const BursadaAltinPage: React.FC = () => {
         </div>
 
         {/* 4 Pillars of Bursa Physical Gold Supremacy */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <div className="mb-12">
+          <h2 className="text-xl sm:text-2xl font-serif font-bold text-white mb-6 text-center sm:text-left">
+            Bursa Fiziki Altın Piyasasının 4 Temel Dayanağı
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="p-5 bg-[#0E1117] border border-[rgba(244,241,232,0.08)] rounded-2xl">
             <div className="w-10 h-10 rounded-xl bg-[#C8A646]/15 border border-[#C8A646]/35 flex items-center justify-center text-[#E2C76A] mb-3">
               <Building2 className="w-5 h-5" />
@@ -116,6 +120,7 @@ export const BursadaAltinPage: React.FC = () => {
             <p className="text-xs text-[#A5A8AE] leading-relaxed">
               Bursa Kuyumcular Odası (BKO) tarafından her ay kalibrasyonu denetlenen mühürlü hassas teraziler ve resmi patent damgaları.
             </p>
+          </div>
           </div>
         </div>
 

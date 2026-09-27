@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
                 <div className="text-[11px] text-zinc-400 mt-1 truncate">
                   {city.marketName}
                 </div>
-                <div className="text-[10px] font-mono text-zinc-500 mt-1">
+                <div className="text-[10px] font-mono text-zinc-400 mt-1">
                   {city.activeJewelersCount}+ Sarraf · 24s: {city.tradingVolume24h}
                 </div>
               </Link>
@@ -148,7 +148,7 @@ export const Footer: React.FC = () => {
                 <span>Çalışma Düzeni:</span>
                 <strong className="text-zinc-200">{activeCity.workingHours}</strong>
               </div>
-              <div className="text-[11px] text-zinc-500 flex justify-between">
+              <div className="text-[11px] text-zinc-400 flex justify-between">
                 <span>Pazar Günü:</span>
                 <span className="text-amber-400/90 font-sans">Nöbetçi Kuyumcular Açık</span>
               </div>
@@ -157,10 +157,10 @@ export const Footer: React.FC = () => {
 
           {/* Col 2: Kurlar & Piyasa Terminali (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-white flex items-center gap-2">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C8A646]" />
               Piyasa Terminali & Kurlar
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/" className="hover:text-[#E2C76A] transition-colors block">
@@ -197,10 +197,10 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Hesaplama & Planlama Araçları (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-white flex items-center gap-2">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C8A646]" />
               Hesaplama & Finansal Araçlar
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/hesaplama" className="hover:text-[#E2C76A] transition-colors block">
@@ -237,10 +237,10 @@ export const Footer: React.FC = () => {
 
           {/* Col 4: Kurumsal & Doğrulama Standartları (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-white flex items-center gap-2">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-white flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C8A646]" />
               Veri & Hukuk
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link to="/bursada-altin" className="hover:text-[#E2C76A] transition-colors block">
@@ -257,10 +257,10 @@ export const Footer: React.FC = () => {
                   Sıkça Sorulan Sorular
                 </Link>
               </li>
-              <li className="text-zinc-500 pt-1">
+              <li className="text-zinc-400 pt-1">
                 Referans: {activeCity.chamberName}
               </li>
-              <li className="text-zinc-500">
+              <li className="text-zinc-400">
                 Gecikme: ~0.4ms Engine
               </li>
             </ul>

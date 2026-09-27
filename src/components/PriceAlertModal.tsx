@@ -48,9 +48,9 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
               <Bell className="w-5 h-5" aria-hidden="true" />
             </div>
             <div>
-              <h3 id="alert-dialog-title" className="font-serif text-lg font-semibold text-[#F4F1E8]">
+              <h2 id="alert-dialog-title" className="font-serif text-lg font-semibold text-[#F4F1E8]">
                 Altın Fiyat Alarmı
-              </h3>
+              </h2>
               <p className="text-xs text-[#A5A8AE]">
                 Hedeflediğiniz fiyata ulaşıldığında anında haberdar olun.
               </p>
@@ -143,9 +143,9 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
 
         {/* Existing Alerts List */}
         <div className="mt-6 pt-5 border-t border-white/8">
-          <h4 className="text-xs font-semibold text-[#9FA3AA] uppercase tracking-wider mb-3">
+          <h3 className="text-xs font-semibold text-[#9FA3AA] uppercase tracking-wider mb-3">
             Kayıtlı Fiyat Alarmlarınız ({alerts.length})
-          </h4>
+          </h3>
 
           {alerts.length === 0 ? (
             <p className="text-xs text-[#A5A8AE] italic py-2">

@@ -55,7 +55,7 @@ export const PortfolioPage: React.FC = () => {
           <div className="flex items-center gap-2 text-xs font-mono text-[#E2C76A] uppercase tracking-wider mb-2">
             <Briefcase className="w-4 h-4 text-[#C8A646]" />
             <span>Kişisel Altın & Emtia Portföy İstasyonu</span>
-            <span className="text-zinc-600">·</span>
+            <span className="text-zinc-400">·</span>
             <span className="text-emerald-400">Zero-Leak Local Storage</span>
           </div>
 
@@ -98,7 +98,7 @@ export const PortfolioPage: React.FC = () => {
             <div className="p-3.5 bg-[#0E1117] border border-[rgba(244,241,232,0.08)] rounded-xl flex items-center gap-3 text-xs font-mono shrink-0 shadow-sm">
               <Lock className="w-5 h-5 text-emerald-400 shrink-0" />
               <div>
-                <div className="text-[10px] text-zinc-500 uppercase font-semibold">Banka Düzeyi Gizlilik</div>
+                <div className="text-[10px] text-zinc-400 uppercase font-semibold">Banka Düzeyi Gizlilik</div>
                 <div className="font-bold text-white mt-0.5">%100 Cihazınızda Saklanır</div>
               </div>
             </div>
@@ -106,6 +106,7 @@ export const PortfolioPage: React.FC = () => {
         </div>
 
         {/* Portfolio Top Analytics Strip */}
+        <h2 className="sr-only">Portföy Varlık ve Finansal Getiri Özeti</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {/* Stat 1: Güncel Portföy Değeri */}
           <div className="p-5 bg-[#0E1117] border border-[rgba(244,241,232,0.08)] rounded-2xl">
@@ -172,9 +173,9 @@ export const PortfolioPage: React.FC = () => {
                 <Sparkles className="w-3.5 h-3.5 text-[#C8A646]" />
                 <span>Hızlı Başlangıç</span>
               </div>
-              <h3 className="text-base font-serif font-bold text-white">
+              <h2 className="text-base font-serif font-bold text-white">
                 Portföyünüz Henüz Boş mu? Örnek Bursa Portföyüyle Test Edin
-              </h3>
+              </h2>
               <p className="text-xs text-[#A5A8AE] mt-0.5">
                 Tek tıkla 25g Has Altın, 6 Çeyrek ve 20g Bursa Burması ekleyerek getiri analizini canlı görün.
               </p>

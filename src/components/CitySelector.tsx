@@ -43,7 +43,7 @@ export const CitySelector: React.FC<CitySelectorProps> = ({ variant = 'header', 
             <MapPin className="w-3.5 h-3.5 text-[#C8A646]" />
             <span>FİZİKİ BORSALAR & ŞEHİR</span>
           </span>
-          <span className="text-zinc-500">4 İl Hazır</span>
+          <span className="text-zinc-400">4 İl Hazır</span>
         </div>
         <div className="grid grid-cols-2 gap-1.5">
           {cities.map((city) => {
@@ -174,7 +174,7 @@ export const CitySelector: React.FC<CitySelectorProps> = ({ variant = 'header', 
                       <span className="block text-xs text-zinc-400 group-hover:text-zinc-300 mt-0.5">
                         {city.marketName}
                       </span>
-                      <div className="flex items-center gap-2 mt-1 text-[10px] font-mono text-zinc-500">
+                      <div className="flex items-center gap-2 mt-1 text-[10px] font-mono text-zinc-400">
                         <span>{city.activeJewelersCount}+ Sarraf</span>
                         <span>·</span>
                         <span>24s: {city.tradingVolume24h}</span>
@@ -187,7 +187,7 @@ export const CitySelector: React.FC<CitySelectorProps> = ({ variant = 'header', 
                       <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                     </div>
                   ) : (
-                    <span className="text-[11px] font-mono text-zinc-500 group-hover:text-[#E2C76A] opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-[11px] font-mono text-zinc-400 group-hover:text-[#E2C76A] opacity-0 group-hover:opacity-100 transition-opacity">
                       Sayfaya Git →
                     </span>
                   )}

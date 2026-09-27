@@ -217,9 +217,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
               <span className="text-[#E2C76A] font-semibold tracking-wider uppercase">
                 {activeCity.name} {activeCity.marketName}
               </span>
-              <span className="text-zinc-600" aria-hidden="true">·</span>
+              <span className="text-zinc-400" aria-hidden="true">·</span>
               <span className="text-zinc-300">Canlı Sarraf Kotasyonu</span>
-              <span className="text-zinc-600 hidden sm:inline" aria-hidden="true">·</span>
+              <span className="text-zinc-400 hidden sm:inline" aria-hidden="true">·</span>
               <span className="text-zinc-400 font-mono hidden sm:inline">{formattedTime}</span>
             </div>
 
@@ -378,7 +378,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
                     <span className="text-zinc-400">Trend Grafiği:</span>
                     {activeHoverPoint ? (
                       <span className="text-[#E2C76A] font-bold">
-                        {formatTL(activeHoverPoint.price)} <span className="text-zinc-500 font-normal">({activeHoverPoint.label})</span>
+                        {formatTL(activeHoverPoint.price)} <span className="text-zinc-400 font-normal">({activeHoverPoint.label})</span>
                       </span>
                     ) : (
                       <span className="text-emerald-400 font-medium">
@@ -498,7 +498,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
                 </div>
 
                 {/* Min / Max Edge Annotations */}
-                <div className="flex items-center justify-between text-[10px] font-mono text-zinc-500 pt-1 border-t border-zinc-800/60 mt-1">
+                <div className="flex items-center justify-between text-[10px] font-mono text-zinc-400 pt-1 border-t border-zinc-800/60 mt-1">
                   <span>En Düşük: <strong className="text-zinc-300">₺{minVal.toFixed(0)}</strong></span>
                   <span>En Yüksek: <strong className="text-zinc-300">₺{maxVal.toFixed(0)}</strong></span>
                 </div>
@@ -554,7 +554,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
           <div className="flex flex-wrap items-center gap-6 sm:gap-8">
             {onsItem && (
               <div className="flex items-center gap-2">
-                <span className="text-zinc-500">Spot Ons:</span>
+                <span className="text-zinc-400">Spot Ons:</span>
                 <span className="text-[#E2C76A] font-bold">${onsItem.buyingPrice.toFixed(2)}</span>
                 <span className="text-emerald-400 text-[10px]">+{onsItem.changeRate.toFixed(2)}%</span>
               </div>
@@ -562,26 +562,26 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
 
             {usdItem && (
               <div className="flex items-center gap-2">
-                <span className="text-zinc-500">Dolar/TL:</span>
+                <span className="text-zinc-400">Dolar/TL:</span>
                 <span className="text-white font-bold">₺{usdItem.buyingPrice.toFixed(4)}</span>
               </div>
             )}
 
             {eurItem && (
               <div className="flex items-center gap-2 hidden sm:flex">
-                <span className="text-zinc-500">Euro/TL:</span>
+                <span className="text-zinc-400">Euro/TL:</span>
                 <span className="text-white font-bold">₺{eurItem.buyingPrice.toFixed(4)}</span>
               </div>
             )}
 
             {gumusItem && (
               <div className="flex items-center gap-2 hidden md:flex">
-                <span className="text-zinc-500">Has Gümüş:</span>
+                <span className="text-zinc-400">Has Gümüş:</span>
                 <span className="text-zinc-200 font-bold">₺{gumusItem.buyingPrice.toFixed(2)}</span>
               </div>
             )}
 
-            <div className="flex items-center gap-2 text-zinc-500 hidden lg:flex">
+            <div className="flex items-center gap-2 text-zinc-400 hidden lg:flex">
               <span>Rasyo (XAU/XAG):</span>
               <span className="text-zinc-300 font-semibold">82.4</span>
             </div>

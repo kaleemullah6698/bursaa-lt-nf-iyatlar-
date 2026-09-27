@@ -48,7 +48,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
         {!isHome && pageLabel && (
           <li className="flex items-center gap-1.5">
-            <ChevronRight className="w-3 h-3 text-zinc-500 shrink-0" aria-hidden="true" />
+            <ChevronRight className="w-3 h-3 text-zinc-400 shrink-0" aria-hidden="true" />
             <Link to={pagePath} aria-current={currentItem ? undefined : 'page'} className="text-zinc-200 font-medium font-sans hover:text-[#E2C76A] transition-colors">
               {pageLabel}
             </Link>
@@ -57,7 +57,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
         {isHome && !currentItem && (
           <li className="flex items-center gap-1.5">
-            <ChevronRight className="w-3 h-3 text-zinc-500 shrink-0" aria-hidden="true" />
+            <ChevronRight className="w-3 h-3 text-zinc-400 shrink-0" aria-hidden="true" />
             <span aria-current="page" className="text-[#C8A646] font-medium font-sans">
               Bursa Canlı Altın Fiyatları
             </span>
@@ -66,7 +66,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
         {currentItem && (
           <li className="flex items-center gap-1.5">
-            <ChevronRight className="w-3 h-3 text-zinc-500 shrink-0" aria-hidden="true" />
+            <ChevronRight className="w-3 h-3 text-zinc-400 shrink-0" aria-hidden="true" />
             <span aria-current="page" className="text-[#E2C76A] font-semibold font-sans">
               {currentItem.name}
             </span>

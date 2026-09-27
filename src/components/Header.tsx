@@ -175,7 +175,7 @@ export const Header: React.FC<HeaderProps> = ({
                       : 'text-[#A5A8AE] hover:text-[#F4F1E8] hover:bg-white/[0.02]'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#E2C76A]' : 'text-zinc-500'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-[#E2C76A]' : 'text-zinc-400'}`} />
                   <span>{link.label}</span>
                   {isActive && (
                     <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-transparent via-[#C8A646] to-transparent rounded-full shadow-[0_0_10px_rgba(200,166,70,0.8)]" />
@@ -206,7 +206,7 @@ export const Header: React.FC<HeaderProps> = ({
 
               {moreMenuOpen && (
                 <div className="absolute right-0 top-full mt-2 w-72 rounded-2xl bg-[#0C0F14]/98 backdrop-blur-2xl border border-[rgba(244,241,232,0.12)] p-2 shadow-[0_20px_50px_rgba(0,0,0,0.85)] z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="px-2.5 py-1.5 text-[10px] font-mono text-zinc-500 uppercase border-b border-white/5 mb-1">
+                  <div className="px-2.5 py-1.5 text-[10px] font-mono text-zinc-400 uppercase border-b border-white/5 mb-1">
                     Genişletilmiş Analiz & Rehber
                   </div>
                   <div className="space-y-0.5">
@@ -232,7 +232,7 @@ export const Header: React.FC<HeaderProps> = ({
                               <span className={`text-xs ${isActive ? 'text-[#E2C76A] font-bold' : 'text-zinc-100'}`}>
                                 {item.label}
                               </span>
-                              <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                              <ArrowUpRight className="w-3 h-3 text-zinc-400" />
                             </div>
                             <span className="block text-[10px] text-zinc-400 truncate mt-0.5">
                               {item.desc}
@@ -314,7 +314,7 @@ export const Header: React.FC<HeaderProps> = ({
             <CitySelector variant="mobile" onCityChanged={() => setMobileMenuOpen(false)} />
 
             <div className="border-t border-white/5 pt-3">
-              <div className="text-[11px] font-mono text-zinc-500 uppercase px-2 mb-2">
+              <div className="text-[11px] font-mono text-zinc-400 uppercase px-2 mb-2">
                 {activeCity.name} Altın Modülleri
               </div>
               <div className="space-y-1">
@@ -340,7 +340,7 @@ export const Header: React.FC<HeaderProps> = ({
                           {item.label}
                         </span>
                       </div>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
+                      <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
                     </Link>
                   );
                 })}
