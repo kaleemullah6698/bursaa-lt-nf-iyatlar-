@@ -87,8 +87,17 @@ export const PriceCardsGrid: React.FC = () => {
             return (
               <article
                 key={item.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`${item.name} güncel satış fiyatı ${formatTL(item.sellingPrice)}. Detayları görüntülemek için tıklayın.`}
                 onClick={() => setSelectedItem(item)}
-                className={`bg-gradient-to-b from-[#14181E] to-[#101318] border rounded-2xl p-5 relative transition-all duration-200 cursor-pointer group hover:-translate-y-1 hover:border-[#C8A646]/50 shadow-lg flex flex-col justify-between ${
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedItem(item);
+                  }
+                }}
+                className={`bg-gradient-to-b from-[#14181E] to-[#101318] border rounded-2xl p-5 relative transition-all duration-200 cursor-pointer group hover:-translate-y-1 hover:border-[#C8A646]/50 shadow-lg flex flex-col justify-between focus:outline-none focus:ring-2 focus:ring-[#C8A646] ${
                   isFlashed
                     ? 'border-[#E2C76A] shadow-[0_0_20px_rgba(200,166,70,0.25)] ring-1 ring-[#E2C76A]'
                     : 'border-[rgba(244,241,232,0.08)]'

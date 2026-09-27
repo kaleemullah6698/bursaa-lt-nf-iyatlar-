@@ -54,18 +54,23 @@ export const BankSpreadComparison: React.FC = () => {
           {/* Interactive Calculator Slider */}
           <div className="bg-[#14181E] border border-[rgba(244,241,232,0.1)] rounded-2xl p-4 min-w-[280px]">
             <div className="flex items-center justify-between text-xs text-[#A5A8AE] mb-2 font-medium">
-              <span>İşlem Miktarı:</span>
+              <label htmlFor="arbitrage-slider" className="cursor-pointer">İşlem Miktarı:</label>
               <span className="font-mono text-[#E2C76A] font-bold text-sm">{gramAmount} Gram Altın</span>
             </div>
             <input
+              id="arbitrage-slider"
               type="range"
               min="1"
               max="250"
               value={gramAmount}
               onChange={(e) => setGramAmount(Number(e.target.value))}
+              aria-label="İşlem Yapılacak Altın Miktarı (Gram)"
+              aria-valuemin={1}
+              aria-valuemax={250}
+              aria-valuenow={gramAmount}
               className="w-full h-1.5 bg-[#080A0D] rounded-lg appearance-none cursor-pointer accent-[#C8A646]"
             />
-            <div className="flex justify-between text-[10px] text-[#A5A8AE] mt-1 font-mono">
+            <div className="flex justify-between text-[10px] text-zinc-400 mt-1 font-mono">
               <span>1g</span>
               <span>50g</span>
               <span>100g</span>
@@ -78,7 +83,7 @@ export const BankSpreadComparison: React.FC = () => {
         <div className="bg-gradient-to-r from-[#C8A646]/15 via-[#14181E] to-[#14181E] border border-[#C8A646]/30 rounded-2xl p-4 sm:p-5 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#C8A646]/20 border border-[#C8A646]/40 flex items-center justify-center text-[#E2C76A] shrink-0">
-              <Sparkles className="w-5 h-5" />
+              <Sparkles className="w-5 h-5" aria-hidden="true" />
             </div>
             <div>
               <span className="text-xs uppercase tracking-wider text-[#C8A646] font-semibold block font-mono">
@@ -99,15 +104,15 @@ export const BankSpreadComparison: React.FC = () => {
 
         {/* Matrix Table */}
         <div className="overflow-x-auto rounded-2xl border border-[rgba(244,241,232,0.08)]">
-          <table className="w-full text-left text-sm border-collapse min-w-[620px]">
+          <table className="w-full text-left text-sm border-collapse min-w-[620px]" aria-label="Banka ve Serbest Piyasa Makas Karşılaştırması">
             <thead className="bg-[#14181E] text-xs font-mono uppercase tracking-wider text-[#A5A8AE] border-b border-[rgba(244,241,232,0.08)]">
               <tr>
-                <th className="py-3 px-4">Kurum / Piyasa</th>
-                <th className="py-3 px-4 text-right">Alış (TL)</th>
-                <th className="py-3 px-4 text-right">Satış (TL)</th>
-                <th className="py-3 px-4 text-right">Makas (Fark)</th>
-                <th className="py-3 px-4 text-right">Spread (%)</th>
-                <th className="py-3 px-4 text-center">Durum</th>
+                <th scope="col" className="py-3 px-4">Kurum / Piyasa</th>
+                <th scope="col" className="py-3 px-4 text-right">Alış (TL)</th>
+                <th scope="col" className="py-3 px-4 text-right">Satış (TL)</th>
+                <th scope="col" className="py-3 px-4 text-right">Makas (Fark)</th>
+                <th scope="col" className="py-3 px-4 text-right">Spread (%)</th>
+                <th scope="col" className="py-3 px-4 text-center">Durum</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[rgba(244,241,232,0.04)] bg-[#0E1217]">

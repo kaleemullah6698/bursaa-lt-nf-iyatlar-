@@ -66,6 +66,9 @@ export const CommandPalette: React.FC = () => {
     <div 
       className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-start justify-center pt-16 sm:pt-24 p-4 animate-in fade-in duration-100"
       onClick={() => setCommandPaletteOpen(false)}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Hızlı Enstrüman Arama Paleti"
     >
       <div 
         className="w-full max-w-xl bg-[#101318] border border-[rgba(244,241,232,0.15)] rounded-2xl shadow-2xl overflow-hidden text-white"
@@ -74,18 +77,25 @@ export const CommandPalette: React.FC = () => {
       >
         {/* Input Bar */}
         <div className="flex items-center px-4 py-3.5 border-b border-[rgba(244,241,232,0.08)] bg-[#0C0F14]">
-          <Search className="w-5 h-5 text-[#C8A646] mr-3 shrink-0" />
+          <Search className="w-5 h-5 text-[#C8A646] mr-3 shrink-0" aria-hidden="true" />
           <input
             ref={inputRef}
+            id="command-palette-search-input"
+            aria-label="Altın türü veya sembol ara"
             type="text"
             placeholder="Altın türü ara... (Örn: Çeyrek, Gram, 22 Ayar, Ons)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full bg-transparent text-sm text-white placeholder-zinc-500 focus:outline-none"
+            className="w-full bg-transparent text-sm text-white placeholder-zinc-400 focus:outline-none"
           />
-          <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono text-zinc-400 bg-[#14181E] border border-[rgba(244,241,232,0.1)] rounded">
+          <button
+            type="button"
+            onClick={() => setCommandPaletteOpen(false)}
+            aria-label="Arama paletini kapat"
+            className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono text-zinc-400 hover:text-white bg-[#14181E] border border-[rgba(244,241,232,0.1)] rounded cursor-pointer"
+          >
             ESC
-          </kbd>
+          </button>
         </div>
 
         {/* Results List */}

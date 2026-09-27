@@ -31,46 +31,48 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   const isHome = activePage === 'fiyatlar';
 
   return (
-    <nav aria-label="Breadcrumb" className="h-[36px] min-h-[36px] flex items-center px-4 bg-[#0A0D12] border-b border-[rgba(244,241,232,0.06)] text-xs text-[#A5A8AE]">
-      <div className="max-w-[1240px] w-full mx-auto flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none font-mono">
-        <Link
-          to="/"
-          onClick={() => {
-            if (onReset) onReset();
-          }}
-          className="flex items-center gap-1 hover:text-[#E2C76A] transition-colors"
-        >
-          <Home className="w-3.5 h-3.5" />
-          <span className="font-sans">Ana Sayfa</span>
-        </Link>
+    <nav aria-label="Ekmek Kırıntısı Gezinimi" className="h-[36px] min-h-[36px] flex items-center px-4 bg-[#0A0D12] border-b border-[rgba(244,241,232,0.06)] text-xs text-[#A5A8AE]">
+      <ol className="max-w-[1240px] w-full mx-auto flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none font-mono list-none p-0 m-0">
+        <li className="flex items-center gap-1">
+          <Link
+            to="/"
+            onClick={() => {
+              if (onReset) onReset();
+            }}
+            className="flex items-center gap-1 hover:text-[#E2C76A] transition-colors"
+          >
+            <Home className="w-3.5 h-3.5" aria-hidden="true" />
+            <span className="font-sans">Ana Sayfa</span>
+          </Link>
+        </li>
 
         {!isHome && pageLabel && (
-          <>
-            <ChevronRight className="w-3 h-3 text-zinc-600 shrink-0" />
-            <Link to={pagePath} className="text-zinc-200 font-medium font-sans hover:text-[#E2C76A] transition-colors">
+          <li className="flex items-center gap-1.5">
+            <ChevronRight className="w-3 h-3 text-zinc-500 shrink-0" aria-hidden="true" />
+            <Link to={pagePath} aria-current={currentItem ? undefined : 'page'} className="text-zinc-200 font-medium font-sans hover:text-[#E2C76A] transition-colors">
               {pageLabel}
             </Link>
-          </>
+          </li>
         )}
 
         {isHome && !currentItem && (
-          <>
-            <ChevronRight className="w-3 h-3 text-zinc-600 shrink-0" />
-            <span className="text-[#C8A646] font-medium font-sans">
+          <li className="flex items-center gap-1.5">
+            <ChevronRight className="w-3 h-3 text-zinc-500 shrink-0" aria-hidden="true" />
+            <span aria-current="page" className="text-[#C8A646] font-medium font-sans">
               Bursa Canlı Altın Fiyatları
             </span>
-          </>
+          </li>
         )}
 
         {currentItem && (
-          <>
-            <ChevronRight className="w-3 h-3 text-zinc-600 shrink-0" />
-            <span className="text-[#E2C76A] font-semibold font-sans">
+          <li className="flex items-center gap-1.5">
+            <ChevronRight className="w-3 h-3 text-zinc-500 shrink-0" aria-hidden="true" />
+            <span aria-current="page" className="text-[#E2C76A] font-semibold font-sans">
               {currentItem.name}
             </span>
-          </>
+          </li>
         )}
-      </div>
+      </ol>
     </nav>
   );
 };

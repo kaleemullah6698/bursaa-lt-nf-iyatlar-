@@ -98,8 +98,17 @@ export const GoldTypesSection: React.FC = () => {
             return (
               <div
                 key={type.slug}
+                role="button"
+                tabIndex={0}
+                aria-label={`${type.name} güncel satış fiyatı ${formatTL(sellPrice)}. Detayları görüntülemek için tıklayın.`}
                 onClick={() => setSelectedItem(item)}
-                className="bg-[#14181E] border border-[rgba(244,241,232,0.08)] rounded-2xl p-5 hover:border-[#C8A646]/40 transition-all cursor-pointer group flex flex-col justify-between hover:-translate-y-0.5 shadow-md"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedItem(item);
+                  }
+                }}
+                className="bg-[#14181E] border border-[rgba(244,241,232,0.08)] rounded-2xl p-5 hover:border-[#C8A646]/40 transition-all cursor-pointer group flex flex-col justify-between hover:-translate-y-0.5 shadow-md focus:outline-none focus:ring-1 focus:ring-[#C8A646]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">

@@ -84,10 +84,12 @@ export const GoldCalculator: React.FC = () => {
 
             {/* Gold Instrument Selector */}
             <div>
-              <label className="block text-xs uppercase tracking-wider text-[#A5A8AE] mb-2 font-medium">
+              <label htmlFor="calculator-gold-select" className="block text-xs uppercase tracking-wider text-[#A5A8AE] mb-2 font-medium">
                 Altın Türü Seçiniz
               </label>
               <select
+                id="calculator-gold-select"
+                aria-label="Hesaplama yapılacak altın türü"
                 value={selectedGoldId}
                 onChange={(e) => {
                   setSelectedGoldId(e.target.value);
@@ -106,7 +108,7 @@ export const GoldCalculator: React.FC = () => {
             {/* Quantity Input */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="text-xs uppercase tracking-wider text-[#A5A8AE] font-medium">
+                <label htmlFor="calculator-amount-input" className="text-xs uppercase tracking-wider text-[#A5A8AE] font-medium cursor-pointer">
                   Miktar ({currentItem.id.includes('bilezik') || currentItem.id.includes('gram') ? 'Gram' : 'Adet'})
                 </label>
                 <span className="text-xs text-[#C8A646]">
@@ -115,6 +117,8 @@ export const GoldCalculator: React.FC = () => {
               </div>
               <div className="relative">
                 <input
+                  id="calculator-amount-input"
+                  aria-label={`Hesaplanacak miktar (${currentItem.id.includes('bilezik') || currentItem.id.includes('gram') ? 'Gram' : 'Adet'})`}
                   type="number"
                   min="0.1"
                   step="any"

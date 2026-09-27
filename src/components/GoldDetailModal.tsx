@@ -75,15 +75,18 @@ export const GoldDetailModal: React.FC = () => {
               onClick={handleCopyLink}
               className="p-2 text-[#A5A8AE] hover:text-[#F4F1E8] bg-white/5 hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
               title="Bağlantıyı Kopyala"
+              aria-label="Sayfa bağlantısını panoya kopyala"
+              type="button"
             >
-              {copied ? <Check className="w-4 h-4 text-[#3FA97A]" /> : <Copy className="w-4 h-4" />}
+              {copied ? <Check className="w-4 h-4 text-[#3FA97A]" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
             </button>
             <button
               onClick={() => setSelectedItem(null)}
               className="p-2 text-[#A5A8AE] hover:text-[#F4F1E8] bg-white/5 hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
-              aria-label="Kapat"
+              aria-label="Detay penceresini kapat"
+              type="button"
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5" aria-hidden="true" />
             </button>
           </div>
         </div>

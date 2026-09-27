@@ -99,10 +99,12 @@ export const ZakatWeddingCalculator: React.FC = () => {
             <div className="lg:col-span-7 space-y-6">
               <div>
                 <div className="flex items-center justify-between text-xs text-[#A5A8AE] mb-2 font-medium">
-                  <span>Sahip Olduğunuz Toplam Altın Miktarı (Gram)</span>
+                  <label htmlFor="zakat-grams-input" className="cursor-pointer">Sahip Olduğunuz Toplam Altın Miktarı (Gram)</label>
                   <span className="text-[#C8A646] font-mono">1 Gram = {formatTL(gramPrice)}</span>
                 </div>
                 <input
+                  id="zakat-grams-input"
+                  aria-label="Sahip olduğunuz toplam altın miktarı gram cinsinden"
                   type="number"
                   step="any"
                   min="0"
@@ -116,10 +118,12 @@ export const ZakatWeddingCalculator: React.FC = () => {
               {/* Quick slider */}
               <div>
                 <div className="flex justify-between text-xs text-[#A5A8AE] mb-1 font-mono">
-                  <span>Hızlı Seçim:</span>
+                  <label htmlFor="zakat-slider-input" className="cursor-pointer">Hızlı Seçim:</label>
                   <span>{zakatGrams} Gram</span>
                 </div>
                 <input
+                  id="zakat-slider-input"
+                  aria-label="Zekat hesaplama altın gramı sürgüsü"
                   type="range"
                   min="0"
                   max="500"
@@ -214,6 +218,7 @@ export const ZakatWeddingCalculator: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <input
+                    aria-label="22 Ayar Trabzon Kolye Seti gram miktarı"
                     type="number"
                     min="0"
                     value={necklaceGrams}
@@ -232,6 +237,7 @@ export const ZakatWeddingCalculator: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <input
+                    aria-label="22 Ayar Bilezik adedi"
                     type="number"
                     min="0"
                     value={braceletCount}
@@ -250,6 +256,7 @@ export const ZakatWeddingCalculator: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <input
+                    aria-label="Çeyrek Altın hediye ve takı adedi"
                     type="number"
                     min="0"
                     value={quarterCount}
@@ -265,6 +272,7 @@ export const ZakatWeddingCalculator: React.FC = () => {
                 <div className="p-3.5 bg-[#101318] rounded-xl border border-[rgba(244,241,232,0.06)] flex items-center justify-between">
                   <span className="text-xs text-white font-medium">Yarım Altın</span>
                   <input
+                    aria-label="Yarım Altın adedi"
                     type="number"
                     min="0"
                     value={halfCount}
@@ -275,6 +283,7 @@ export const ZakatWeddingCalculator: React.FC = () => {
                 <div className="p-3.5 bg-[#101318] rounded-xl border border-[rgba(244,241,232,0.06)] flex items-center justify-between">
                   <span className="text-xs text-white font-medium">Tam / Cumhuriyet</span>
                   <input
+                    aria-label="Tam veya Cumhuriyet Altını adedi"
                     type="number"
                     min="0"
                     value={fullCount}

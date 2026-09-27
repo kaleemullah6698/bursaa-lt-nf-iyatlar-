@@ -220,15 +220,17 @@ const ProTableRow = memo<ProTableRowProps>(({ item, flashState, onSelect, onCalc
             onClick={() => onCalculate(item.id)}
             className="p-1.5 rounded-lg bg-[#14181E] text-[#A5A8AE] hover:text-[#E2C76A] hover:bg-[#1E2530] transition-colors"
             title="Hesapla"
+            aria-label={`${item.name} için altın hesaplayıcıyı aç`}
           >
-            <Calculator className="w-3.5 h-3.5" />
+            <Calculator className="w-3.5 h-3.5" aria-hidden="true" />
           </button>
           <button
             onClick={() => onSelect(item)}
             className="p-1.5 rounded-lg bg-[#14181E] text-[#A5A8AE] hover:text-[#C8A646] hover:bg-[#1E2530] transition-colors"
             title="Terminalde İncele"
+            aria-label={`${item.name} detaylarını ve grafiğini aç`}
           >
-            <BarChart2 className="w-3.5 h-3.5" />
+            <BarChart2 className="w-3.5 h-3.5" aria-hidden="true" />
           </button>
         </div>
       </td>
@@ -382,14 +384,15 @@ export const ProFreeMarketTable: React.FC = () => {
             {/* Turbo Pro Max Toggle */}
             <button
               onClick={toggleTurbo}
-              className={`px-3 py-1.5 rounded-xl border flex items-center gap-1.5 font-bold transition-all ${
+              aria-label={isTurbo ? "Standart 2.5 saniye akış hızına dön" : "Ultra hızlı 0.8 saniye turbo akış moduna geç"}
+              className={`px-3 py-1.5 rounded-xl border flex items-center gap-1.5 font-bold transition-all cursor-pointer ${
                 isTurbo
                   ? 'bg-amber-500/25 border-amber-500/60 text-[#E2C76A] shadow-[0_0_15px_rgba(234,179,8,0.25)]'
                   : 'bg-[#14181E] border-[rgba(244,241,232,0.1)] text-[#A5A8AE]'
               }`}
               title="Ultra Hızlı 0.8s Streaming Modunu Aç / Kapat"
             >
-              <Zap className={`w-3.5 h-3.5 ${isTurbo ? 'text-amber-400 fill-amber-400' : ''}`} />
+              <Zap className={`w-3.5 h-3.5 ${isTurbo ? 'text-amber-400 fill-amber-400' : ''}`} aria-hidden="true" />
               <span className="font-mono text-[11px]">
                 {isTurbo ? 'TURBO (0.8s)' : 'STANDART (2.5s)'}
               </span>
@@ -398,7 +401,8 @@ export const ProFreeMarketTable: React.FC = () => {
             {/* Live Streaming Toggle */}
             <button
               onClick={toggleLiveStream}
-              className={`px-3 py-1.5 rounded-xl border flex items-center gap-2 transition-all font-medium ${
+              aria-label={liveStreamActive ? "Canlı veri akışını duraklat" : "Canlı veri akışını başlat"}
+              className={`px-3 py-1.5 rounded-xl border flex items-center gap-2 transition-all font-medium cursor-pointer ${
                 liveStreamActive
                   ? 'bg-emerald-950/40 border-emerald-500/40 text-emerald-400'
                   : 'bg-[#14181E] border-[rgba(244,241,232,0.1)] text-[#A5A8AE]'
@@ -419,20 +423,22 @@ export const ProFreeMarketTable: React.FC = () => {
             {/* Sound Toggle */}
             <button
               onClick={toggleSound}
-              className={`p-2 rounded-xl border transition-colors ${
+              aria-label={soundEnabled ? 'Fiyat ses bildirimini kapat' : 'Fiyat ses bildirimini aç'}
+              className={`p-2 rounded-xl border transition-colors cursor-pointer ${
                 soundEnabled
                   ? 'bg-[#C8A646]/20 border-[#C8A646]/50 text-[#E2C76A]'
                   : 'bg-[#14181E] border-[rgba(244,241,232,0.1)] text-[#A5A8AE] hover:text-white'
               }`}
               title={soundEnabled ? 'Ses Açık' : 'Sesi Aç'}
             >
-              {soundEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
+              {soundEnabled ? <Volume2 className="w-3.5 h-3.5" aria-hidden="true" /> : <VolumeX className="w-3.5 h-3.5" aria-hidden="true" />}
             </button>
 
             {/* Language Switcher */}
             <button
               onClick={() => setLang(prev => (prev === 'TR' ? 'EN' : 'TR'))}
-              className="px-2.5 py-1.5 bg-[#14181E] border border-[rgba(244,241,232,0.1)] text-[#F4F1E8] rounded-xl font-mono hover:border-[#C8A646]/40 transition-colors"
+              aria-label="Dili Değiştir (Language Switcher)"
+              className="px-2.5 py-1.5 bg-[#14181E] border border-[rgba(244,241,232,0.1)] text-[#F4F1E8] rounded-xl font-mono hover:border-[#C8A646]/40 transition-colors cursor-pointer"
             >
               {lang === 'TR' ? 'EN' : 'TR'}
             </button>
@@ -440,19 +446,21 @@ export const ProFreeMarketTable: React.FC = () => {
             {/* CSV Export */}
             <button
               onClick={handleExportCSV}
-              className="p-2 bg-[#14181E] border border-[rgba(244,241,232,0.1)] text-[#A5A8AE] hover:text-[#E2C76A] rounded-xl transition-colors"
+              aria-label="Fiyat tablosunu CSV olarak indir"
+              className="p-2 bg-[#14181E] border border-[rgba(244,241,232,0.1)] text-[#A5A8AE] hover:text-[#E2C76A] rounded-xl transition-colors cursor-pointer"
               title="CSV Olarak İndir"
             >
-              <Download className="w-3.5 h-3.5" />
+              <Download className="w-3.5 h-3.5" aria-hidden="true" />
             </button>
 
             {/* Copy JSON */}
             <button
               onClick={handleCopyJSON}
-              className="p-2 bg-[#14181E] border border-[rgba(244,241,232,0.1)] text-[#A5A8AE] hover:text-[#E2C76A] rounded-xl transition-colors"
+              aria-label="Fiyat verilerini JSON formatında kopyala"
+              className="p-2 bg-[#14181E] border border-[rgba(244,241,232,0.1)] text-[#A5A8AE] hover:text-[#E2C76A] rounded-xl transition-colors cursor-pointer"
               title="JSON Kopyala"
             >
-              {copiedData ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              {copiedData ? <Check className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" /> : <Copy className="w-3.5 h-3.5" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -482,9 +490,11 @@ export const ProFreeMarketTable: React.FC = () => {
           </div>
 
           <div className="relative w-full sm:w-72">
-            <Search className="w-4 h-4 text-[#A5A8AE] absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[#A5A8AE] absolute left-3 top-1/2 -translate-y-1/2" aria-hidden="true" />
             <input
               type="text"
+              id="pro-table-search-input"
+              aria-label="Enstrüman veya sembol ara"
               placeholder={lang === 'TR' ? 'Enstrüman veya sembol ara...' : 'Search symbol or asset...'}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -496,64 +506,74 @@ export const ProFreeMarketTable: React.FC = () => {
         {/* Pro Data Table Container */}
         <div className="bg-[#101318] border border-[rgba(244,241,232,0.08)] rounded-2xl overflow-hidden shadow-2xl">
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-sm">
+            <table className="w-full border-collapse text-sm" aria-label="Canlı Serbest Piyasa Altın Fiyatları Tablosu">
               <thead>
                 <tr className="border-b border-[rgba(244,241,232,0.08)] bg-[#0C0F14] text-[#A5A8AE] text-xs select-none">
-                  <th
-                    onClick={() => handleSort('symbol')}
-                    className="py-3.5 px-5 text-left font-medium hover:text-white cursor-pointer group"
-                  >
-                    <div className="flex items-center gap-1.5">
+                  <th scope="col" className="py-2.5 px-4 text-left font-medium">
+                    <button
+                      type="button"
+                      onClick={() => handleSort('symbol')}
+                      className="flex items-center gap-1.5 hover:text-white cursor-pointer group focus:outline-none focus:text-[#E2C76A]"
+                      aria-label={lang === 'TR' ? 'Sembole göre sırala' : 'Sort by symbol'}
+                    >
                       <span>{lang === 'TR' ? `Sembol (${sortedItems.length})` : `Symbol (${sortedItems.length})`}</span>
-                      <span className="text-zinc-600 group-hover:text-[#C8A646]">↕</span>
-                    </div>
+                      <span className="text-zinc-400 group-hover:text-[#C8A646]" aria-hidden="true">↕</span>
+                    </button>
                   </th>
 
-                  <th
-                    onClick={() => handleSort('buying')}
-                    className="py-3.5 px-5 text-right font-medium hover:text-white cursor-pointer group"
-                  >
-                    <div className="flex items-center justify-end gap-1.5">
+                  <th scope="col" className="py-2.5 px-4 text-right font-medium">
+                    <button
+                      type="button"
+                      onClick={() => handleSort('buying')}
+                      className="flex items-center justify-end gap-1.5 w-full hover:text-white cursor-pointer group focus:outline-none focus:text-[#E2C76A]"
+                      aria-label={lang === 'TR' ? 'Alış fiyatına göre sırala' : 'Sort by buying price'}
+                    >
                       <span>{lang === 'TR' ? 'Alış' : 'Buying'}</span>
-                      <span className="text-zinc-600 group-hover:text-[#C8A646]">↕</span>
-                    </div>
+                      <span className="text-zinc-400 group-hover:text-[#C8A646]" aria-hidden="true">↕</span>
+                    </button>
                   </th>
 
-                  <th
-                    onClick={() => handleSort('sales')}
-                    className="py-3.5 px-5 text-right font-medium hover:text-white cursor-pointer group"
-                  >
-                    <div className="flex items-center justify-end gap-1.5">
+                  <th scope="col" className="py-2.5 px-4 text-right font-medium">
+                    <button
+                      type="button"
+                      onClick={() => handleSort('sales')}
+                      className="flex items-center justify-end gap-1.5 w-full hover:text-white cursor-pointer group focus:outline-none focus:text-[#E2C76A]"
+                      aria-label={lang === 'TR' ? 'Satış fiyatına göre sırala' : 'Sort by sales price'}
+                    >
                       <span>{lang === 'TR' ? 'Satış' : 'Sales'}</span>
-                      <span className="text-zinc-600 group-hover:text-[#C8A646]">↕</span>
-                    </div>
+                      <span className="text-zinc-400 group-hover:text-[#C8A646]" aria-hidden="true">↕</span>
+                    </button>
                   </th>
 
-                  <th
-                    onClick={() => handleSort('diffPct')}
-                    className="py-3.5 px-5 text-right font-medium hover:text-white cursor-pointer group"
-                  >
-                    <div className="flex items-center justify-end gap-1.5">
+                  <th scope="col" className="py-2.5 px-4 text-right font-medium">
+                    <button
+                      type="button"
+                      onClick={() => handleSort('diffPct')}
+                      className="flex items-center justify-end gap-1.5 w-full hover:text-white cursor-pointer group focus:outline-none focus:text-[#E2C76A]"
+                      aria-label={lang === 'TR' ? 'Yüzdelik farka göre sırala' : 'Sort by difference percentage'}
+                    >
                       <span>{lang === 'TR' ? 'Fark (%)' : 'Difference (%)'}</span>
-                      <span className="text-zinc-600 group-hover:text-[#C8A646]">↕</span>
-                    </div>
+                      <span className="text-zinc-400 group-hover:text-[#C8A646]" aria-hidden="true">↕</span>
+                    </button>
                   </th>
 
-                  <th
-                    onClick={() => handleSort('diff')}
-                    className="py-3.5 px-5 text-right font-medium hover:text-white cursor-pointer group"
-                  >
-                    <div className="flex items-center justify-end gap-1.5">
+                  <th scope="col" className="py-2.5 px-4 text-right font-medium">
+                    <button
+                      type="button"
+                      onClick={() => handleSort('diff')}
+                      className="flex items-center justify-end gap-1.5 w-full hover:text-white cursor-pointer group focus:outline-none focus:text-[#E2C76A]"
+                      aria-label={lang === 'TR' ? 'Fark tutarına göre sırala' : 'Sort by difference amount'}
+                    >
                       <span>{lang === 'TR' ? 'Fark' : 'Difference'}</span>
-                      <span className="text-zinc-600 group-hover:text-[#C8A646]">↕</span>
-                    </div>
+                      <span className="text-zinc-400 group-hover:text-[#C8A646]" aria-hidden="true">↕</span>
+                    </button>
                   </th>
 
-                  <th className="py-3.5 px-5 text-center font-medium">
+                  <th scope="col" className="py-2.5 px-4 text-center font-medium">
                     <span>{lang === 'TR' ? 'Grafik' : 'Chart'}</span>
                   </th>
 
-                  <th className="py-3.5 px-4 text-center font-medium">
+                  <th scope="col" className="py-2.5 px-4 text-center font-medium">
                     <span>{lang === 'TR' ? 'İşlem' : 'Action'}</span>
                   </th>
                 </tr>

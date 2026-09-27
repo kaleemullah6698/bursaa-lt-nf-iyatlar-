@@ -126,8 +126,10 @@ export const PortfolioTracker: React.FC = () => {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
               <div>
-                <label className="block text-xs text-[#A5A8AE] mb-1.5">Altın Türü</label>
+                <label htmlFor="portfolio-gold-select" className="block text-xs text-[#A5A8AE] mb-1.5 cursor-pointer">Altın Türü</label>
                 <select
+                  id="portfolio-gold-select"
+                  aria-label="Portföye eklenecek altın türü"
                   value={selectedGoldId}
                   onChange={(e) => {
                     setSelectedGoldId(e.target.value);
@@ -143,8 +145,10 @@ export const PortfolioTracker: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs text-[#A5A8AE] mb-1.5">Miktar (Adet / Gram)</label>
+                <label htmlFor="portfolio-amount-input" className="block text-xs text-[#A5A8AE] mb-1.5 cursor-pointer">Miktar (Adet / Gram)</label>
                 <input
+                  id="portfolio-amount-input"
+                  aria-label="Varlık miktarı adet veya gram cinsinden"
                   type="number"
                   step="any"
                   min="0.1"
@@ -155,8 +159,10 @@ export const PortfolioTracker: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs text-[#A5A8AE] mb-1.5">Alış Fiyatı (TL / Adet)</label>
+                <label htmlFor="portfolio-buy-price-input" className="block text-xs text-[#A5A8AE] mb-1.5 cursor-pointer">Alış Fiyatı (TL / Adet)</label>
                 <input
+                  id="portfolio-buy-price-input"
+                  aria-label="Alış birim fiyatı Türk Lirası cinsinden"
                   type="number"
                   step="any"
                   min="1"
@@ -167,8 +173,10 @@ export const PortfolioTracker: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs text-[#A5A8AE] mb-1.5">Not / Kuyumcu Adı</label>
+                <label htmlFor="portfolio-notes-input" className="block text-xs text-[#A5A8AE] mb-1.5 cursor-pointer">Not / Kuyumcu Adı</label>
                 <input
+                  id="portfolio-notes-input"
+                  aria-label="Varlık hakkında not veya kuyumcu adı"
                   type="text"
                   placeholder="Örn: Bursa Kapalıçarşı Harem"
                   value={notes}
@@ -246,11 +254,13 @@ export const PortfolioTracker: React.FC = () => {
                       </td>
                       <td className="py-3.5 px-4 text-center">
                         <button
+                          type="button"
                           onClick={() => removePortfolioItem(item.id)}
-                          className="p-1.5 text-zinc-500 hover:text-rose-400 transition-colors rounded-lg hover:bg-rose-500/10"
+                          className="p-1.5 text-zinc-400 hover:text-rose-400 transition-colors rounded-lg hover:bg-rose-500/10 cursor-pointer"
                           title="Sil"
+                          aria-label={`${item.goldId} varlık kaydını portföyden sil`}
                         >
-                          <Trash2 className="w-3.5 h-3.5" />
+                          <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
                         </button>
                       </td>
                     </tr>

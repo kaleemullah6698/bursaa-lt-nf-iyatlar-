@@ -31,7 +31,12 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
+    <div 
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="alert-dialog-title"
+    >
       <div 
         className="relative w-full max-w-lg bg-[#0E1217] border border-[#C9A227]/30 rounded-sm shadow-2xl p-6 sm:p-7"
         onClick={(e) => e.stopPropagation()}
@@ -40,11 +45,11 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
         <div className="flex items-start justify-between pb-4 border-b border-[rgba(244,241,232,0.08)]">
           <div className="flex items-center gap-2.5">
             <div className="p-2 bg-[#C8A646]/10 rounded-xl text-[#C8A646]">
-              <Bell className="w-5 h-5" />
+              <Bell className="w-5 h-5" aria-hidden="true" />
             </div>
             <div>
-              <h3 className="font-serif text-lg font-semibold text-[#F4F1E8]">
-                Bursa Altın Fiyat Alarmı
+              <h3 id="alert-dialog-title" className="font-serif text-lg font-semibold text-[#F4F1E8]">
+                Altın Fiyat Alarmı
               </h3>
               <p className="text-xs text-[#A5A8AE]">
                 Hedeflediğiniz fiyata ulaşıldığında anında haberdar olun.
@@ -55,26 +60,29 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
           <button
             onClick={onClose}
             className="p-1.5 text-[#9FA3AA] hover:text-[#F5F1E8] rounded-sm cursor-pointer"
-            aria-label="Kapat"
+            aria-label="Alarm penceresini kapat"
+            type="button"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="mt-5 space-y-4">
           {successMsg && (
-            <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs rounded-sm flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 shrink-0" />
+            <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs rounded-sm flex items-center gap-2" role="alert">
+              <CheckCircle className="w-4 h-4 shrink-0" aria-hidden="true" />
               <span>{successMsg}</span>
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-semibold text-[#9FA3AA] uppercase tracking-wider mb-1.5">
+            <label htmlFor="alert-gold-select" className="block text-xs font-semibold text-[#9FA3AA] uppercase tracking-wider mb-1.5">
               Altın Türü
             </label>
             <select
+              id="alert-gold-select"
+              aria-label="Alarm kurulacak altın türü"
               value={selectedGoldId}
               onChange={(e) => {
                 setSelectedGoldId(e.target.value);
@@ -93,10 +101,12 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-[#9FA3AA] uppercase tracking-wider mb-1.5">
+              <label htmlFor="alert-condition-select" className="block text-xs font-semibold text-[#9FA3AA] uppercase tracking-wider mb-1.5">
                 Koşul
               </label>
               <select
+                id="alert-condition-select"
+                aria-label="Fiyat alarmı koşulu"
                 value={condition}
                 onChange={(e) => setCondition(e.target.value as 'above' | 'below')}
                 className="w-full bg-[#12161D] border border-white/10 focus:border-[#C9A227] text-xs text-[#F5F1E8] px-3 py-2.5 rounded-sm outline-none cursor-pointer"
@@ -107,10 +117,12 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#9FA3AA] uppercase tracking-wider mb-1.5">
+              <label htmlFor="alert-target-price-input" className="block text-xs font-semibold text-[#9FA3AA] uppercase tracking-wider mb-1.5">
                 Hedef Fiyat (TL)
               </label>
               <input
+                id="alert-target-price-input"
+                aria-label="Hedef fiyat Türk Lirası cinsinden"
                 type="number"
                 step="5"
                 value={targetPrice}
@@ -122,6 +134,7 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
 
           <button
             type="submit"
+            aria-label="Fiyat alarmını kaydet"
             className="w-full py-2.5 bg-[#C9A227] hover:bg-[#D8B133] text-black font-semibold text-xs rounded-sm transition-all cursor-pointer shadow-md shadow-[#C9A227]/10"
           >
             Alarmı Kaydet
@@ -152,10 +165,12 @@ export const PriceAlertModal: React.FC<PriceAlertModalProps> = ({ isOpen, onClos
                     </div>
                     <button
                       onClick={() => removeAlert(a.id)}
-                      className="text-[#666C77] hover:text-rose-400 p-1 cursor-pointer transition-colors"
+                      className="text-[#9FA3AA] hover:text-rose-400 p-1 cursor-pointer transition-colors"
                       title="Sil"
+                      aria-label="Alarmı Sil"
+                      type="button"
                     >
-                      <Trash2 className="w-3.5 h-3.5" />
+                      <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
                     </button>
                   </div>
                 );

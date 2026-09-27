@@ -52,16 +52,17 @@ export const Footer: React.FC = () => {
               <button
                 type="button"
                 onClick={handleBookmark}
+                aria-label={bookmarked ? "Sayfa yer işaretlerine kaydedildi" : "Sayfayı yer işaretlerine kaydet"}
                 className="px-5 py-3.5 bg-[#0C0F14] border border-[rgba(244,241,232,0.12)] text-[#F4F1E8] font-semibold text-sm rounded-xl hover:border-[#C8A646]/50 hover:text-[#E2C76A] transition-all flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer"
               >
                 {bookmarked ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-400" />
+                    <Check className="w-4 h-4 text-emerald-400" aria-hidden="true" />
                     <span className="text-emerald-400 font-semibold font-mono text-xs">Ctrl+D / ⌘+D İle Kaydedildi</span>
                   </>
                 ) : (
                   <>
-                    <Bookmark className="w-4 h-4 text-[#C8A646]" />
+                    <Bookmark className="w-4 h-4 text-[#C8A646]" aria-hidden="true" />
                     <span>Hızlı Erişim İçin Kaydet</span>
                   </>
                 )}

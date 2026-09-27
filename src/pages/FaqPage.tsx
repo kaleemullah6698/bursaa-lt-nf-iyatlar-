@@ -186,28 +186,36 @@ export const FaqPage: React.FC = () => {
           </div>
 
           <div className="relative w-full md:w-80">
-            <Search className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" aria-hidden="true" />
             <input
+              id="faq-search-input"
+              aria-label="Sıkça sorulan sorularda anında ara"
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Sorularda anında ara..."
-              className="w-full pl-9.5 pr-4 py-2 bg-[#101318] border border-[rgba(244,241,232,0.1)] rounded-xl text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-[#C8A646]/60 transition-colors"
+              className="w-full pl-9.5 pr-4 py-2 bg-[#101318] border border-[rgba(244,241,232,0.1)] rounded-xl text-xs text-white placeholder-zinc-400 focus:outline-none focus:border-[#C8A646]/60 transition-colors"
             />
           </div>
         </div>
 
         {/* Interactive FAQ Accordion List */}
-        <div className="space-y-3.5 mb-14">
+        <div className="space-y-3.5 mb-14" itemScope itemType="https://schema.org/FAQPage">
           {filteredFaqs.map(item => {
             const isOpen = openItems[item.id];
             return (
               <div
                 key={item.id}
+                itemScope
+                itemProp="mainEntity"
+                itemType="https://schema.org/Question"
                 className="bg-[#0E1117] border border-[rgba(244,241,232,0.08)] hover:border-[#C8A646]/30 rounded-2xl overflow-hidden transition-all shadow-sm"
               >
                 <button
                   type="button"
+                  id={`faq-btn-${item.id}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${item.id}`}
                   onClick={() => toggleItem(item.id)}
                   className="w-full p-5 sm:p-6 text-left flex items-start justify-between gap-4 cursor-pointer focus:outline-none"
                 >
@@ -215,21 +223,29 @@ export const FaqPage: React.FC = () => {
                     <span className="text-[10px] font-mono text-[#E2C76A] uppercase tracking-wider block">
                       {item.categoryLabel}
                     </span>
-                    <h3 className="text-base sm:text-lg font-serif font-bold text-white">
+                    <h3 itemProp="name" className="text-base sm:text-lg font-serif font-bold text-white">
                       {item.question}
                     </h3>
                   </div>
                   <div className={`p-1.5 rounded-lg bg-[#141820] text-zinc-400 transition-transform shrink-0 mt-1 ${isOpen ? 'rotate-180 text-[#E2C76A]' : ''}`}>
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className="w-4 h-4" aria-hidden="true" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 border-t border-[rgba(244,241,232,0.04)] text-xs sm:text-sm text-zinc-300 leading-relaxed space-y-3">
-                    <p className="mt-3">{item.answer}</p>
+                  <div
+                    id={`faq-answer-${item.id}`}
+                    role="region"
+                    aria-labelledby={`faq-btn-${item.id}`}
+                    itemScope
+                    itemProp="acceptedAnswer"
+                    itemType="https://schema.org/Answer"
+                    className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0 border-t border-[rgba(244,241,232,0.04)] text-xs sm:text-sm text-zinc-300 leading-relaxed space-y-3"
+                  >
+                    <p itemProp="text" className="mt-3">{item.answer}</p>
                     {item.highlight && (
                       <div className="p-3 bg-[#07090C] rounded-xl border border-[rgba(200,166,70,0.2)] flex items-center gap-2 font-mono text-xs text-[#E2C76A]">
-                        <ShieldCheck className="w-4 h-4 text-[#C8A646] shrink-0" />
+                        <ShieldCheck className="w-4 h-4 text-[#C8A646] shrink-0" aria-hidden="true" />
                         <span><strong>Özet Tavsiye:</strong> {item.highlight}</span>
                       </div>
                     )}

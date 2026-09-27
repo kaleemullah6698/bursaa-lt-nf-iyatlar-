@@ -190,7 +190,8 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => setMoreMenuOpen(!moreMenuOpen)}
                 type="button"
                 aria-expanded={moreMenuOpen}
-                className={`transition-all px-3 py-1.5 rounded-lg text-[13px] font-medium tracking-normal flex items-center gap-1.5 ${
+                aria-label="Diğer Modüller Menüsünü Aç / Kapat"
+                className={`transition-all px-3 py-1.5 rounded-lg text-[13px] font-medium tracking-normal flex items-center gap-1.5 cursor-pointer ${
                   isSecondaryActive || moreMenuOpen
                     ? 'text-[#F4F1E8] font-semibold bg-white/[0.04]'
                     : 'text-[#A5A8AE] hover:text-[#F4F1E8] hover:bg-white/[0.02]'
@@ -252,11 +253,12 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Quick Command Palette Trigger (Desktop) */}
             <button
               onClick={() => setCommandPaletteOpen(true)}
-              className="hidden md:inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 bg-[#101318] hover:bg-[#161B22] border border-[rgba(244,241,232,0.1)] hover:border-[#C8A646]/40 text-xs text-[#A5A8AE] hover:text-white rounded-lg transition-all font-mono shadow-sm"
+              className="hidden md:inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 bg-[#101318] hover:bg-[#161B22] border border-[rgba(244,241,232,0.1)] hover:border-[#C8A646]/40 text-xs text-[#A5A8AE] hover:text-white rounded-lg transition-all font-mono shadow-sm cursor-pointer"
               title="Arama Paleti (⌘K)"
+              aria-label="Arama Paletini Aç (Komut + K)"
               type="button"
             >
-              <Search className="w-3.5 h-3.5 text-[#C8A646]" />
+              <Search className="w-3.5 h-3.5 text-[#C8A646]" aria-hidden="true" />
               <span className="hidden xl:inline">Arama</span>
               <kbd className="px-1.5 py-0.5 bg-[#1C222B] text-zinc-400 rounded text-[10px] border border-zinc-700/60 font-sans">
                 ⌘K
@@ -266,12 +268,12 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Price Alert Bell */}
             <button
               onClick={onOpenAlertModal}
-              className="relative p-2 rounded-lg bg-[#101318] hover:bg-[#161B22] border border-[rgba(244,241,232,0.1)] text-[#A5A8AE] hover:text-[#E2C76A] hover:border-[#C8A646]/40 transition-colors"
+              className="relative p-2 rounded-lg bg-[#101318] hover:bg-[#161B22] border border-[rgba(244,241,232,0.1)] text-[#A5A8AE] hover:text-[#E2C76A] hover:border-[#C8A646]/40 transition-colors cursor-pointer"
               title="Fiyat Alarmı Kur"
               aria-label="Fiyat Alarmı Kur"
               type="button"
             >
-              <Bell className="w-4 h-4" />
+              <Bell className="w-4 h-4" aria-hidden="true" />
               {alerts.length > 0 && (
                 <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#C8A646] text-[#080A0D] font-bold text-[10px] rounded-full flex items-center justify-center animate-pulse">
                   {alerts.length}
@@ -285,7 +287,7 @@ export const Header: React.FC<HeaderProps> = ({
               role="status"
               aria-live="polite"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.7)] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.7)] animate-pulse" aria-hidden="true" />
               <span className="font-mono text-zinc-200 text-[11px] whitespace-nowrap">
                 {marketStatus.isOpen ? 'Seans Açık' : 'Nöbetçi'}
               </span>
@@ -294,12 +296,12 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg bg-[#101318] border border-[rgba(244,241,232,0.1)] text-[#F4F1E8] hover:text-[#C8A646] transition-colors"
-              aria-label="Menüyü aç"
+              className="lg:hidden p-2 rounded-lg bg-[#101318] border border-[rgba(244,241,232,0.1)] text-[#F4F1E8] hover:text-[#C8A646] transition-colors cursor-pointer"
+              aria-label={mobileMenuOpen ? 'Menüyü Kapat' : 'Menüyü Aç'}
               aria-expanded={mobileMenuOpen}
               type="button"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
             </button>
           </div>
         </div>

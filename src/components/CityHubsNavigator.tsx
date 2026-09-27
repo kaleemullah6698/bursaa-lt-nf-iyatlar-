@@ -40,6 +40,7 @@ export const CityHubsNavigator: React.FC = () => {
               <Link
                 key={city.id}
                 to={`/${city.slug}`}
+                aria-label={`${city.name} Altın Fiyatları ve Serbest Piyasa Sayfası`}
                 className={`group p-3.5 sm:p-4 rounded-xl border transition-all flex flex-col justify-between relative overflow-hidden ${
                   isSelected
                     ? 'bg-gradient-to-b from-[#C8A646]/15 to-[#0D1016] border-[#C8A646]/60 shadow-[0_4px_20px_rgba(200,166,70,0.15)] ring-1 ring-[#C8A646]/40'

@@ -172,12 +172,13 @@ export const FinancialTerminalChart: React.FC = () => {
 
           {/* Timeframe & View Mode Toggles */}
           <div className="flex flex-wrap items-center gap-2">
-            <div className="bg-[#101318] p-1 rounded-lg border border-[rgba(244,241,232,0.08)] flex items-center gap-1 text-xs">
+            <div className="bg-[#101318] p-1 rounded-lg border border-[rgba(244,241,232,0.08)] flex items-center gap-1 text-xs" role="group" aria-label="Zaman dilimi seçici">
               {(['1G', '1H', '1A', '3A', '1Y'] as const).map(tf => (
                 <button
                   key={tf}
                   onClick={() => setTimeframe(tf)}
-                  className={`px-2.5 py-1 rounded font-medium transition-colors ${
+                  aria-label={`${tf} zaman dilimini seç`}
+                  className={`px-2.5 py-1 rounded font-medium transition-colors cursor-pointer ${
                     timeframe === tf
                       ? 'bg-[#C8A646] text-[#080A0D] font-semibold'
                       : 'text-[#A5A8AE] hover:text-[#F4F1E8]'
@@ -188,29 +189,33 @@ export const FinancialTerminalChart: React.FC = () => {
               ))}
             </div>
 
-            <div className="bg-[#101318] p-1 rounded-lg border border-[rgba(244,241,232,0.08)] flex items-center gap-1 text-xs">
+            <div className="bg-[#101318] p-1 rounded-lg border border-[rgba(244,241,232,0.08)] flex items-center gap-1 text-xs" role="group" aria-label="Grafik türü seçici">
               <button
+                type="button"
                 onClick={() => setChartType('candle')}
-                className={`px-2.5 py-1 rounded font-medium flex items-center gap-1 transition-colors ${
+                aria-label="Mum grafik görünümünü seç"
+                className={`px-2.5 py-1 rounded font-medium flex items-center gap-1 transition-colors cursor-pointer ${
                   chartType === 'candle'
                     ? 'bg-[#1C222B] text-[#E2C76A] border border-[rgba(200,166,70,0.3)]'
                     : 'text-[#A5A8AE] hover:text-[#F4F1E8]'
                 }`}
                 title="Mum Grafik"
               >
-                <BarChart2 className="w-3.5 h-3.5" />
+                <BarChart2 className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>Mum</span>
               </button>
               <button
+                type="button"
                 onClick={() => setChartType('line')}
-                className={`px-2.5 py-1 rounded font-medium flex items-center gap-1 transition-colors ${
+                aria-label="Çizgi grafik görünümünü seç"
+                className={`px-2.5 py-1 rounded font-medium flex items-center gap-1 transition-colors cursor-pointer ${
                   chartType === 'line'
                     ? 'bg-[#1C222B] text-[#E2C76A] border border-[rgba(200,166,70,0.3)]'
                     : 'text-[#A5A8AE] hover:text-[#F4F1E8]'
                 }`}
                 title="Çizgi Grafik"
               >
-                <Activity className="w-3.5 h-3.5" />
+                <Activity className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>Çizgi</span>
               </button>
             </div>
@@ -227,12 +232,15 @@ export const FinancialTerminalChart: React.FC = () => {
             {/* "Verileri getir" Dropdown Button */}
             <div className="relative">
               <button
+                type="button"
+                aria-label="Verileri getir ve enstrüman seç"
+                aria-expanded={tickerDropdownOpen}
                 onClick={() => setTickerDropdownOpen(!tickerDropdownOpen)}
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#A5A8AE] hover:text-[#F4F1E8] transition-colors py-1 px-2.5 rounded-md hover:bg-[#14181E] border border-transparent hover:border-[rgba(244,241,232,0.08)]"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#A5A8AE] hover:text-[#F4F1E8] transition-colors py-1 px-2.5 rounded-md hover:bg-[#14181E] border border-transparent hover:border-[rgba(244,241,232,0.08)] cursor-pointer"
               >
-                <Database className={`w-4 h-4 text-[#C8A646] ${isRefreshing ? 'animate-spin' : ''}`} />
+                <Database className={`w-4 h-4 text-[#C8A646] ${isRefreshing ? 'animate-spin' : ''}`} aria-hidden="true" />
                 <span>Verileri getir</span>
-                <ChevronDown className="w-3.5 h-3.5 text-[#A5A8AE]" />
+                <ChevronDown className="w-3.5 h-3.5 text-[#A5A8AE]" aria-hidden="true" />
               </button>
 
               {/* Dropdown Menu */}
@@ -297,8 +305,10 @@ export const FinancialTerminalChart: React.FC = () => {
             {/* Action buttons */}
             <div className="flex items-center gap-2 text-xs">
               <button
+                type="button"
                 onClick={() => setShowIndicators(!showIndicators)}
-                className={`px-2.5 py-1 rounded transition-colors ${
+                aria-label="Hareketli Ortalama Göstergesini Aç / Kapat"
+                className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
                   showIndicators ? 'text-[#E2C76A] bg-[#C8A646]/10' : 'text-[#A5A8AE]'
                 }`}
                 title="Hareketli Ortalama (SMA)"
@@ -306,12 +316,14 @@ export const FinancialTerminalChart: React.FC = () => {
                 SMA 5
               </button>
               <button
+                type="button"
                 onClick={handleFetchData}
                 disabled={isRefreshing}
-                className="p-1.5 rounded hover:bg-[#14181E] text-[#A5A8AE] hover:text-[#C8A646] transition-colors"
+                aria-label="Terminal verilerini anlık yenile"
+                className="p-1.5 rounded hover:bg-[#14181E] text-[#A5A8AE] hover:text-[#C8A646] transition-colors cursor-pointer"
                 title="Yenile"
               >
-                <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-[#C8A646]' : ''}`} />
+                <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-[#C8A646]' : ''}`} aria-hidden="true" />
               </button>
             </div>
           </div>

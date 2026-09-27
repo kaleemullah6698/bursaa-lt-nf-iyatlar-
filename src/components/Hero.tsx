@@ -241,6 +241,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
             <div className="flex flex-wrap items-center gap-3.5 mb-7">
               <button
                 type="button"
+                aria-label="Canlı Fiyat Tablosuna Git"
                 onClick={() => {
                   const el = document.getElementById('tablo');
                   if (el) {
@@ -250,21 +251,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
                 className="px-6 py-3.5 bg-gradient-to-r from-[#C8A646] to-[#B89438] hover:from-[#E2C76A] hover:to-[#C8A646] text-[#080A0D] text-sm font-bold rounded-xl transition-all shadow-[0_4px_24px_rgba(200,166,70,0.28)] hover:shadow-[0_6px_30px_rgba(200,166,70,0.4)] flex items-center gap-2 group active:scale-[0.98] cursor-pointer"
               >
                 <span>Canlı Fiyat Tablosu</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
               </button>
 
               <Link
                 to="/grafik"
+                aria-label="Teknik Grafik Terminaline Git"
                 className="px-5 py-3.5 bg-[#101318] border border-[rgba(244,241,232,0.12)] text-[#F4F1E8] text-sm font-semibold rounded-xl hover:border-[#C8A646]/50 hover:bg-[#14181E] hover:text-[#E2C76A] transition-all flex items-center gap-2 active:scale-[0.98]"
               >
-                <BarChart2 className="w-4 h-4 text-[#C8A646]" />
+                <BarChart2 className="w-4 h-4 text-[#C8A646]" aria-hidden="true" />
                 <span>Teknik Grafik Terminali</span>
               </Link>
             </div>
 
             {/* Clean Institutional Proof Marker */}
             <div className="flex items-center gap-2.5 text-xs text-zinc-400 font-mono">
-              <ShieldCheck className="w-4 h-4 text-[#C8A646] shrink-0" />
+              <ShieldCheck className="w-4 h-4 text-[#C8A646] shrink-0" aria-hidden="true" />
               <span>{activeCity.name} Sarraflar Odası & Borsa İstanbul verileriyle anlık eşleşir</span>
             </div>
           </div>
@@ -299,6 +301,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
                       setActiveTab(tab.id as any);
                       setHoverIndex(null);
                     }}
+                    aria-label={`${tab.label} grafiği ve fiyatlarını göster`}
                     className={`py-2 text-[11px] font-semibold rounded-lg transition-all text-center truncate px-1 cursor-pointer ${
                       activeTab === tab.id
                         ? 'bg-[#C8A646] text-[#080A0D] shadow-sm font-bold'
@@ -385,7 +388,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
                   </div>
 
                   {/* Timeframe Selector (1G, 1H, 1A, 1Y) */}
-                  <div className="flex items-center gap-1 bg-[#10141C] p-0.5 rounded-lg border border-zinc-800">
+                  <div className="flex items-center gap-1 bg-[#10141C] p-0.5 rounded-lg border border-zinc-800" role="group" aria-label="Grafik Zaman Dilimi Seçici">
                     {(['1G', '1H', '1A', '1Y'] as Timeframe[]).map((tf) => (
                       <button
                         key={tf}
@@ -393,6 +396,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
                           setTimeframe(tf);
                           setHoverIndex(null);
                         }}
+                        aria-label={`${tf} zaman dilimi trend grafiğini yükle`}
                         className={`px-2 py-0.5 text-[10px] font-mono font-semibold rounded transition-colors cursor-pointer ${
                           timeframe === tf
                             ? 'bg-[#C8A646] text-[#080A0D]'
@@ -516,19 +520,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAlertModal }) => {
               <div className="grid grid-cols-2 gap-2.5">
                 <button
                   type="button"
+                  aria-label={`${activeAsset.name} güncel satış kuruyla hesaplama yap`}
                   onClick={() => openCalculatorWithGold(activeAsset.id)}
                   className="py-2.5 px-3 bg-[#151922] hover:bg-[#1C2230] text-zinc-200 hover:text-[#E2C76A] border border-[rgba(244,241,232,0.1)] rounded-xl text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <Calculator className="w-3.5 h-3.5 text-[#C8A646]" />
+                  <Calculator className="w-3.5 h-3.5 text-[#C8A646]" aria-hidden="true" />
                   <span>Bu Kurla Hesapla</span>
                 </button>
 
                 <button
                   type="button"
+                  aria-label={`${activeAsset.name} için detaylı teknik grafiği aç`}
                   onClick={() => setSelectedItem(activeAsset)}
                   className="py-2.5 px-3 bg-[#C8A646]/15 hover:bg-[#C8A646]/25 text-[#E2C76A] border border-[#C8A646]/35 rounded-xl text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
-                  <BarChart2 className="w-3.5 h-3.5" />
+                  <BarChart2 className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>Detaylı İncele</span>
                 </button>
               </div>

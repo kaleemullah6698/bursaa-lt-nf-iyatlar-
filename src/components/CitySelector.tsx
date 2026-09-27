@@ -53,6 +53,7 @@ export const CitySelector: React.FC<CitySelectorProps> = ({ variant = 'header', 
                 key={city.id}
                 href={`/${city.slug}`}
                 onClick={(e) => handleSelect(city, e)}
+                aria-label={`${city.name} Altın Fiyatları ve Serbest Piyasa Sayfası`}
                 className={`p-2 rounded-xl text-left transition-all border flex items-center justify-between cursor-pointer ${
                   isSelected
                     ? 'bg-[#C8A646]/20 border-[#C8A646] text-white shadow-[0_0_12px_rgba(200,166,70,0.2)]'
@@ -87,6 +88,7 @@ export const CitySelector: React.FC<CitySelectorProps> = ({ variant = 'header', 
         type="button"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
+        aria-label={`Aktif Borsa: ${activeCity.name}. Şehir ve borsa seçicisini aç`}
         className="group flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#101318] hover:bg-[#161B22] border border-[rgba(244,241,232,0.1)] hover:border-[#C8A646]/50 text-left transition-all shadow-sm focus:outline-none focus:ring-1 focus:ring-[#C8A646] cursor-pointer"
         title="Şehir ve Borsa Değiştir"
       >

@@ -44,14 +44,17 @@ export const CityFaqSection: React.FC = () => {
               >
                 <button
                   type="button"
+                  id={`faq-btn-${idx}`}
                   onClick={() => toggle(idx)}
                   className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#C8A646]"
                   aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${idx}`}
                 >
                   <span itemProp="name" className="text-sm sm:text-base font-serif font-bold text-white">
                     {faq.question}
                   </span>
                   <ChevronDown
+                    aria-hidden="true"
                     className={`w-4 h-4 text-[#C8A646] shrink-0 transition-transform duration-200 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
@@ -60,6 +63,9 @@ export const CityFaqSection: React.FC = () => {
 
                 {isOpen && (
                   <div
+                    id={`faq-answer-${idx}`}
+                    role="region"
+                    aria-labelledby={`faq-btn-${idx}`}
                     itemScope
                     itemProp="acceptedAnswer"
                     itemType="https://schema.org/Answer"

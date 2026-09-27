@@ -218,10 +218,12 @@ export const CalculatorPage: React.FC = () => {
               {/* Inputs */}
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-mono text-zinc-300 uppercase tracking-wider mb-2">
+                  <label htmlFor="hurda-grams-input" className="block text-xs font-mono text-zinc-300 uppercase tracking-wider mb-2 cursor-pointer">
                     Altın Ağırlığı (Gram)
                   </label>
                   <input
+                    id="hurda-grams-input"
+                    aria-label="Altın ağırlığı gram cinsinden"
                     type="number"
                     min="1"
                     max="1000"
@@ -328,11 +330,13 @@ export const CalculatorPage: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center mb-6">
               <div className="md:col-span-5 space-y-4">
-                <label className="block text-xs font-mono text-zinc-300 uppercase tracking-wider">
+                <label htmlFor="arbitrage-grams-slider" className="block text-xs font-mono text-zinc-300 uppercase tracking-wider cursor-pointer">
                   Bozdurulacak Altın Miktarı (Gram)
                 </label>
                 <div className="flex items-center gap-3">
                   <input
+                    id="arbitrage-grams-slider"
+                    aria-label="Bozdurulacak altın miktarı gram sürgüsü"
                     type="range"
                     min="5"
                     max="500"
