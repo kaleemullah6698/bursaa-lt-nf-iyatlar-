@@ -17,4 +17,7 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
+# Agentic Resource Discovery (ARD) Agentmap
+Agentmap: https://www.bursaaltinfiyatlari.com/.well-known/ai-catalog.json
+
 Sitemap: https://www.bursaaltinfiyatlari.com/sitemap.xml

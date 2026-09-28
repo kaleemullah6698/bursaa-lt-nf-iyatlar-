@@ -324,7 +324,30 @@ export const ProFreeMarketTable: React.FC = () => {
     count: sortedItems.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 54,
-    overscan: 6,
+    overscan: 2,
+    initialRect: { width: 380, height: 480 },
+    observeElementRect: (instance, cb) => {
+      const element = instance.scrollElement;
+      if (!element) return;
+      let frameId: number | null = null;
+      const ro = new ResizeObserver((entries) => {
+        if (frameId) cancelAnimationFrame(frameId);
+        frameId = requestAnimationFrame(() => {
+          const entry = entries[0];
+          if (entry && entry.contentRect) {
+            cb({
+              width: entry.contentRect.width,
+              height: entry.contentRect.height,
+            });
+          }
+        });
+      });
+      ro.observe(element);
+      return () => {
+        if (frameId) cancelAnimationFrame(frameId);
+        ro.disconnect();
+      };
+    },
   });
 
   const virtualRows = rowVirtualizer.getVirtualItems();

@@ -4,9 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     
-    <!-- Preload ONLY 2 Critical Above-The-Fold Fonts (Inter Latin-Ext for Turkish hero, Fraunces for H1 display) -->
+    <!-- Global Preconnect & DNS Prefetch Hints -->
+    <link rel="preconnect" href="/" crossorigin />
+    <link rel="dns-prefetch" href="/" />
+    
+    <!-- Critical Font Preloads (Inter Latin & Latin-Ext for Body, Fraunces Latin & Latin-Ext for Headings) -->
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/fraunces-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Agentic Resource Discovery (ARD) Pointer for AI Agents & Lighthouse 13.5+ -->
+    <link rel="ai-catalog" type="application/json" href="/.well-known/ai-catalog.json" />
 
     <!-- Critical Performance: Inline CSS for Instant Paint (FCP / LCP / Zero FOUC / Metric Overrides) -->
     <style>
