@@ -32,19 +32,35 @@ export const CITIES: CityConfig[] = [
     faqs: [
       {
         question: "Bursa Kapalı Çarşı altın fiyatları neden bankalardan daha avantajlıdır?",
-        answer: "Bursa Kapalı Çarşı'da fiziki altın elden teslim alınır ve serbest piyasa arz-talep dengesine göre belirlenir. Bankalar ise kaydi altın işlemlerinde %2.5 ila %5 arasında geniş alım-satım makası ve komisyon uygular. Bu nedenle Kapalı Çarşı sarraflarından altın alıp satmak yatırımcı için ciddi tasarruf sağlar."
+        answer: "Bursa Kapalı Çarşı'da fiziki altın elden teslim alınır ve serbest piyasa arz-talep dengesine göre belirlenir. Bankalar ise kaydi altın alım-satımında %2.5 ila %5 arasında geniş makas ve kambiyo giderleri uygular. 100 gram altın alımında Kapalı Çarşı sarraflarından işlem yapmak ortalama ₺14.000 - ₺18.500 arasında doğrudan tasarruf sağlar."
       },
       {
         question: "Bursa'da gram ve çeyrek altın fiyatları gün içinde ne sıklıkla güncellenir?",
-        answer: "Bursa Sarraflar Masası kotasyonları Borsa İstanbul ve küresel spot ons paritesine bağlı olarak saniyelik olarak güncellenir. Sayfamızdaki canlı motor her 2.5 saniyede bir Bursa Kapalı Çarşı referans fiyatlarını yeniler."
+        answer: "Bursa Sarraflar Masası kotasyonları Borsa İstanbul Kıymetli Madenler Piyasası ve küresel ons altın paritesine bağlı olarak saniyelik güncellenir. Platformumuzdaki canlı WSS/REST motoru her 2.5 saniyede bir Osmangazi Kapalı Çarşı serbest piyasa referans kurlarını yeniler."
       },
       {
         question: "Bursa Kapalı Çarşı kuyumcuları saat kaçta açılıyor ve kapanıyor?",
-        answer: "Bursa Kapalı Çarşı ve Bedesten sarrafları hafta içi (Pazartesi-Cuma) 09:00 - 18:30 saatleri arasında tam seans, Cumartesi günleri ise 09:00 - 15:30 saatleri arasında yarım seans çalışır. Pazar günleri nöbetçi kuyumcular hizmet verir."
+        answer: "Bursa Tarihi Kapalı Çarşı ve Bedesten sarrafları hafta içi (Pazartesi-Cuma) 09:00 - 18:30 saatleri arasında tam seans, Cumartesi günleri ise 09:00 - 15:30 saatleri arasında yarım seans açıktır. Pazar günleri ise BKO onaylı nöbetçi kuyumcular hizmet verir."
       },
       {
         question: "Bursa'da yatırım için en çok hangi altın türü tercih edilir?",
-        answer: "Bursa'da işçilik kaybı olmayan 24 ayar blister paketli has gram külçe (IAR / Nadir Gold) ile geleneksel 22 ayar Bursa burma bilezik ve Darphane üretimi Cumhuriyet / Ata lira en çok rağbet gören türlerdir."
+        answer: "Bursa'da işçilik kaybı olmayan 24 ayar sertifikalı has gram külçe (IAR / Nadir Gold) ile asgari işçilikli 22 ayar geleneksel Bursa burma bilezik ve T.C. Darphane üretimi Cumhuriyet / Ata lira en yüksek likiditeye sahip yatırım araçlarıdır."
+      },
+      {
+        question: "Bursa Tarihi Kapalı Çarşı'ya toplu taşıma, metro ve araçla nasıl gidilir?",
+        answer: "Bursaray 1 ve 2 No'lu hatları kullanarak Şehreküstü İstasyonu'nda inip 3 dakikada Tahtakale / Kapalı Çarşı aksına ulaşabilirsiniz. Otobüs Terminali'nden 38 No'lu hat, Mudanya'dan F/1 hattı direkt Heykel bölgesine gelir. Araçla gelenler için Hanlar Bölgesi araç trafiğine kapalı olduğundan Cemal Nadir Katlı Otoparkı veya Zafer Plaza otoparkı önerilir."
+      },
+      {
+        question: "22 ayar Bursa Burması bozdururken işçilik kaybı ne kadardır?",
+        answer: "Bursa Burması el işçiliği minimum tutulan bir yatırımlık ziynet modelidir. Standart burma bileziklerde gram başına düşen işçilik kaybı yalnızca ₺25 - ₺40 bandındadır; bu da bozdururken değerini neredeyse 22 ayar has karşılığı üzerinden korumasını sağlar."
+      },
+      {
+        question: "Bursa'da pazar günleri açık nöbetçi kuyumcu var mıdır?",
+        answer: "Evet, Bursa Kuyumcular Odası (BKO) her hafta sonu pazar günü Osmangazi, Nilüfer (FSM / Özlüce) ve Yıldırım ilçelerinde belirli sarrafları nöbetçi olarak belirler. Acil altın alım-satımı veya hediye takı ihtiyaçları için nöbetçi sarraflar hizmet vermektedir."
+      },
+      {
+        question: "Bursa Kuyumcular Odası (BKO) ayarevi vatandaşa açık mıdır?",
+        answer: "Evet, Osmangazi Bedesten mevkiinde bulunan Bursa Kuyumcular Odası Ayarevi, şüpheli veya faturasız altınların milyem saflığını ve gramaj hassasiyetini resmi kalibreli X-Ray spektrometre cihazlarıyla test edip doğrulamaktadır."
       }
     ],
     editorialTitle: "Bursa'da Altın Kültürü ve Tarihi Kapalı Çarşı Mirası",
@@ -92,6 +108,109 @@ export const CITIES: CityConfig[] = [
         highlight: 'Düğün takı setleri, 22A mega bilezik ve toplu çeyiz iskontosu',
         metroInfo: 'İnegöl Merkez Çarşı Caddesi'
       }
+    ],
+    routes: [
+      {
+        origin: 'Nilüfer (FSM Bulvarı / Özlüce / Ataevler)',
+        destination: 'Tarihi Kapalı Çarşı (Osmangazi)',
+        distanceKm: 14.2,
+        durationMin: 22,
+        transitOptions: 'Bursaray 2 No\'lu Hat / Taksi',
+        notes: 'Şehreküstü istasyonunda inip Tahtakale / Uzun Çarşı kapısından direkt giriş yapılır. İzmir Yolu üzerinden taksi ortalama 20-25 dakika sürer.'
+      },
+      {
+        origin: 'Bursa Şehirlerarası Otobüs Terminali',
+        destination: 'Kapalı Çarşı & Kuyumcular Caddesi',
+        distanceKm: 10.8,
+        durationMin: 18,
+        transitOptions: 'BURULAŞ 38 / 38-D Otobüs / Terminal Taksi',
+        notes: 'İstanbul Yolu aksından Heykel / Kent Meydanı güzergahı. Şehirlerarası gelen yatırımcıların en çok kullandığı doğrudan bağlantı.'
+      },
+      {
+        origin: 'Mudanya & Güzelyalı BUDO / İDO İskelesi',
+        destination: 'Tarihi Kapalı Çarşı Sarraflar Masası',
+        distanceKm: 27.5,
+        durationMin: 35,
+        transitOptions: 'BURULAŞ F/1 / F/3 veya Taksi + Bursaray',
+        notes: 'İstanbul deniz otobüsleriyle fiziki teslimatlı külçe altın almaya gelen yatırımcılar için ana arter. Emek Bursaray aktarması ile 35 dakikada ulaşılır.'
+      },
+      {
+        origin: 'Bursa Yenişehir Havalimanı (YEI)',
+        destination: 'Tarihi Kapalı Çarşı & Bedesten',
+        distanceKm: 52.0,
+        durationMin: 45,
+        transitOptions: 'Havalimanı Taksi / 80 No\'lu Otobüs',
+        notes: 'Doğu ve Karadeniz seferleriyle gelen sarrafiye esnafı için D-200 karayolu üzerinden direkt şehir merkezine bağlanır.'
+      },
+      {
+        origin: 'Yıldırım (Setbaşı / Namazgah / Yeşilyayla)',
+        destination: 'Kapalı Çarşı & Sarraflar Caddesi',
+        distanceKm: 1.4,
+        durationMin: 6,
+        transitOptions: 'T1 İpekböceği Tramvayı / Yaya',
+        notes: 'Tarihi İpekböceği tramvayı ile Çarşı durağında inilir veya Setbaşı Köprüsü üzerinden 8 dakikalık nostaljik yürüyüşle varılır.'
+      }
+    ],
+    practicalTips: [
+      {
+        title: '22 Ayar Bursa Burmasında Düşük İşçilik Kuralı',
+        summary: 'Bursa sarraflarında standart burma bilezik alırken gram başı işçilik maliyetinin ₺25–₺40 aralığını aşmamasına özen gösterin. Yatırım amacıyla alınan bileziklerde fantezi taş ve kilit yerine düz burma en yüksek geri dönüşü sağlar.',
+        category: 'iscilik'
+      },
+      {
+        title: 'Bursa Kuyumcular Odası (BKO) Ayarevi Denetimi',
+        summary: 'Kapalı Çarşı ve Bedesten\'deki tüm sarraflar BKO resmi damgası ve mühürlü terazi taşır. Yüksek meblağlı altın alımlarında Bedesten mevkiindeki BKO Ayarevi\'nde ücretsiz spektrometre saflık doğrulaması talep edebilirsiniz.',
+        category: 'guvenlik'
+      },
+      {
+        title: 'Eski Tarih - Yeni Tarih Çeyrek Altın Gerçeği',
+        summary: 'Bursa piyasasında eski tarihli ve yeni tarihli çeyrek altınların 1.605 gram has altın içeriği tamamen aynıdır. Sarraflarda alım-satım farkı en fazla ₺15–₺25 olmalıdır; daha yüksek kesinti teklif eden yerlerden kaçının.',
+        category: 'tasarruf'
+      },
+      {
+        title: 'Araç Parkı ve Hanlar Bölgesi Yaya Erişimi',
+        summary: 'Tarihi Hanlar Bölgesi ve Kapalı Çarşı bütünüyle araç trafiğine kapalıdır. Özel aracınızla gelirken Cemal Nadir Katlı Otoparkı veya Zafer Plaza yeraltı otoparkını tercih ederek 2 dakikalık yaya mesafesiyle sarraflara ulaşabilirsiniz.',
+        category: 'ulasim'
+      },
+      {
+        title: 'Hafta Sonu ve Pazar Günü Nöbetçi Sarraflar',
+        summary: 'Kapalı Çarşı pazar günleri dinlenmeye çekilir. Ancak düğün veya acil nakit ihtiyaçları için Bursa Kuyumcular Odası web sitesinde her hafta yayınlanan Nilüfer FSM ve Osmangazi nöbetçi kuyumcuları hizmet vermektedir.',
+        category: 'guvenlik'
+      }
+    ],
+    spreadExamples: [
+      {
+        goldType: '50 Gram 24 Ayar Has Külçe Altın',
+        amount: 50,
+        unit: 'gram',
+        bankTotalTL: 172500,
+        bursaBazaarTotalTL: 164800,
+        savingsTL: 7700
+      },
+      {
+        goldType: '100 Gram 24 Ayar Has Külçe Altın',
+        amount: 100,
+        unit: 'gram',
+        bankTotalTL: 345000,
+        bursaBazaarTotalTL: 329600,
+        savingsTL: 15400
+      },
+      {
+        goldType: '250 Gram Toptan Külçe Altın',
+        amount: 250,
+        unit: 'gram',
+        bankTotalTL: 862500,
+        bursaBazaarTotalTL: 824000,
+        savingsTL: 38500
+      },
+      {
+        goldType: '10 Adet T.C. Darphane Çeyrek Altın',
+        amount: 10,
+        unit: 'adet',
+        bankTotalTL: 57400,
+        bursaBazaarTotalTL: 54900,
+        savingsTL: 2500
+      }
     ]
   },
   {
@@ -138,6 +257,22 @@ export const CITIES: CityConfig[] = [
       {
         question: "Ankara Kuyumcular Odası tavsiye kurları ile serbest çarşı fiyatı aynı mıdır?",
         answer: "Kuyumcular odası tavsiye taban fiyatlarını yayınlar; ancak Anafartalar fiziki serbest piyasasında yüksek montanlı işlemlerde sarraflar anlık borsa ekranına göre daha rekabetçi toptan kotasyon sunar."
+      },
+      {
+        question: "Ulus Anafartalar Kuyumcular Çarşısı'na metro ve toplu taşımayla nasıl gidilir?",
+        answer: "M1-M2-M3 Kızılay-Batıkent metrosunu kullanarak Ulus İstasyonu'nda inebilir, Atatürk Heykeli yönünden Anafartalar Caddesi'ne 4 dakikalık yürüyüşle ulaşabilirsiniz. AŞTİ'den Ankaray ile Maltepe durağı veya direkt otobüs hatları mevcuttur."
+      },
+      {
+        question: "Ankara'da Ata Lira (Cumhuriyet altını) alırken nelere dikkat edilmeli?",
+        answer: "Ata Lira alırken kulpsuz ve orijinal T.C. Darphane damgalı olmasına, ağırlığının 7.216 gram (has altın 6.615g) gelmesine dikkat edilmelidir. Güvenilir sarraflardan faturalı veya sertifikalı temin edilmesi tavsiye edilir."
+      },
+      {
+        question: "Ankara'da pazar günleri açık nöbetçi kuyumcu var mıdır?",
+        answer: "Evet, Ankara Kuyumcular ve Saatçiler Odası (AKSO) her hafta Çankaya (Kızılay/Tunalı), Keçiören ve Yenimahalle ilçelerinde nöbetçi kuyumcu listesini yayınlamaktadır."
+      },
+      {
+        question: "Ulus ve Kızılay sarrafları arasında fiyat makası farkı var mıdır?",
+        answer: "Kızılay cadde sarrafları perakende vitrin maliyetleri sebebiyle çeyrek ve gramda bir miktar perakende marjı uygulayabilir; Ulus Anafartalar toptancı sarraflarında ise gram başına ₺8 - ₺15 daha avantajlı serbest piyasa alış-satış makası bulunur."
       }
     ],
     editorialTitle: "Başkent Ankara'da Altın Ticareti ve Anafartalar Dinamikleri",
@@ -185,6 +320,109 @@ export const CITIES: CityConfig[] = [
         highlight: 'Hızlı çeyrek/yarım temini ve yatırım külçeleri',
         metroInfo: 'Demetevler Metro İstasyonu'
       }
+    ],
+    routes: [
+      {
+        origin: 'Kızılay & Çankaya (Atatürk Bulvarı / Tunalı)',
+        destination: 'Ulus Anafartalar Kuyumcular Çarşısı',
+        distanceKm: 4.8,
+        durationMin: 12,
+        transitOptions: 'M1-M2-M3 Metrosu / Kızılay-Ulus Taksi',
+        notes: 'Ulus metro istasyonundan çıkıp Heykel meydanını geçerek Anafartalar Caddesi sarraflar aksına 4 dakikada varılır.'
+      },
+      {
+        origin: 'Çayyolu & Ümitköy (Eskişehir Yolu Aksı)',
+        destination: 'Ulus Anafartalar Sarraflar Masası',
+        distanceKm: 19.5,
+        durationMin: 25,
+        transitOptions: 'M2 Çayyolu Metrosu / Doğrudan Taksi',
+        notes: 'Eskişehir Yolu üzerinden Dumlupınar Bulvarı taksiyle 20-25 dk sürer. Metro ile Kızılay aktarmasız direkt Ulus\'a ulaşır.'
+      },
+      {
+        origin: 'Ankara Şehirlerarası Otobüs Terminali (AŞTİ)',
+        destination: 'Ulus Sarraflar Çarşısı & Samanpazarı',
+        distanceKm: 7.8,
+        durationMin: 14,
+        transitOptions: 'Ankaray + Metro Aktarması veya Terminal Taksi',
+        notes: 'Mevlana Bulvarı ve Konya Yolu aksından Ulus meydanına kesintisiz erişim. Şehirlerarası gelen altın tüccarlarının ana güzergahı.'
+      },
+      {
+        origin: 'Ankara Esenboğa Havalimanı (ESB)',
+        destination: 'Ulus Anafartalar Kuyumcular Caddesi',
+        distanceKm: 26.5,
+        durationMin: 28,
+        transitOptions: 'HAVAŞ / BelkoAir Otobüs veya Havalimanı Taksi',
+        notes: 'Özal Bulvarı (Protokol Yolu) üzerinden Ulus Atatürk Meydanı durağına direkt ulaşım.'
+      },
+      {
+        origin: 'Keçiören & Etlik Şehir Hastanesi',
+        destination: 'Anafartalar Kuyumcular Çarşısı',
+        distanceKm: 8.2,
+        durationMin: 15,
+        transitOptions: 'M4 Keçiören Metrosu / Fatih Caddesi Taksi',
+        notes: 'AKM istasyonu aktarmasıyla veya Bentderesi güzergahı üzerinden Ulus toptancı sarraflarına hızlı geçiş.'
+      }
+    ],
+    practicalTips: [
+      {
+        title: 'Başkentte Ata Lira (Cumhuriyet Altını) Ağırlığı',
+        summary: 'Ankara yatırımcısının birinci tercihi T.C. Darphane basımı Ata Lira\'dır. Kulpsuz ve orijinal darphane mühürlü sikkeler tercih edilmelidir.',
+        category: 'tasarruf'
+      },
+      {
+        title: 'Ulus Anafartalar vs Kızılay Makas Farkı',
+        summary: 'Kızılay cadde sarrafları perakende vitrini iken Ulus Anafartalar toptancı sarraflardan oluşur. Yüksek montanlı külçe alımlarında Anafartalar daha dar makas sunar.',
+        category: 'tasarruf'
+      },
+      {
+        title: 'Ankara Kuyumcular Odası (AKSO) Güvencesi',
+        summary: 'Anafartalar Çarşısı esnafı AKSO onaylı resmi mühürlü terazi kullanır. Şüpheli durumlarda oda merkezinde spektrometre testi talep edebilirsiniz.',
+        category: 'guvenlik'
+      },
+      {
+        title: 'Ulus Tarihi Bölge Araç Parkı Çözümü',
+        summary: 'Anafartalar ve Çıkrıkçılar Yokuşu yoğun araç trafiğindedir. Aracınızı Ulus 100. Yıl veya Gençlik Parkı otoparkına bırakıp yürümek en hızlı yöntemdir.',
+        category: 'ulasim'
+      },
+      {
+        title: 'Hafta Sonu Cumartesi Seansı & Nöbetçi Çarşılar',
+        summary: 'Anafartalar Çarşısı cumartesi 16:00\'da kapanır. Hafta sonu acil ihtiyaçlar için Kızılay ve Tunalı Hilmi sarrafları 19:30\'a kadar hizmet verir.',
+        category: 'guvenlik'
+      }
+    ],
+    spreadExamples: [
+      {
+        goldType: '50 Gram 24 Ayar Has Külçe Altın',
+        amount: 50,
+        unit: 'gram',
+        bankTotalTL: 172500,
+        bursaBazaarTotalTL: 165200,
+        savingsTL: 7300
+      },
+      {
+        goldType: '100 Gram 24 Ayar Has Külçe Altın',
+        amount: 100,
+        unit: 'gram',
+        bankTotalTL: 345000,
+        bursaBazaarTotalTL: 330100,
+        savingsTL: 14900
+      },
+      {
+        goldType: '250 Gram Toptan Külçe Altın',
+        amount: 250,
+        unit: 'gram',
+        bankTotalTL: 862500,
+        bursaBazaarTotalTL: 825000,
+        savingsTL: 37500
+      },
+      {
+        goldType: '10 Adet T.C. Darphane Ata Lira',
+        amount: 10,
+        unit: 'adet',
+        bankTotalTL: 235000,
+        bursaBazaarTotalTL: 226500,
+        savingsTL: 8500
+      }
     ]
   },
   {
@@ -231,6 +469,22 @@ export const CITIES: CityConfig[] = [
       {
         question: "Kapalıçarşı'da kiloluk külçe altın nasıl alınır?",
         answer: "Kapalıçarşı sarrafları ve yetkili kıymetli maden aracı kuruluşları üzerinden 995.0 veya 999.9 saflıkta LBMA / Borsa İstanbul kayıtlı külçeler banka transferi veya nakit takas ile temin edilir."
+      },
+      {
+        question: "Kapalıçarşı ve Tahtakale'ye toplu taşıma veya metro ile nasıl gidilir?",
+        answer: "T1 Kabataş-Bağcılar tramvayı ile Beyazıt-Kapalıçarşı durağında inerek Nuruosmaniye veya Çarşı kapısından direkt girebilirsiniz. M2 Yenikapı-Hacıosman metrosu Vezneciler durağı da 4 dakika yürüme mesafesindedir."
+      },
+      {
+        question: "Tahtakale Ayaklı Borsası'nda işlem yaparken güvenlik nasıl sağlanır?",
+        answer: "Tarihi Yarımada'da fiziki altın alımı yaparken faturalı, Borsa İstanbul damgalı külçeleri tercih edin. Kalpakçılar Caddesi ve Nuruosmaniye aksında özel güvenlik, polis noktaları ve banka vezneleri mevcuttur."
+      },
+      {
+        question: "İstanbul'da pazar günleri açık kuyumcu nerede bulunur?",
+        answer: "Kapalıçarşı pazar günleri kapalıdır; ancak Kadıköy Tarihi Çarşı, Bakırköy İstasyon Caddesi, Nişantaşı ve AVM içi kurumsal sarraf mağazaları pazar günleri de hizmet vermektedir."
+      },
+      {
+        question: "Has altın külçesi alırken hangi rafineri sertifikaları geçerlidir?",
+        answer: "Türkiye ve dünyada en yüksek likiditeye sahip olan sertifikalar Borsa İstanbul Kıymetli Madenler Borsası ve LBMA kayıtlı İstanbul Altın Rafinerisi (İAR) ile Nadir Gold sertifikalı hologramlı blister paketlerdir."
       }
     ],
     editorialTitle: "Kapalıçarşı ve Tahtakale: Küresel Altın Ticaretinin Kalbi",
@@ -278,6 +532,109 @@ export const CITIES: CityConfig[] = [
         highlight: 'Modern takı, 22 ayar bilezik ve pırlanta mağazaları',
         metroInfo: 'Marmaray Bakırköy İstasyonu'
       }
+    ],
+    routes: [
+      {
+        origin: 'Kadıköy & Üsküdar (Anadolu Yakası Merkez)',
+        destination: 'Tarihi Kapalıçarşı (Beyazıt Girişi)',
+        distanceKm: 8.5,
+        durationMin: 20,
+        transitOptions: 'Marmaray (Sirkeci aktarma / T1 Tramvay) veya Vapur',
+        notes: 'Vapurla Eminönü\'ne geçip T1 Beyazıt tramvayına binmek veya Marmaray ile Sirkeci\'den aktarmak Boğaz köprü trafiğinden tamamen kurtarır.'
+      },
+      {
+        origin: 'Kuyumcukent (Bahçelievler / Yenibosna)',
+        destination: 'Kapalıçarşı & Tahtakale Sarraflar Aksı',
+        distanceKm: 15.8,
+        durationMin: 24,
+        transitOptions: 'M9 / M1A Metrosu veya E-5 Karayolu Taksi',
+        notes: 'İstanbul atölyeleri ile çarşı toptancıları arasındaki ana altın sevkiyat koridoru.'
+      },
+      {
+        origin: 'İstanbul Havalimanı (IST)',
+        destination: 'Kapalıçarşı & Nuruosmaniye',
+        distanceKm: 42.0,
+        durationMin: 38,
+        transitOptions: 'M11 Havalimanı Metrosu / İST-12 Havaist / Taksi',
+        notes: 'Kuzey Marmara Otoyolu ve Hasdal bağlantısıyla doğrudan Tarihi Yarımada sarrafiye merkezine ulaşım.'
+      },
+      {
+        origin: 'Sabiha Gökçen Havalimanı (SAW)',
+        destination: 'Kapalıçarşı & Tahtakale Ayaklı Borsa',
+        distanceKm: 44.5,
+        durationMin: 45,
+        transitOptions: 'M4 Metrosu + Ayrılık Çeşmesi Marmaray Aktarması',
+        notes: 'Anadolu yakasından gelen yurt içi ve yurt dışı yatırımcılar için kesintisiz raylı sistem köprüsü.'
+      },
+      {
+        origin: 'Levent & Maslak (Finans ve İş Kuleleri)',
+        destination: 'Kapalıçarşı & Vezneciler',
+        distanceKm: 11.2,
+        durationMin: 22,
+        transitOptions: 'M2 Hacıosman-Yenikapı Metrosu',
+        notes: 'Vezneciler-İstanbul Üniversitesi istasyonunda inildiğinde Kapalıçarşı Çarşıkapı girişine yalnızca 3 dakikalık yürüyüş kalır.'
+      }
+    ],
+    practicalTips: [
+      {
+        title: 'Tahtakale Ayaklı Borsası Likidite Saatleri',
+        summary: 'Türkiye\'nin en dar alım-satım makasları saat 10:00 - 16:30 arası Londra ve New York seanslarının açık olduğu saatlerde gerçekleşir.',
+        category: 'tasarruf'
+      },
+      {
+        title: 'Sertifikalı Rafineri Külçesi Standartları',
+        summary: 'İstanbul\'da has külçe alırken Borsa İstanbul ve LBMA onaylı Türk rafinerilerinin (İAR, Nadir Gold) hologramlı blister paketlerini tercih edin.',
+        category: 'guvenlik'
+      },
+      {
+        title: 'Tarihi Kapalıçarşı Giriş Kapıları ve Güvenlik',
+        summary: 'Kalpakçılar Caddesi ve Nuruosmaniye kapılarında fiziki altın/nakit transferleri için resmi güvenlik ve X-Ray noktaları bulunur.',
+        category: 'guvenlik'
+      },
+      {
+        title: 'Kuyumcukent vs Kapalıçarşı Ayrımı',
+        summary: 'Mücevher ve atölye imalatı için Kuyumcukent toptan; külçe, ons arbitrajı ve sikke altın için Tahtakale/Kapalıçarşı merkezdir.',
+        category: 'iscilik'
+      },
+      {
+        title: 'Marmaray ve Tramvay ile Sıfır Trafik Erişimi',
+        summary: 'Tarihi Yarımada araç trafiğine kapalıdır. Aracınızı Yenikapı İDO otoparkına bırakıp Marmaray veya M2 ile 5 dakikada çarşıya ulaşabilirsiniz.',
+        category: 'ulasim'
+      }
+    ],
+    spreadExamples: [
+      {
+        goldType: '50 Gram 24 Ayar Has Külçe Altın',
+        amount: 50,
+        unit: 'gram',
+        bankTotalTL: 172500,
+        bursaBazaarTotalTL: 164500,
+        savingsTL: 8000
+      },
+      {
+        goldType: '100 Gram 24 Ayar Has Külçe Altın',
+        amount: 100,
+        unit: 'gram',
+        bankTotalTL: 345000,
+        bursaBazaarTotalTL: 329000,
+        savingsTL: 16000
+      },
+      {
+        goldType: '250 Gram Toptan Külçe Altın',
+        amount: 250,
+        unit: 'gram',
+        bankTotalTL: 862500,
+        bursaBazaarTotalTL: 822500,
+        savingsTL: 40000
+      },
+      {
+        goldType: '10 Adet T.C. Darphane Çeyrek Altın',
+        amount: 10,
+        unit: 'adet',
+        bankTotalTL: 57400,
+        bursaBazaarTotalTL: 54800,
+        savingsTL: 2600
+      }
     ]
   },
   {
@@ -324,6 +681,22 @@ export const CITIES: CityConfig[] = [
       {
         question: "İzmir Kuyumcular Odası (İZKO) ekran fiyatları neyi ifade eder?",
         answer: "İZKO tavsiye perakende kurlarını belirler. Fiziki çarşıda büyük montanlı alımlarda sarraflar İZKO tavan fiyatının altında toptan kotasyon uygulayabilir."
+      },
+      {
+        question: "Tarihi Kemeraltı Kuyumcular Çarşısı'na vapur, metro ve tramvayla nasıl gidilir?",
+        answer: "Karşıyaka ve Bostanlı'dan İZDENİZ Konak vapuruna binip Konak İskelesi'nden 4 dakikada varabilirsiniz. Metro kullananlar Çankaya veya Konak istasyonlarında, tramvay kullananlar ise Gazi Bulvarı durağında inebilir."
+      },
+      {
+        question: "22 ayar İzmir Burması bozdururken işçilik kesintisi ne kadardır?",
+        answer: "Standart İzmir burma bileziklerde işçilik kaybı gram başına ₺30 - ₺45 aralığındadır. Geniş hasır veya fantezi modeller yerine düz burgulu modeller bozdururken minimum değer kaybı yaşatır."
+      },
+      {
+        question: "İzmir'de pazar günleri açık nöbetçi kuyumcu var mıdır?",
+        answer: "Evet, İzmir Kuyumcular Odası (İZKO) her pazar Konak, Karşıyaka Çarşı ve Alsancak bölgelerinde resmi nöbetçi kuyumcu listesini ilan etmektedir."
+      },
+      {
+        question: "Kemeraltı'nda has külçe altın alırken hangi sertifikalar aranmalıdır?",
+        answer: "Borsa İstanbul ve LBMA sertifikalı İstanbul Altın Rafinerisi (İAR) veya Nadir Gold orijinal hologramlı blister paketleri Ege Bölgesi'nde en kolay ve kesintisiz nakde dönen standarttır."
       }
     ],
     editorialTitle: "Ege'nin İncisi İzmir'de Altın ve 400 Yıllık Kemeraltı Geleneği",
@@ -370,6 +743,109 @@ export const CITIES: CityConfig[] = [
         jewelersCount: 45,
         highlight: 'Sertifikalı pırlanta, özel tasarım alyans ve VIP hizmet',
         metroInfo: 'Alsancak İZBAN ve Tramvay'
+      }
+    ],
+    routes: [
+      {
+        origin: 'Karşıyaka & Bostanlı İskelesi',
+        destination: 'Tarihi Kemeraltı Kuyumcular Sokağı',
+        distanceKm: 12.0,
+        durationMin: 16,
+        transitOptions: 'İZDENİZ Konak Vapuru (Trafiksiz Körfez Geçişi)',
+        notes: 'Konak vapur iskelesinden inip Tarihi Saat Kulesi\'ni geçerek Anafartalar Caddesi ve Kuyumcular Sokağı\'na 4 dakikada yürünür.'
+      },
+      {
+        origin: 'Bornova (Küçükpark / Ege Üniversitesi)',
+        destination: 'Kemeraltı & Çankaya Sarraflar Masası',
+        distanceKm: 9.5,
+        durationMin: 15,
+        transitOptions: 'İzmir Metrosu (Çankaya İstasyonu Doğrudan Çıkış)',
+        notes: 'Çankaya istasyonunda inildiğinde Fevzipaşa Bulvarı ve Kemeraltı sarraflar kapısına 90 metre mesafede olunur.'
+      },
+      {
+        origin: 'Alsancak & Kordon (Liman Aksı)',
+        destination: 'Kemeraltı Kuyumcular Çarşısı',
+        distanceKm: 3.2,
+        durationMin: 8,
+        transitOptions: 'Konak Tramvayı / Gazi Bulvarı Taksi',
+        notes: 'Gazi Bulvarı tramvay durağında inilerek Havra Sokağı toptancı sarraflarına hızlıca bağlanılır.'
+      },
+      {
+        origin: 'İzmir Adnan Menderes Havalimanı (ADB)',
+        destination: 'Kemeraltı Konak Sarraflar Çarşısı',
+        distanceKm: 17.5,
+        durationMin: 24,
+        transitOptions: 'İZBAN Banliyö (Hilal aktarmalı) veya Havalimanı Taksi',
+        notes: 'Gaziemir ve Akçay Caddesi üzerinden Konak Tüneli bağlantısıyla doğrudan çarşı girişine varış.'
+      },
+      {
+        origin: 'Buca & Gaziemir Yatırım Havzası',
+        destination: 'Kemeraltı Sarraflar Masası',
+        distanceKm: 8.8,
+        durationMin: 18,
+        transitOptions: 'İZBAN Şirinyer Aktarma veya Yeşillik Caddesi Taksi',
+        notes: 'Eşrefpaşa güzergahından İkiçeşmelik aksına inilerek toptan sarraflar bölgesine doğrudan erişim.'
+      }
+    ],
+    practicalTips: [
+      {
+        title: '22 Ayar İzmir Burmasında Bölgesel Standart',
+        summary: 'Ege düğünlerinin simgesi olan İzmir Burması çift burgu modeliyle tanınır; Kemeraltı sarraflarında gram başı işçilik ₺30–₺45 bandında tutulmalıdır.',
+        category: 'iscilik'
+      },
+      {
+        title: 'Çankaya Metro İstasyonu Doğrudan Çarşı Çıkışı',
+        summary: 'Çankaya metro istasyonundan çıktığınızda doğrudan Kuyumcular Çarşısı ve Fevzipaşa Bulvarı sarraflar aksına 90 metre mesafede olursunuz.',
+        category: 'ulasim'
+      },
+      {
+        title: 'Havra Sokağı ve İkiçeşmelik Toptancı Sarrafları',
+        summary: 'Perakende vitrinler yerine Kemeraltı iç aksındaki toptancı sarraflarda külçe alımlarında toptan borsa ekranı geçerlidir.',
+        category: 'tasarruf'
+      },
+      {
+        title: 'İZKO (İzmir Kuyumcular Odası) Referansı',
+        summary: 'İZKO tavsiye listesi perakende tavan fiyatıdır; yüksek meblağlı altın bozdururken sarraflardan anlık serbest piyasa kotasyonu isteyin.',
+        category: 'guvenlik'
+      },
+      {
+        title: 'Konak Katlı Otopark Kolaylığı',
+        summary: 'Kemeraltı tamamen yayalaştırılmıştır; aracınızı Konak Katlı Otoparkı veya Çankaya katlı otoparkına park edip yürümek en zahmetsiz yoldur.',
+        category: 'ulasim'
+      }
+    ],
+    spreadExamples: [
+      {
+        goldType: '50 Gram 24 Ayar Has Külçe Altın',
+        amount: 50,
+        unit: 'gram',
+        bankTotalTL: 172500,
+        bursaBazaarTotalTL: 165000,
+        savingsTL: 7500
+      },
+      {
+        goldType: '100 Gram 24 Ayar Has Külçe Altın',
+        amount: 100,
+        unit: 'gram',
+        bankTotalTL: 345000,
+        bursaBazaarTotalTL: 330000,
+        savingsTL: 15000
+      },
+      {
+        goldType: '250 Gram Toptan Külçe Altın',
+        amount: 250,
+        unit: 'gram',
+        bankTotalTL: 862500,
+        bursaBazaarTotalTL: 824500,
+        savingsTL: 38000
+      },
+      {
+        goldType: '10 Adet T.C. Darphane Çeyrek Altın',
+        amount: 10,
+        unit: 'adet',
+        bankTotalTL: 57400,
+        bursaBazaarTotalTL: 54950,
+        savingsTL: 2450
       }
     ]
   }

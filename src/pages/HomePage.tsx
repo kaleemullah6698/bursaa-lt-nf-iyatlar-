@@ -10,6 +10,7 @@ import { useGold } from '../context/GoldContext';
 // Below-the-fold components code-split for minimal initial JS payload
 const BankSpreadComparison = lazy(() => import('../components/BankSpreadComparison').then(m => ({ default: m.BankSpreadComparison })));
 const CityHubsDetailSection = lazy(() => import('../components/CityHubsDetailSection').then(m => ({ default: m.CityHubsDetailSection })));
+const CityHyperlocalGuide = lazy(() => import('../components/CityHyperlocalGuide').then(m => ({ default: m.CityHyperlocalGuide })));
 const CityEditorialSection = lazy(() => import('../components/CityEditorialSection').then(m => ({ default: m.CityEditorialSection })));
 const CityFaqSection = lazy(() => import('../components/CityFaqSection').then(m => ({ default: m.CityFaqSection })));
 import { 
@@ -61,6 +62,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAlertModal }) => {
       <div className="cv-auto">
         <Suspense fallback={<div className="min-h-[240px]" />}>
           <CityHubsDetailSection />
+        </Suspense>
+      </div>
+
+      {/* 7.5. City Hyperlocal Guide: Routes, Transit, Practical Tips & Arbitrage Savings */}
+      <div className="cv-auto">
+        <Suspense fallback={<div className="min-h-[240px]" />}>
+          <CityHyperlocalGuide />
         </Suspense>
       </div>
 

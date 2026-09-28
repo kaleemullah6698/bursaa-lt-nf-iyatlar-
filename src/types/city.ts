@@ -18,6 +18,30 @@ export interface CityEditorialPoint {
   desc: string;
 }
 
+export interface CityRouteInfo {
+  origin: string;
+  destination: string;
+  distanceKm: number;
+  durationMin: number;
+  transitOptions: string;
+  notes: string;
+}
+
+export interface CityPracticalTip {
+  title: string;
+  summary: string;
+  category: 'iscilik' | 'guvenlik' | 'ulasim' | 'tasarruf';
+}
+
+export interface CitySpreadExample {
+  goldType: string;
+  amount: number;
+  unit: string;
+  bankTotalTL: number;
+  bursaBazaarTotalTL: number;
+  savingsTL: number;
+}
+
 export interface CityConfig {
   id: CityId;
   name: string;
@@ -51,4 +75,7 @@ export interface CityConfig {
   editorialSubtitle: string;
   editorialPoints: CityEditorialPoint[];
   keyHubs: CityHubInfo[];
+  routes?: CityRouteInfo[];
+  practicalTips?: CityPracticalTip[];
+  spreadExamples?: CitySpreadExample[];
 }
