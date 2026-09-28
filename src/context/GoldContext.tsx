@@ -348,7 +348,7 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setMarketStatus(getBursaMarketStatus());
       }, 15000);
       return () => clearInterval(timer);
-    }, 2500);
+    }, 4000);
 
     return () => clearTimeout(initialDelay);
   }, []);
@@ -361,7 +361,7 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     let intervalId: any = null;
 
-    // Delay start of live streaming price mutation by 3 seconds on initial mount
+    // Delay start of live streaming price mutation by 4 seconds on initial mount
     const startDelay = setTimeout(() => {
       intervalId = setInterval(() => {
         const tStart = performance.now();

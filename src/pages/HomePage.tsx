@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Hero } from '../components/Hero';
 import { CityHubsNavigator } from '../components/CityHubsNavigator';
 import { AeoDirectAnswers } from '../components/AeoDirectAnswers';
 import { ProFreeMarketTable } from '../components/ProFreeMarketTable';
 import { PriceCardsGrid } from '../components/PriceCardsGrid';
-import { BankSpreadComparison } from '../components/BankSpreadComparison';
-import { CityHubsDetailSection } from '../components/CityHubsDetailSection';
-import { CityEditorialSection } from '../components/CityEditorialSection';
-import { CityFaqSection } from '../components/CityFaqSection';
 import { Link } from '../components/Link';
 import { useGold } from '../context/GoldContext';
+
+// Below-the-fold components code-split for minimal initial JS payload
+const BankSpreadComparison = lazy(() => import('../components/BankSpreadComparison').then(m => ({ default: m.BankSpreadComparison })));
+const CityHubsDetailSection = lazy(() => import('../components/CityHubsDetailSection').then(m => ({ default: m.CityHubsDetailSection })));
+const CityEditorialSection = lazy(() => import('../components/CityEditorialSection').then(m => ({ default: m.CityEditorialSection })));
+const CityFaqSection = lazy(() => import('../components/CityFaqSection').then(m => ({ default: m.CityFaqSection })));
 import { 
   BarChart2, 
   Coins, 
@@ -50,22 +52,30 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenAlertModal }) => {
 
       {/* 6. Bank Spread Arbitrage & Savings Matrix */}
       <div className="cv-auto">
-        <BankSpreadComparison />
+        <Suspense fallback={<div className="min-h-[240px]" />}>
+          <BankSpreadComparison />
+        </Suspense>
       </div>
 
       {/* 7. City-Specific District Hubs & Regional Sarrafiye Breakdown */}
       <div className="cv-auto">
-        <CityHubsDetailSection />
+        <Suspense fallback={<div className="min-h-[240px]" />}>
+          <CityHubsDetailSection />
+        </Suspense>
       </div>
 
       {/* 8. City-Specific Editorial History, Culture & Market Dynamics */}
       <div className="cv-auto">
-        <CityEditorialSection />
+        <Suspense fallback={<div className="min-h-[240px]" />}>
+          <CityEditorialSection />
+        </Suspense>
       </div>
 
       {/* 9. City-Specific SSS / Frequently Asked Questions */}
       <div className="cv-auto">
-        <CityFaqSection />
+        <Suspense fallback={<div className="min-h-[240px]" />}>
+          <CityFaqSection />
+        </Suspense>
       </div>
 
       {/* 10. Dedicated Portals Hub: Clean semantic Link cards to all standalone modules */}

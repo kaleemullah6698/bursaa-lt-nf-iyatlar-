@@ -1,4 +1,5 @@
-import React, { useState, useMemo, memo } from 'react';
+import React, { useState, useMemo, memo, useRef } from 'react';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import { useGold } from '../context/GoldContext';
 import { 
   ArrowUp, 
@@ -266,6 +267,7 @@ export const ProFreeMarketTable: React.FC = () => {
   const [sortField, setSortField] = useState<string>('default');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [copiedData, setCopiedData] = useState(false);
+  const parentRef = useRef<HTMLDivElement>(null);
 
   // Filter items
   const filtered = useMemo(() => {
@@ -315,6 +317,18 @@ export const ProFreeMarketTable: React.FC = () => {
       return sortOrder === 'asc' ? (valA as number) - (valB as number) : (valB as number) - (valA as number);
     });
   }, [filtered, sortField, sortOrder]);
+
+  const rowVirtualizer = useVirtualizer({
+    count: sortedItems.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 54,
+    overscan: 6,
+  });
+
+  const virtualRows = rowVirtualizer.getVirtualItems();
+  const totalSize = rowVirtualizer.getTotalSize();
+  const paddingTop = virtualRows.length > 0 ? virtualRows[0]?.start || 0 : 0;
+  const paddingBottom = virtualRows.length > 0 ? totalSize - (virtualRows[virtualRows.length - 1]?.end || 0) : 0;
 
   const handleSort = (field: string) => {
     if (sortField === field) {
@@ -501,9 +515,9 @@ export const ProFreeMarketTable: React.FC = () => {
 
         {/* Pro Data Table Container */}
         <div className="bg-[#101318] border border-[rgba(244,241,232,0.08)] rounded-2xl overflow-hidden shadow-2xl">
-          <div className="overflow-x-auto">
+          <div ref={parentRef} className="overflow-x-auto max-h-[620px] overflow-y-auto scrollbar-thin">
             <table className="w-full border-collapse text-sm" aria-label="Canlı Serbest Piyasa Altın Fiyatları Tablosu">
-              <thead>
+              <thead className="sticky top-0 z-10 bg-[#0C0F14] shadow-sm">
                 <tr className="border-b border-[rgba(244,241,232,0.08)] bg-[#0C0F14] text-[#A5A8AE] text-xs select-none">
                   <th scope="col" className="py-2.5 px-4 text-left font-medium">
                     <button
@@ -576,15 +590,29 @@ export const ProFreeMarketTable: React.FC = () => {
               </thead>
 
               <tbody className="divide-y divide-[rgba(244,241,232,0.05)] font-mono">
-                {sortedItems.map((item) => (
-                  <ProTableRow
-                    key={item.id}
-                    item={item}
-                    flashState={flashedItemIds[item.id]}
-                    onSelect={setSelectedItem}
-                    onCalculate={openCalculatorWithGold}
-                  />
-                ))}
+                {paddingTop > 0 && (
+                  <tr>
+                    <td colSpan={7} style={{ height: `${paddingTop}px` }} />
+                  </tr>
+                )}
+                {virtualRows.map((virtualRow) => {
+                  const item = sortedItems[virtualRow.index];
+                  if (!item) return null;
+                  return (
+                    <ProTableRow
+                      key={item.id}
+                      item={item}
+                      flashState={flashedItemIds[item.id]}
+                      onSelect={setSelectedItem}
+                      onCalculate={openCalculatorWithGold}
+                    />
+                  );
+                })}
+                {paddingBottom > 0 && (
+                  <tr>
+                    <td colSpan={7} style={{ height: `${paddingBottom}px` }} />
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
