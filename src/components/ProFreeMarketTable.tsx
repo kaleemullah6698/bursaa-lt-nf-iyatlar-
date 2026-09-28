@@ -136,16 +136,18 @@ const renderBadge = (item: GoldPriceItem) => {
   );
 };
 
-const formatTablePrice = (price: number) => {
+const formatTablePrice = (price: number | undefined | null) => {
+  const num = typeof price === 'number' && !isNaN(price) ? price : 0;
   return new Intl.NumberFormat('en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
-  }).format(price);
+  }).format(num);
 };
 
 const ProTableRow = memo<ProTableRowProps>(({ item, flashState, onSelect, onCalculate }) => {
-  const isUp = item.changeRate >= 0;
-  const isDiffPositive = item.changeAmount >= 0;
+  if (!item) return null;
+  const isUp = (item.changeRate || 0) >= 0;
+  const isDiffPositive = (item.changeAmount || 0) >= 0;
 
   return (
     <tr
@@ -191,7 +193,7 @@ const ProTableRow = memo<ProTableRowProps>(({ item, flashState, onSelect, onCalc
           }`}
         >
           {isUp ? <ArrowUp className="w-3.5 h-3.5" /> : <ArrowDown className="w-3.5 h-3.5" />}
-          {Math.abs(item.changeRate).toFixed(2)}%
+          {Math.abs(item.changeRate || 0).toFixed(2)}%
         </span>
       </td>
 
@@ -202,8 +204,8 @@ const ProTableRow = memo<ProTableRowProps>(({ item, flashState, onSelect, onCalc
             isDiffPositive ? 'text-[#10B981]' : 'text-[#EF4444]'
           }`}
         >
-          {item.changeAmount > 0 ? '+' : ''}
-          {item.changeAmount.toFixed(2)}
+          {(item.changeAmount || 0) > 0 ? '+' : ''}
+          {(item.changeAmount || 0).toFixed(2)}
         </span>
       </td>
 
@@ -590,25 +592,35 @@ export const ProFreeMarketTable: React.FC = () => {
               </thead>
 
               <tbody className="divide-y divide-[rgba(244,241,232,0.05)] font-mono">
-                {paddingTop > 0 && (
+                {virtualRows.length > 0 && paddingTop > 0 && (
                   <tr>
                     <td colSpan={7} style={{ height: `${paddingTop}px` }} />
                   </tr>
                 )}
-                {virtualRows.map((virtualRow) => {
-                  const item = sortedItems[virtualRow.index];
-                  if (!item) return null;
-                  return (
-                    <ProTableRow
-                      key={item.id}
-                      item={item}
-                      flashState={flashedItemIds[item.id]}
-                      onSelect={setSelectedItem}
-                      onCalculate={openCalculatorWithGold}
-                    />
-                  );
-                })}
-                {paddingBottom > 0 && (
+                {virtualRows.length > 0
+                  ? virtualRows.map((virtualRow) => {
+                      const item = sortedItems[virtualRow.index];
+                      if (!item) return null;
+                      return (
+                        <ProTableRow
+                          key={item.id}
+                          item={item}
+                          flashState={flashedItemIds[item.id]}
+                          onSelect={setSelectedItem}
+                          onCalculate={openCalculatorWithGold}
+                        />
+                      );
+                    })
+                  : sortedItems.map((item) => (
+                      <ProTableRow
+                        key={item.id}
+                        item={item}
+                        flashState={flashedItemIds[item.id]}
+                        onSelect={setSelectedItem}
+                        onCalculate={openCalculatorWithGold}
+                      />
+                    ))}
+                {virtualRows.length > 0 && paddingBottom > 0 && (
                   <tr>
                     <td colSpan={7} style={{ height: `${paddingBottom}px` }} />
                   </tr>

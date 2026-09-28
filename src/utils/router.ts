@@ -70,25 +70,25 @@ export const CITY_CANONICAL_PATHS: Record<CityId, string> = {
 };
 
 export const ROUTE_TITLES: Record<PageRoute, string> = {
-  'fiyatlar': 'Bursa Altın Fiyatları Canlı | Kapalı Çarşı Anlık Kurlar 2026',
-  'grafik': 'Grafik Terminali | Altın Teknik Analiz & Canlı Mum Grafikler 2026',
-  'altin-turleri': 'Altın Türleri Ansiklopedisi | Darphane, Külçe ve Has Ağırlıklar 2026',
-  'portfoy': 'Altın Portföy Yönetim İstasyonu | Kâr & Zarar Takibi 2026',
-  'hesaplama': 'Altın Hesaplama & Zekat Terminali (80.18g Nisap) | 2026 Kurları',
-  'bursada-altin': "Tarihi Kapalı Çarşı & Sarraflar Rehberi | Banka Makas Analizi 2026",
-  'kuyumcular': 'Kuyumcular & Sarraflar Rehberi | Çalışma Saatleri & Ulaşım 2026',
-  'sss': 'Sıkça Sorulan Sorular (SSS) | Serbest Piyasa Altın Bilgi Bankası 2026'
+  'fiyatlar': 'Bursa Altın Fiyatları Canlı | Kapalı Çarşı Kurları',
+  'grafik': 'Altın Grafik Terminali | Canlı Teknik Analiz 2026',
+  'altin-turleri': 'Altın Türleri Ansiklopedisi | Gramaj ve Ayar Rehberi',
+  'portfoy': 'Altın Portföy Takibi | Anlık Kâr & Zarar Hesaplama',
+  'hesaplama': 'Altın Hesaplama & Zekat Terminali | 80.18g Nisap',
+  'bursada-altin': "Bursa'da Altın & Kapalı Çarşı | Banka Makas Analizi",
+  'kuyumcular': 'Bursa Kuyumcular Rehberi | Çalışma Saatleri & Adres',
+  'sss': 'Altın Rehberi & SSS | Kapalı Çarşı Bilgi Bankası'
 };
 
 export const ROUTE_META_DESCRIPTIONS: Record<PageRoute, string> = {
-  'fiyatlar': 'Bursa, Ankara, İstanbul ve İzmir serbest piyasa canlı altın fiyatları. Gram altın, çeyrek, 22 ayar bilezik anlık alış satış kurları ve canlı piyasa motoru.',
-  'grafik': 'Kapalı Çarşı ve serbest piyasa altın fiyatları teknik analiz grafik terminali. 1D, 1W, 1M, 1Y mum grafikler, EMA, RSI ve osilatör indikatörleri.',
-  'altin-turleri': 'Kapalı Çarşı ve T.C. Darphane altın türleri kataloğu. 24A, 22A, 18A, 14A ayar, milyem saflık oranları ve miligram has altın ağırlıkları.',
-  'portfoy': 'Fiziki altın ve ziynet birikimleriniz için yerel portföy yöneticisi. Anlık net kâr/zarar, alış maliyeti ve varlık dağılımı analizi.',
-  'hesaplama': 'Serbest piyasa canlı kurlarıyla altın çevirici, 80.18g nisap miktarına göre Diyanet uyumlu altın zekatı ve düğün takı bütçesi hesaplayıcısı.',
-  'bursada-altin': 'Tarihi Kapalı Çarşı ve Bedesten altın piyasası rehberi. Banka makas farkları, fiziki teslimat ve kuyumcu işlem dinamikleri.',
-  'kuyumcular': 'Kuyumcular Odası resmi çalışma saatleri, Osmangazi, Çankaya, Beyazıt, Konak kuyumcuları ve nöbetçi sarraflar rehberi.',
-  'sss': 'Serbest piyasa altın kotasyonları, eski-yeni tarih farkı, 22 ayar bilezik işçilik kesintisi ve Kapalı Çarşı hakkında sıkça sorulan sorular.'
+  'fiyatlar': 'Bursa Kapalı Çarşı canlı altın fiyatları: 24 ayar gram, çeyrek, 22 ayar bilezik ve ata altın anlık alış-satış kurları, piyasa farkları ve canlı takip motoru.',
+  'grafik': 'Canlı altın mum grafikleri, TradingView derinlik analizi, EMA ve RSI göstergeleri. Gram, çeyrek ve ons altın teknik fiyat hareketlerini anlık inceleyin.',
+  'altin-turleri': 'Darphane ve Kapalı Çarşı altın türleri kataloğu. 24, 22, 18, 14 ayar altın saflık dereceleri, milyem oranları, gram ağırlıkları ve yatırım özellikleri.',
+  'portfoy': 'Fiziki altın ve ziynet birikimlerinizi kaydedin; anlık canlı kurlarla net kâr-zararınızı, ortalama alış maliyetinizi ve portföy getirinizi ücretsiz izleyin.',
+  'hesaplama': 'Canlı serbest piyasa kurlarıyla altın çevirici, 80.18 gram nisap sınırına göre Diyanet uyumlu altın zekat hesabı ve düğün takı bütçesi planlayıcısı.',
+  'bursada-altin': 'Tarihi Bursa Kapalı Çarşı ve Bedesten altın piyasası analizi. Banka alım-satım makas farkları, fiziki teslimat avantajları ve sarrafiye alım rehberi.',
+  'kuyumcular': 'Bursa Kapalı Çarşı, Osmangazi ve Nilüfer kuyumcuları listesi. Resmi çalışma saatleri, nöbetçi sarraflar, telefon numaraları ve çarşı ulaşım krokisi.',
+  'sss': 'Altın alım satımında sıkça sorulan sorular: Eski-yeni tarih farkı, 22 ayar bilezik işçilik kesintisi, sahte altın kontrolü ve serbest piyasa kuralları.'
 };
 
 /**

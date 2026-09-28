@@ -360,82 +360,99 @@ export const GoldProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (!liveStreamActive) return;
 
     let intervalId: any = null;
+    let flashTimeoutId: any = null;
 
-    // Delay start of live streaming price mutation by 4 seconds on initial mount
+    // Delay start of live streaming price mutation by 3.5 seconds on initial mount
     const startDelay = setTimeout(() => {
       intervalId = setInterval(() => {
-        const tStart = performance.now();
-
-        setItems(prevItems => {
-          const newItems = [...prevItems];
+        try {
+          const tStart = performance.now();
           const newFlashed: Record<string, 'up' | 'down'> = {};
 
-          const indicesToUpdate: number[] = [];
-          const countToUpdate = isTurbo ? 4 : Math.floor(Math.random() * 3) + 2;
+          setItems(prevItems => {
+            if (!prevItems || !Array.isArray(prevItems) || prevItems.length === 0) return prevItems;
+            const newItems = [...prevItems];
 
-          while (indicesToUpdate.length < countToUpdate && indicesToUpdate.length < newItems.length) {
-            const randIdx = Math.floor(Math.random() * newItems.length);
-            if (!indicesToUpdate.includes(randIdx)) {
-              indicesToUpdate.push(randIdx);
+            const indicesToUpdate: number[] = [];
+            const countToUpdate = isTurbo ? 4 : Math.floor(Math.random() * 3) + 2;
+
+            while (indicesToUpdate.length < countToUpdate && indicesToUpdate.length < newItems.length) {
+              const randIdx = Math.floor(Math.random() * newItems.length);
+              if (!indicesToUpdate.includes(randIdx)) {
+                indicesToUpdate.push(randIdx);
+              }
             }
-          }
 
-          indicesToUpdate.forEach(idx => {
-            const item = newItems[idx];
-            if (!item) return;
+            indicesToUpdate.forEach(idx => {
+              const item = newItems[idx];
+              if (!item || typeof item.sellingPrice !== 'number') return;
 
-            const pct = (Math.random() - 0.48) * 0.0007;
-            const delta = item.sellingPrice * pct;
-            const isUp = delta >= 0;
+              const pct = (Math.random() - 0.48) * 0.0007;
+              const delta = item.sellingPrice * pct;
+              const isUp = delta >= 0;
 
-            const newSelling = parseFloat((item.sellingPrice + delta).toFixed(2));
-            const spread = item.sellingPrice - item.buyingPrice;
-            const newBuying = parseFloat((newSelling - spread).toFixed(2));
-            const newChangeAmount = parseFloat((item.changeAmount + delta).toFixed(2));
-            const newChangeRate = parseFloat(
-              (((newSelling - item.previousClose) / item.previousClose) * 100).toFixed(2)
-            );
+              const newSelling = parseFloat((item.sellingPrice + delta).toFixed(2));
+              const spread = (item.sellingPrice || 0) - (item.buyingPrice || 0);
+              const newBuying = parseFloat((newSelling - spread).toFixed(2));
+              const newChangeAmount = parseFloat(((item.changeAmount || 0) + delta).toFixed(2));
+              const prevClose = item.previousClose && item.previousClose > 0 ? item.previousClose : (item.sellingPrice || 1);
+              const newChangeRate = parseFloat(
+                (((newSelling - prevClose) / prevClose) * 100).toFixed(2)
+              );
 
-            const newSpark = [...item.sparkline.slice(1), newSelling];
+              const prevSpark = Array.isArray(item.sparkline) && item.sparkline.length > 0 
+                ? item.sparkline 
+                : [newSelling, newSelling];
+              const newSpark = [...prevSpark.slice(1), newSelling];
 
-            newItems[idx] = {
-              ...item,
-              buyingPrice: newBuying,
-              sellingPrice: newSelling,
-              changeAmount: newChangeAmount,
-              changeRate: newChangeRate,
-              dayHigh: Math.max(item.dayHigh, newSelling),
-              dayLow: Math.min(item.dayLow, newBuying),
-              sparkline: newSpark,
-              lastUpdate: isTurbo ? 'Ultra · 0.8s' : 'Canlı · 2.5s'
-            };
+              newItems[idx] = {
+                ...item,
+                buyingPrice: newBuying,
+                sellingPrice: newSelling,
+                changeAmount: newChangeAmount,
+                changeRate: newChangeRate,
+                dayHigh: Math.max(item.dayHigh || newSelling, newSelling),
+                dayLow: Math.min(item.dayLow || newBuying, newBuying),
+                sparkline: newSpark,
+                lastUpdate: isTurbo ? 'Ultra · 0.8s' : 'Canlı · 2.5s'
+              };
 
-            newFlashed[item.id] = isUp ? 'up' : 'down';
+              newFlashed[item.id] = isUp ? 'up' : 'down';
+            });
+
+            return newItems;
           });
 
-          setFlashedItemIds(newFlashed);
-          const firstDirection = Object.values(newFlashed)[0];
-          if (firstDirection) playTickSound(firstDirection);
+          // State updates and audio are performed OUTSIDE the pure setItems updater callback
+          if (Object.keys(newFlashed).length > 0) {
+            setFlashedItemIds(newFlashed);
+            const firstDirection = Object.values(newFlashed)[0];
+            if (firstDirection) {
+              playTickSound(firstDirection);
+            }
 
-          const flashDuration = isTurbo ? 600 : 900;
-          setTimeout(() => {
-            setFlashedItemIds({});
-          }, flashDuration);
+            const flashDuration = isTurbo ? 600 : 900;
+            if (flashTimeoutId) clearTimeout(flashTimeoutId);
+            flashTimeoutId = setTimeout(() => {
+              setFlashedItemIds({});
+            }, flashDuration);
+          }
 
-          return newItems;
-        });
-
-        const tEnd = performance.now();
-        const measuredLag = parseFloat((tEnd - tStart).toFixed(2));
-        setLatencyMs(Math.max(0.1, measuredLag));
-        setTickCount(c => c + 1);
-        setLastRefreshTime(new Date());
+          const tEnd = performance.now();
+          const measuredLag = parseFloat((tEnd - tStart).toFixed(2));
+          setLatencyMs(Math.max(0.1, measuredLag));
+          setTickCount(c => c + 1);
+          setLastRefreshTime(new Date());
+        } catch {
+          // Prevent any tick calculation error from bubbling up
+        }
       }, effectiveIntervalMs);
-    }, 2500);
+    }, 3500);
 
     return () => {
       clearTimeout(startDelay);
       if (intervalId) clearInterval(intervalId);
+      if (flashTimeoutId) clearTimeout(flashTimeoutId);
     };
   }, [liveStreamActive, effectiveIntervalMs, isTurbo, playTickSound]);
 
